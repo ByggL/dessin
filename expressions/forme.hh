@@ -1,16 +1,11 @@
 #include <string>
 #include <map>
-#include <any>
+#include <vector>
 
 class Forme {
 protected:
-    std::map<std::string, std::any> attributs;
-    std::string couleur;
-    int rotation;
-    std::string remplissage;
-    unsigned int opacite;
-    unsigned int epaisseur;
+    std::map<std::string, std::string> _attributs;
 public:
-    Forme(std::string couleur = "black", int rotation = 0, std::string remplissage = "none", unsigned int opacite = 100, unsigned int epaisseur = 1);
+    Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs));
     virtual ~Forme() = default;
 };
