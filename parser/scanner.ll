@@ -25,17 +25,6 @@ using token = yy::Parser::token;
 %}
 fin return token::END;
 
-"rectangle" return token::RECTANGLE;
-"carré" return token::CARRE;
-"triangle" return token::TRIANGLE;
-"cercle" return token::CERCLE;
-"ellipse" return token::ELLIPSE;
-"ligne" return token::LIGNE;
-"chemin" return token::CHEMIN;
-"texte" return token::TEXTE;
-
-"taille" return token::SIZE;
-
 "+" return '+';
 "*" return '*';
 "-" return '-';
@@ -43,60 +32,59 @@ fin return token::END;
 "(" return '(';
 ")" return ')';
 "=" return '=';
+"," return ',';
+":" return ':';
+"&" return '&';
+"{" return '{';
+"}" return '}';
 
-(?i:si) {
-    return token::SI;
+"->"  {
+    return token::FLECHE;
 }
 
-(?i:alors) {
-    return token::ALORS;
-}
+(?i:rectangle) { return token::RECTANGLE; }
 
-(?i:sinon) {
-    return token::SINON;
-}
+(?i:carre) { return token::CARRE; }
 
-"tant que" {
-    return token::WHILE;
-}
+(?i:triangle) { return token::TRIANGLE; }
 
-"=="|"est" {
-    return token::EGAL;
-}
+(?i:cercle) { return token::CERCLE; }
 
-"!="|"n'est pas" {
-    return token::DIFFERENT;
-}
+(?i:ellipse) { return token::ELLIPSE; }
 
-">=" {
-    return token::GREATEREQ;
-}
+(?i:ligne) { return token::LIGNE; }
 
-">" {
-    return token::GREATER;
-}
+(?i:chemin) { return token::CHEMIN; }
 
-"<=" {
-    return token::LESSEREQ;
-}
+(?i:taille) { return token::TAILLE; }
 
-"<" {
-    return token::LESSER;
-}
+(?i:couleur) { return token::COULEUR; }
+
+(?i:rotation) { return token::ROTATION; }
+
+(?i:remplissage) { return token::REMPLISSAGE; }
+
+(?i:opacite) { return token::OPACITE; }
+
+(?i:epaisseur) { return token::EPAISSEUR; }
 
 [0-9]+      {
     yylval->build<int>(std::atoi(YYText()));
     return token::NUMBER;
 }
 
+[a-zA-Z]+      {
+    yylval->build<std::string>(YYText());
+    return token::CHAINE;
+}
+
+
+[ \t] {
+}
+
 "\n"          {
     loc->lines();
     return token::NL;
-}
-
-[a-zA-Z]+   {
-    yylval->build<std::string>(std::atoi(YYText()));
-    return token::STRING;
 }
 
 %%

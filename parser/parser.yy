@@ -12,11 +12,8 @@
     #include "contexte.hh"
     #include "expressionBinaire.hh"
     #include "expressionUnaire.hh"
-    #include "expressionTernaire.hh"
     #include "constante.hh"
     #include "variable.hh"
-    #include "forme.hh"
-    #include "rectangle.hh"
 
     class Scanner;
     class Driver;
@@ -28,7 +25,7 @@
 %code{
     #include <iostream>
     #include <string>
-    
+
     #include "scanner.hh"
     #include "driver.hh"
 
@@ -39,18 +36,8 @@
 %token                  NL
 %token                  END
 %token <int>            NUMBER
-%token <std::string>    STRING
-%token                  SI
-%token                  ALORS
-%token                  SINON
-%token                  WHILE
-
-%token                  EGAL
-%token                  DIFF
-%token                  GREATEREQ
-%token                  GREATER
-%token                  LESSEREQ
-%token                  LESSER
+%token <std::string>         CHAINE
+%token                  FLECHE
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -60,14 +47,20 @@
 %token                  LIGNE
 %token                  CHEMIN
 %token                  TEXTE
-%token                  SIZE
+
+%token                  TAILLE
+
+%token                  COULEUR
+%token                  ROTATION
+%token                  REMPLISSAGE
+%token                  OPACITE
+%token                  EPAISSEUR
 
 %type <ExpressionPtr>   operation
-%type <Forme>           forme
-%type <ExpressionPtr>   comparaison
+/* %type <figurePtr>       figure */
+/* %type <formePtr>        forme */
 %left '-' '+'
 %left '*' '/'
-%precedence  NEG
 
 %%
 
@@ -79,98 +72,123 @@ programme:
 
 instruction:
     expression  {
-        YYACCEPT;
     }
     | affectation {
-      YYACCEPT;
     }
 
 expression:
     operation {
+        //Modifier cette partie pour prendre en compte la structure avec expressions
         try{
-        std::cout << "#-> " << $1->calculer(driver.getContexte()) << std::endl;
+            std::cout << "#-> " << $1->calculer(driver.getContexte()) << std::endl;
         } catch (const std::exception& err){
             std::cerr << "#-> " << err.what() << std::endl;
         }
     }
+    | figure {
 
-    forme {
+    }
+    |forme {
 
     }
 
 affectation:
-    '=' { std::cout << "Affectation à réaliser" << std::endl;
+    '=' {
+        std::cout << "Affectation à réaliser" << std::endl;
     }
 
 operation:
     NUMBER {
-        $$ = $1;
-    }
-    | SI '(' comparaison ')' ALORS operation SINON operation {
-        $$ = std::make_shared<ExpressionTernaire>($3,$6,$8,OperateurTernaire::ifthenelse);
+        $$ = std::make_shared<Constante>($1);
     }
     | '(' operation ')' {
         $$ = $2;
     }
     | operation '+' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::plus);
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::plus);
     }
     | operation '-' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::moins);
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::moins);
     }
     | operation '*' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::multiplie);
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::multiplie);
     }
     | operation '/' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::divise);
-    }
-    | '-' operation %prec NEG {
-        $$ = std::make_shared<ExpressionUnaire>($2,OperateurUnaire::neg);
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
     }
 
-comparaison:
-    operation EGAL operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::egal);
+
+coordonnee_chemin:
+    operation operation ',' coordonnee_chemin {
+        $$->ajout(std::make_shared<point>($1,$2));
     }
-    | operation DIFF operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::different);        
+    operation operation {
+        $$ = std::vector<point>();
+        $$->ajout(std::make_shared<point>($1,$2));
     }
-    | operation GREATEREQ operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::greatereq);        
+
+figure:
+     RECTANGLE operation operation operation operation operation operation operation operation {
+        $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
-    | operation GREATER operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::greater);        
+    | CARRE operation operation operation {
+        $$ = std::make_shared<Carre>($2,$3,$4);
     }
-    | operation LESSEREQ operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::lessereq);        
+    | TRIANGLE operation operation operation operation {
+        $$ = std::make_shared<Triangle>($2,$3,$4,$5);
     }
-    | operation LESSER operation {
-        $$=std::make_shared<ExpressionBinaire>($1,$3,OperateurBinaire::lesser);        
+    | CERCLE operation operation operation {
+        $$ = std::make_shared<Cercle>($2,$3,$4);
+    }
+    | ELLIPSE operation operation operation operation {
+        $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
+    }
+    | LIGNE operation operation operation operation {
+        $$ = std::make_shared<Ligne>($2,$3,$4,$5);
+    }
+    | CHEMIN coordonnee_chemin {
+        $$ = std::make_shared<Chemin>($2);
+    }
+    | TEXTE operation operation CHAINE CHAINE {
+        $$ = std::make_shared<Texte>($2,$3,$4,$5);
+    }
+
+attribut:
+    COULEUR ':' CHAINE {
+
+    }
+    |ROTATION ':' CHAINE {
+
+    }
+    |REMPLISSAGE ':' CHAINE {
+
+    }
+    |OPACITE ':' CHAINE {
+
+    }
+    |EPAISSEUR ':' CHAINE {
+
+    }
+    |attribut '&' attribut {
+
+    }
+    |attribut NL attribut {
+
     }
 
 forme:
-    RECTANGLE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER { 
-        $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
-    }
-    | CARRE NUMBER NUMBER NUMBER {
-        $$ = std::make_shared<Carre>($2,$3,$4);
-    }
-    | TRIANGLE NUMBER NUMBER NUMBER NUMBER {
-        $$ = std::make_shared<Triangle>($2,$3,$4,$5);
-    }
-    | CERCLE NUMBER NUMBER NUMBER {
-        $$ = std::make_shared<Cercle>($2,$3,$4);
-    }
-    | ELLIPSE NUMBER NUMBER NUMBER NUMBER {
-        $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
-    }
-    | RECTANGLE NUMBER NUMBER NUMBER NUMBER { 
-        $$ = std::make_shared<Ligne>($2,$3,$4,$5);
-    }
-    | TEXTE NUMBER NUMBER '"'STRING'"' '"'STRING'"' {
-        $$ = std::make_shared<Texte>($2,$3,$4,$5);
-    }
-    // chemin et texte à faire
+     TAILLE operation operation {
+
+     }
+     |figure FLECHE attribut {
+
+     }
+     |figure '{' attribut '}' {
+
+     }
+
+
+
 %%
 
 void yy::Parser::error( const location_type &l, const std::string & err_msg) {
