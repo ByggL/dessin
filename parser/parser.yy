@@ -88,9 +88,9 @@ expression:
     | figure {
 
     }
-    |forme {
-
-    }
+    /* |forme { */
+    /*  */
+    /* } */
 
 affectation:
     '=' {
@@ -153,39 +153,39 @@ figure:
         $$ = std::make_shared<Texte>($2,$3,$4,$5);
     }
 
-attribut:
-    COULEUR ':' CHAINE {
-
-    }
-    |ROTATION ':' CHAINE {
-
-    }
-    |REMPLISSAGE ':' CHAINE {
-
-    }
-    |OPACITE ':' CHAINE {
-
-    }
-    |EPAISSEUR ':' CHAINE {
-
-    }
-    |attribut '&' attribut {
-
-    }
-    |attribut NL attribut {
-
-    }
-
-forme:
-     TAILLE operation operation {
-
-     }
-     |figure FLECHE attribut {
-
-     }
-     |figure '{' attribut '}' {
-
-     }
+/* attribut: */
+/*     COULEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |ROTATION ':' CHAINE { */
+/*  */
+/*     } */
+/*     |REMPLISSAGE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |OPACITE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |EPAISSEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |attribut '&' attribut { */
+/*  */
+/*     } */
+/*     |attribut NL attribut { */
+/*  */
+/*     } */
+/*  */
+/* forme: */
+/*      TAILLE operation operation { */
+/*  */
+/*      } */
+/*      |figure FLECHE attribut { */
+/*  */
+/*      } */
+/*      |figure '{' attribut '}' { */
+/*  */
+/*      } */
 
 
 
