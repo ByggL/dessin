@@ -1,6 +1,8 @@
+#include "contexte.hh"
 #include <string>
-#include <map>
 #include <vector>
+#include <map>
+
 
 class Forme {
 protected:
