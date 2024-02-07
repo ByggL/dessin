@@ -14,6 +14,8 @@
     #include "expressionUnaire.hh"
     #include "constante.hh"
     #include "variable.hh"
+    #include "forme.hh"
+    #include "rectangle.hh"
 
     class Scanner;
     class Driver;
@@ -36,7 +38,7 @@
 %token                  NL
 %token                  END
 %token <int>            NUMBER
-%token <std::string>         CHAINE
+%token <std::string>    CHAINE
 %token                  FLECHE
 
 %token                  RECTANGLE

@@ -14,7 +14,7 @@ private:
     ExpressionPtr _x4;
     ExpressionPtr _y4;
 public:
-    Rectangle(const Rectangle &) = default;
+    Rectangle(const Rectangle & r);
     Rectangle(ExpressionPtr x1, ExpressionPtr y1, ExpressionPtr x2, ExpressionPtr y2, ExpressionPtr x3, ExpressionPtr y3, ExpressionPtr x4, ExpressionPtr y4);
     ~Rectangle() = default;
 };

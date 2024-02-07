@@ -8,3 +8,9 @@ Forme::Forme(std::vector<std::string> attributs, std::vector<std::string> valeur
         _attributs[attributs[i]] = valeurs[i];
     }
 }
+
+Forme::Forme() : _attributs({}) {}
+
+void Forme::addAttribut(std::string attribut, std::string valeur) {
+    _attributs[attribut] = valeur;
+}
