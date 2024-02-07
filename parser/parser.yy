@@ -133,10 +133,10 @@ figure:
      RECTANGLE operation operation operation operation operation operation operation operation {
         $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
-    | CARRE operation operation operation {
+    | CARRE operation operation operation {  // coordonnées du coin + taille
         $$ = std::make_shared<Carre>($2,$3,$4);
     }
-    | TRIANGLE operation operation operation operation {
+    | TRIANGLE operation operation operation operation {  // coordonnées du coin de gauche + taille
         $$ = std::make_shared<Triangle>($2,$3,$4,$5);
     }
     | CERCLE operation operation operation {
