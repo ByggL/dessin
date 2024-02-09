@@ -130,7 +130,7 @@ coordonnee_chemin:
     }
 
 figure:
-     RECTANGLE operation operation operation operation operation operation operation operation {
+     RECTANGLE operation operation operation operation {
         $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
     | CARRE operation operation operation {  // coordonnées du coin + taille

@@ -13,4 +13,5 @@ public:
     virtual ~Forme() = default;
 
     void addAttribut(std::string attribut, std::string valeur);
+    std::string toSVG();
 };
