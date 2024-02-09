@@ -36,8 +36,9 @@
 %token                  NL
 %token                  END
 %token <int>            NUMBER
-%token <std::string>         CHAINE
+%token <std::string>    CHAINE
 %token                  FLECHE
+%token                  GUILLEMET
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -56,9 +57,9 @@
 %token                  OPACITE
 %token                  EPAISSEUR
 
+
 %type <ExpressionPtr>   operation
-/* %type <figurePtr>       figure */
-/* %type <formePtr>        forme */
+%type <formePtr>        forme
 %left '-' '+'
 %left '*' '/'
 
@@ -85,12 +86,9 @@ expression:
             std::cerr << "#-> " << err.what() << std::endl;
         }
     }
-    | figure {
+    |forme {
 
     }
-    /* |forme { */
-    /*  */
-    /* } */
 
 affectation:
     '=' {
@@ -127,7 +125,7 @@ coordonnee_chemin:
         $$->ajout(std::make_shared<point>($1,$2));
     }
 
-figure:
+forme:
      RECTANGLE operation operation operation operation operation operation operation operation {
         $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
@@ -152,40 +150,43 @@ figure:
     | TEXTE operation operation CHAINE CHAINE {
         $$ = std::make_shared<Texte>($2,$3,$4,$5);
     }
+    |forme FLECHE attribut {
 
-/* attribut: */
-/*     COULEUR ':' CHAINE { */
-/*  */
-/*     } */
-/*     |ROTATION ':' CHAINE { */
-/*  */
-/*     } */
-/*     |REMPLISSAGE ':' CHAINE { */
-/*  */
-/*     } */
-/*     |OPACITE ':' CHAINE { */
-/*  */
-/*     } */
-/*     |EPAISSEUR ':' CHAINE { */
-/*  */
-/*     } */
-/*     |attribut '&' attribut { */
-/*  */
-/*     } */
-/*     |attribut NL attribut { */
-/*  */
-/*     } */
-/*  */
-/* forme: */
-/*      TAILLE operation operation { */
-/*  */
-/*      } */
-/*      |figure FLECHE attribut { */
-/*  */
-/*      } */
-/*      |figure '{' attribut '}' { */
-/*  */
-/*      } */
+    }
+    |forme '{' attribut '}' {
+
+    }
+
+attribut:
+    COULEUR ':' CHAINE {
+
+    }
+    |ROTATION ':' CHAINE {
+
+    }
+    |REMPLISSAGE ':' CHAINE {
+
+    }
+    |OPACITE ':' CHAINE {
+
+    }
+    |EPAISSEUR ':' CHAINE {
+
+    }
+    |attribut '&' attribut {
+
+    }
+    |attribut ';' attribut {
+
+    }
+
+dessin:
+     TAILLE operation operation {
+
+     }
+     |figure {
+
+     }
 
 
 
