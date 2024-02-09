@@ -134,7 +134,7 @@ figure:
         $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
     | CARRE operation operation operation {  // coordonnées du coin + taille
-        $$ = std::make_shared<Carre>($2,$3,$4);
+        $$ = std::make_shared<Rectangle>($2,$3,$4,$4);  // en SVG un carré est un rectangle avec largeur=hauteur
     }
     | TRIANGLE operation operation operation operation {  // coordonnées du coin de gauche + taille
         $$ = std::make_shared<Triangle>($2,$3,$4,$5);
