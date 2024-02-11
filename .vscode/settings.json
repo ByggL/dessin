@@ -61,5 +61,6 @@
 		"xtr1common": "cpp",
 		"xtree": "cpp",
 		"xutility": "cpp"
-	}
+	},
+	"C_Cpp.default.compilerPath": "c:\\Program Files\\CodeBlocks\\MinGW\\bin\\gcc.exe"
 }
