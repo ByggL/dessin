@@ -31,21 +31,10 @@ add_library(expressions
     expressions/expressionTernaire.cc
     expressions/constante.cc
     expressions/variable.cc
-    figures/contexte_forme.cc
-    figures/forme.cc
-    figures/rectangle.cc
-    figures/ligne.cc
-    figures/chemin.cc
-    figures/forme_simple_coord.cc
-    figures/carre.cc
-    figures/triangle.cc
-    figures/cercle.cc
-    figures/ellipse.cc
-    figures/texte.cc
     ${EXPRESSION_HEADERS}
     )
 
-file(GLOB FORMES_HEADERS
+file(GLOB FIGURE_HEADERS
     figures/forme.hh
     figures/rectangle.hh
     figures/ligne.hh
@@ -59,7 +48,7 @@ file(GLOB FORMES_HEADERS
     figures/contexte_forme.hh
     )
 
-add_library(formes
+add_library(figures
     figures/forme.cc
     figures/rectangle.cc
     figures/ligne.cc
@@ -88,5 +77,7 @@ add_executable(${PROJECT_NAME}
     ${FLEX_scanner_OUTPUTS}
 )
 target_link_libraries(${PROJECT_NAME} expressions)
+target_link_libraries(${PROJECT_NAME} figures)
 
 target_link_libraries(expressions)
+target_link_libraries(figures)

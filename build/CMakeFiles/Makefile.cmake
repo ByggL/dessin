@@ -48,6 +48,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/expressions.dir/DependInfo.cmake"
-  "CMakeFiles/formes.dir/DependInfo.cmake"
+  "CMakeFiles/figures.dir/DependInfo.cmake"
   "CMakeFiles/dessin.dir/DependInfo.cmake"
   )

@@ -52,7 +52,6 @@
     #include "expressionUnaire.hh"
     #include "constante.hh"
     #include "variable.hh"
-    #include "contexte_forme.hh"
     #include "forme.hh"
     #include "carre.hh"
     #include "triangle.hh"
@@ -62,6 +61,7 @@
     #include "rectangle.hh"
     #include "ligne.hh"
     #include "chemin.hh"
+    #include "contexte_forme.hh"
 
     class Scanner;
     class Driver;

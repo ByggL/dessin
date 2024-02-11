@@ -153,160 +153,6 @@ CMakeFiles/expressions.dir/expressions/variable.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/expressions/variable.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/expressions/variable.cc -o CMakeFiles/expressions.dir/expressions/variable.cc.s
 
-CMakeFiles/expressions.dir/figures/contexte_forme.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/contexte_forme.cc.o: ../figures/contexte_forme.cc
-CMakeFiles/expressions.dir/figures/contexte_forme.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/expressions.dir/figures/contexte_forme.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/contexte_forme.cc.o -MF CMakeFiles/expressions.dir/figures/contexte_forme.cc.o.d -o CMakeFiles/expressions.dir/figures/contexte_forme.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/contexte_forme.cc
-
-CMakeFiles/expressions.dir/figures/contexte_forme.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/contexte_forme.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/contexte_forme.cc > CMakeFiles/expressions.dir/figures/contexte_forme.cc.i
-
-CMakeFiles/expressions.dir/figures/contexte_forme.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/contexte_forme.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/contexte_forme.cc -o CMakeFiles/expressions.dir/figures/contexte_forme.cc.s
-
-CMakeFiles/expressions.dir/figures/forme.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/forme.cc.o: ../figures/forme.cc
-CMakeFiles/expressions.dir/figures/forme.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/expressions.dir/figures/forme.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/forme.cc.o -MF CMakeFiles/expressions.dir/figures/forme.cc.o.d -o CMakeFiles/expressions.dir/figures/forme.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme.cc
-
-CMakeFiles/expressions.dir/figures/forme.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/forme.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme.cc > CMakeFiles/expressions.dir/figures/forme.cc.i
-
-CMakeFiles/expressions.dir/figures/forme.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/forme.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme.cc -o CMakeFiles/expressions.dir/figures/forme.cc.s
-
-CMakeFiles/expressions.dir/figures/rectangle.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/rectangle.cc.o: ../figures/rectangle.cc
-CMakeFiles/expressions.dir/figures/rectangle.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/expressions.dir/figures/rectangle.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/rectangle.cc.o -MF CMakeFiles/expressions.dir/figures/rectangle.cc.o.d -o CMakeFiles/expressions.dir/figures/rectangle.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/rectangle.cc
-
-CMakeFiles/expressions.dir/figures/rectangle.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/rectangle.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/rectangle.cc > CMakeFiles/expressions.dir/figures/rectangle.cc.i
-
-CMakeFiles/expressions.dir/figures/rectangle.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/rectangle.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/rectangle.cc -o CMakeFiles/expressions.dir/figures/rectangle.cc.s
-
-CMakeFiles/expressions.dir/figures/ligne.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/ligne.cc.o: ../figures/ligne.cc
-CMakeFiles/expressions.dir/figures/ligne.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/expressions.dir/figures/ligne.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/ligne.cc.o -MF CMakeFiles/expressions.dir/figures/ligne.cc.o.d -o CMakeFiles/expressions.dir/figures/ligne.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ligne.cc
-
-CMakeFiles/expressions.dir/figures/ligne.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/ligne.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ligne.cc > CMakeFiles/expressions.dir/figures/ligne.cc.i
-
-CMakeFiles/expressions.dir/figures/ligne.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/ligne.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ligne.cc -o CMakeFiles/expressions.dir/figures/ligne.cc.s
-
-CMakeFiles/expressions.dir/figures/chemin.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/chemin.cc.o: ../figures/chemin.cc
-CMakeFiles/expressions.dir/figures/chemin.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/expressions.dir/figures/chemin.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/chemin.cc.o -MF CMakeFiles/expressions.dir/figures/chemin.cc.o.d -o CMakeFiles/expressions.dir/figures/chemin.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/chemin.cc
-
-CMakeFiles/expressions.dir/figures/chemin.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/chemin.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/chemin.cc > CMakeFiles/expressions.dir/figures/chemin.cc.i
-
-CMakeFiles/expressions.dir/figures/chemin.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/chemin.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/chemin.cc -o CMakeFiles/expressions.dir/figures/chemin.cc.s
-
-CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o: ../figures/forme_simple_coord.cc
-CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o -MF CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o.d -o CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme_simple_coord.cc
-
-CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme_simple_coord.cc > CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.i
-
-CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/forme_simple_coord.cc -o CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.s
-
-CMakeFiles/expressions.dir/figures/carre.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/carre.cc.o: ../figures/carre.cc
-CMakeFiles/expressions.dir/figures/carre.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/expressions.dir/figures/carre.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/carre.cc.o -MF CMakeFiles/expressions.dir/figures/carre.cc.o.d -o CMakeFiles/expressions.dir/figures/carre.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/carre.cc
-
-CMakeFiles/expressions.dir/figures/carre.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/carre.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/carre.cc > CMakeFiles/expressions.dir/figures/carre.cc.i
-
-CMakeFiles/expressions.dir/figures/carre.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/carre.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/carre.cc -o CMakeFiles/expressions.dir/figures/carre.cc.s
-
-CMakeFiles/expressions.dir/figures/triangle.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/triangle.cc.o: ../figures/triangle.cc
-CMakeFiles/expressions.dir/figures/triangle.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/expressions.dir/figures/triangle.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/triangle.cc.o -MF CMakeFiles/expressions.dir/figures/triangle.cc.o.d -o CMakeFiles/expressions.dir/figures/triangle.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/triangle.cc
-
-CMakeFiles/expressions.dir/figures/triangle.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/triangle.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/triangle.cc > CMakeFiles/expressions.dir/figures/triangle.cc.i
-
-CMakeFiles/expressions.dir/figures/triangle.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/triangle.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/triangle.cc -o CMakeFiles/expressions.dir/figures/triangle.cc.s
-
-CMakeFiles/expressions.dir/figures/cercle.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/cercle.cc.o: ../figures/cercle.cc
-CMakeFiles/expressions.dir/figures/cercle.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/expressions.dir/figures/cercle.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/cercle.cc.o -MF CMakeFiles/expressions.dir/figures/cercle.cc.o.d -o CMakeFiles/expressions.dir/figures/cercle.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/cercle.cc
-
-CMakeFiles/expressions.dir/figures/cercle.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/cercle.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/cercle.cc > CMakeFiles/expressions.dir/figures/cercle.cc.i
-
-CMakeFiles/expressions.dir/figures/cercle.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/cercle.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/cercle.cc -o CMakeFiles/expressions.dir/figures/cercle.cc.s
-
-CMakeFiles/expressions.dir/figures/ellipse.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/ellipse.cc.o: ../figures/ellipse.cc
-CMakeFiles/expressions.dir/figures/ellipse.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/expressions.dir/figures/ellipse.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/ellipse.cc.o -MF CMakeFiles/expressions.dir/figures/ellipse.cc.o.d -o CMakeFiles/expressions.dir/figures/ellipse.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ellipse.cc
-
-CMakeFiles/expressions.dir/figures/ellipse.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/ellipse.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ellipse.cc > CMakeFiles/expressions.dir/figures/ellipse.cc.i
-
-CMakeFiles/expressions.dir/figures/ellipse.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/ellipse.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/ellipse.cc -o CMakeFiles/expressions.dir/figures/ellipse.cc.s
-
-CMakeFiles/expressions.dir/figures/texte.cc.o: CMakeFiles/expressions.dir/flags.make
-CMakeFiles/expressions.dir/figures/texte.cc.o: ../figures/texte.cc
-CMakeFiles/expressions.dir/figures/texte.cc.o: CMakeFiles/expressions.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/expressions.dir/figures/texte.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/expressions.dir/figures/texte.cc.o -MF CMakeFiles/expressions.dir/figures/texte.cc.o.d -o CMakeFiles/expressions.dir/figures/texte.cc.o -c /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/texte.cc
-
-CMakeFiles/expressions.dir/figures/texte.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/expressions.dir/figures/texte.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/texte.cc > CMakeFiles/expressions.dir/figures/texte.cc.i
-
-CMakeFiles/expressions.dir/figures/texte.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/expressions.dir/figures/texte.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures/texte.cc -o CMakeFiles/expressions.dir/figures/texte.cc.s
-
 # Object files for target expressions
 expressions_OBJECTS = \
 "CMakeFiles/expressions.dir/expressions/contexte.cc.o" \
@@ -314,18 +160,7 @@ expressions_OBJECTS = \
 "CMakeFiles/expressions.dir/expressions/expressionUnaire.cc.o" \
 "CMakeFiles/expressions.dir/expressions/expressionTernaire.cc.o" \
 "CMakeFiles/expressions.dir/expressions/constante.cc.o" \
-"CMakeFiles/expressions.dir/expressions/variable.cc.o" \
-"CMakeFiles/expressions.dir/figures/contexte_forme.cc.o" \
-"CMakeFiles/expressions.dir/figures/forme.cc.o" \
-"CMakeFiles/expressions.dir/figures/rectangle.cc.o" \
-"CMakeFiles/expressions.dir/figures/ligne.cc.o" \
-"CMakeFiles/expressions.dir/figures/chemin.cc.o" \
-"CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o" \
-"CMakeFiles/expressions.dir/figures/carre.cc.o" \
-"CMakeFiles/expressions.dir/figures/triangle.cc.o" \
-"CMakeFiles/expressions.dir/figures/cercle.cc.o" \
-"CMakeFiles/expressions.dir/figures/ellipse.cc.o" \
-"CMakeFiles/expressions.dir/figures/texte.cc.o"
+"CMakeFiles/expressions.dir/expressions/variable.cc.o"
 
 # External object files for target expressions
 expressions_EXTERNAL_OBJECTS =
@@ -336,20 +171,9 @@ libexpressions.a: CMakeFiles/expressions.dir/expressions/expressionUnaire.cc.o
 libexpressions.a: CMakeFiles/expressions.dir/expressions/expressionTernaire.cc.o
 libexpressions.a: CMakeFiles/expressions.dir/expressions/constante.cc.o
 libexpressions.a: CMakeFiles/expressions.dir/expressions/variable.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/contexte_forme.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/forme.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/rectangle.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/ligne.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/chemin.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/forme_simple_coord.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/carre.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/triangle.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/cercle.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/ellipse.cc.o
-libexpressions.a: CMakeFiles/expressions.dir/figures/texte.cc.o
 libexpressions.a: CMakeFiles/expressions.dir/build.make
 libexpressions.a: CMakeFiles/expressions.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX static library libexpressions.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libexpressions.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/expressions.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/expressions.dir/link.txt --verbose=$(VERBOSE)
 

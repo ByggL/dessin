@@ -160,6 +160,7 @@ dessin: CMakeFiles/dessin.dir/parser.cpp.o
 dessin: CMakeFiles/dessin.dir/scanner.cpp.o
 dessin: CMakeFiles/dessin.dir/build.make
 dessin: libexpressions.a
+dessin: libfigures.a
 dessin: CMakeFiles/dessin.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable dessin"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dessin.dir/link.txt --verbose=$(VERBOSE)

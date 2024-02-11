@@ -834,129 +834,134 @@ namespace yy {
   case 10: // forme: CARRE operation operation operation ';'
 #line 122 "parser/parser.yy"
                                              {
-        // $$ = std::make_shared<Carre>($2,$3,$4);
+
+        yylhs.value.as < formePtr > () =
+        /* std::shared_ptr<Carre> tmp = */
+        std::make_shared<Carre>(
+        yystack_[3].value.as < ExpressionPtr > ()->calculer(driver.getContexte()),
+        yystack_[2].value.as < ExpressionPtr > ()->calculer(driver.getContexte()),
+        yystack_[1].value.as < ExpressionPtr > ()->calculer(driver.getContexte())
+        );
+        /* driver.ajoutCarre(tmp); */
+        /* std::cout << driver.getCarreInd(0)->positionX << std::endl; */
+
     }
-#line 840 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 850 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 11: // forme: TRIANGLE operation operation operation operation ';'
-#line 125 "parser/parser.yy"
+#line 135 "parser/parser.yy"
                                                           {
-        // $$ = std::make_shared<Triangle>($2,$3,$4,$5);
     }
-#line 848 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 857 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 12: // forme: CERCLE operation operation operation ';'
-#line 128 "parser/parser.yy"
+#line 137 "parser/parser.yy"
                                               {
-        // $$ = std::make_shared<Cercle>($2,$3,$4);
-    }
-#line 856 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
-    break;
-
-  case 13: // forme: ELLIPSE operation operation operation operation ';'
-#line 131 "parser/parser.yy"
-                                                         {
-        // $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
     }
 #line 864 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
-  case 14: // forme: LIGNE operation operation operation operation ';'
-#line 134 "parser/parser.yy"
-                                                       {
-        // $$ = std::make_shared<Ligne>($2,$3,$4,$5);
+  case 13: // forme: ELLIPSE operation operation operation operation ';'
+#line 139 "parser/parser.yy"
+                                                         {
     }
-#line 872 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 871 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+    break;
+
+  case 14: // forme: LIGNE operation operation operation operation ';'
+#line 141 "parser/parser.yy"
+                                                       {
+    }
+#line 878 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 15: // forme: CHEMIN coordonnee_chemin ';'
-#line 137 "parser/parser.yy"
+#line 143 "parser/parser.yy"
                                   {
-        // $$ = std::make_shared<Chemin>($2);
-        std::cout << "chemin" << std::endl;
+        /* std::cout << "chemin" << std::endl; */
+        /* $$ = std::make_shared<Chemin>() */
     }
-#line 881 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 887 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 16: // forme: TEXTE operation operation CHAINE CHAINE ';'
-#line 141 "parser/parser.yy"
+#line 147 "parser/parser.yy"
                                                  {
-        // $$ = std::make_shared<Texte>($2,$3,$4,$5);
     }
-#line 889 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 894 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 17: // coordonnee_chemin: operation operation ',' coordonnee_chemin
-#line 152 "parser/parser.yy"
+#line 157 "parser/parser.yy"
                                               {
-        std::cout << "op op , cood_chemin" << std::endl;
-        // $$ = std::vector<double>();
-        // $$->ajout($1,$2);
+        /* std::cout << "op op , cood_chemin" << std::endl; */
+        /* $$ = std::vector<int>(); */
+        /* $$.ajout($1,$2); */
     }
-#line 899 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 904 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 18: // coordonnee_chemin: operation operation
-#line 157 "parser/parser.yy"
+#line 162 "parser/parser.yy"
                          {
-        std::cout << "op op " << std::endl;
-        // $$->ajout($1,$2);
+        /* std::cout << "op op " << std::endl; */
+        /* $$.ajout($1,$2); */
     }
-#line 908 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 913 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 19: // operation: NUMBER
-#line 188 "parser/parser.yy"
+#line 193 "parser/parser.yy"
            {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<Constante>(yystack_[0].value.as < int > ());
     }
-#line 916 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 921 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 20: // operation: '(' operation ')'
-#line 191 "parser/parser.yy"
+#line 196 "parser/parser.yy"
                         {
         yylhs.value.as < ExpressionPtr > () = yystack_[1].value.as < ExpressionPtr > ();
     }
-#line 924 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 929 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 21: // operation: operation '+' operation
-#line 194 "parser/parser.yy"
+#line 199 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > (), OperateurBinaire::plus);
     }
-#line 932 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 937 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 22: // operation: operation '-' operation
-#line 197 "parser/parser.yy"
+#line 202 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > (), OperateurBinaire::moins);
     }
-#line 940 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 945 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 23: // operation: operation '*' operation
-#line 200 "parser/parser.yy"
+#line 205 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > (), OperateurBinaire::multiplie);
     }
-#line 948 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 953 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
   case 24: // operation: operation '/' operation
-#line 203 "parser/parser.yy"
+#line 208 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > (), OperateurBinaire::divise);
     }
-#line 956 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 961 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
     break;
 
 
-#line 960 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 965 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
 
             default:
               break;
@@ -1279,8 +1284,8 @@ namespace yy {
    Parser ::yyrline_[] =
   {
        0,    79,    79,    80,    85,    87,    91,    99,   104,   119,
-     122,   125,   128,   131,   134,   137,   141,   152,   157,   188,
-     191,   194,   197,   200,   203
+     122,   135,   137,   139,   141,   143,   147,   157,   162,   193,
+     196,   199,   202,   205,   208
   };
 
   void
@@ -1360,9 +1365,9 @@ namespace yy {
   }
 
 } // yy
-#line 1364 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
+#line 1369 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.cpp"
 
-#line 207 "parser/parser.yy"
+#line 212 "parser/parser.yy"
 
 
 void yy::Parser::error( const location_type &l, const std::string & err_msg) {

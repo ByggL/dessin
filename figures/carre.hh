@@ -6,8 +6,9 @@ class Carre : public Forme_simple_coord {
 private:
     int taille;
 public:
-    Carre(const Carre & r);
     Carre(int x, int y, int taille);
+    Carre(const Carre & r);
     ~Carre() = default;
+    // Carre & operator=(const Carre & c);
 
 };

@@ -1,6 +1,4 @@
-#ifndef context_h
-#define context_h
-
+#pragma once
 #include "carre.hh"
 #include "rectangle.hh"
 #include "triangle.hh"
@@ -18,7 +16,7 @@ public:
 
     // Utilisation de variable :
     // C1 = carré 0 0 50 -> couleur : rouge & opacité : 30%
-    std::map<std::string, std::shared_ptr<Forme>> variables;
+    std::map<std::string, std::shared_ptr<Forme>> formes_nomer;
 
     // Utilisation de l'indice dans l'ordre de création :
     // C[0], C[1], etc...
@@ -41,7 +39,6 @@ public:
     const std::shared_ptr<Forme> operator[](const std::string & nom) const;
 
 
+
 };
 
-
-#endif

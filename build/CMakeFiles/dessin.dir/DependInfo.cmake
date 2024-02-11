@@ -24,6 +24,7 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/expressions.dir/DependInfo.cmake"
+  "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/figures.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

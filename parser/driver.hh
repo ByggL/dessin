@@ -19,7 +19,8 @@ public:
     double  getVariable(const std::string& name) const;
     void    setVariable(const std::string& name, double value);
 
-    //TODO get et set pour chaque formes
+    const std::shared_ptr<Carre> getCarreInd(int ind) const;
+    void ajoutCarre(std::shared_ptr<Carre> c);
 
 };
 

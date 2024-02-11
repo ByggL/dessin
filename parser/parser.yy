@@ -14,7 +14,6 @@
     #include "expressionUnaire.hh"
     #include "constante.hh"
     #include "variable.hh"
-    #include "contexte_forme.hh"
     #include "forme.hh"
     #include "carre.hh"
     #include "triangle.hh"
@@ -24,6 +23,7 @@
     #include "rectangle.hh"
     #include "ligne.hh"
     #include "chemin.hh"
+    #include "contexte_forme.hh"
 
     class Scanner;
     class Driver;
@@ -67,8 +67,8 @@
 %token                  OPACITE
 %token                  EPAISSEUR
 
-%type <coordChemin>     coordonnee_chemin
 %type <ExpressionPtr>   operation
+%type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme
 %left '-' '+'
 %left '*' '/'
@@ -106,13 +106,13 @@ affectation:
     }
 
 
-// dessin:
-//      TAILLE operation operation {
-//
-//      }
-//      |forme {
-//
-//      }
+/* dessin: */
+/*      TAILLE operation operation { */
+/*  */
+/*      } */
+/*      |forme { */
+/*  */
+/*      } */
 
 
 forme:
@@ -120,26 +120,31 @@ forme:
         // $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
     | CARRE operation operation operation ';'{
-        // $$ = std::make_shared<Carre>($2,$3,$4);
+
+        $$ =
+        /* std::shared_ptr<Carre> tmp = */
+        std::make_shared<Carre>(
+        $2->calculer(driver.getContexte()),
+        $3->calculer(driver.getContexte()),
+        $4->calculer(driver.getContexte())
+        );
+        /* driver.ajoutCarre(tmp); */
+        /* std::cout << driver.getCarreInd(0)->positionX << std::endl; */
+
     }
     | TRIANGLE operation operation operation operation ';'{
-        // $$ = std::make_shared<Triangle>($2,$3,$4,$5);
     }
     | CERCLE operation operation operation ';'{
-        // $$ = std::make_shared<Cercle>($2,$3,$4);
     }
     | ELLIPSE operation operation operation operation ';'{
-        // $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
     }
     | LIGNE operation operation operation operation ';'{
-        // $$ = std::make_shared<Ligne>($2,$3,$4,$5);
     }
     | CHEMIN coordonnee_chemin ';'{
-        // $$ = std::make_shared<Chemin>($2);
-        std::cout << "chemin" << std::endl;
+        /* std::cout << "chemin" << std::endl; */
+        /* $$ = std::make_shared<Chemin>() */
     }
     | TEXTE operation operation CHAINE CHAINE ';'{
-        // $$ = std::make_shared<Texte>($2,$3,$4,$5);
     }
     /* |forme FLECHE attribut ';'{ */
     /*  */
@@ -150,13 +155,13 @@ forme:
 
 coordonnee_chemin:
     operation operation ',' coordonnee_chemin {
-        std::cout << "op op , cood_chemin" << std::endl;
-        // $$ = std::vector<double>();
-        // $$->ajout($1,$2);
+        /* std::cout << "op op , cood_chemin" << std::endl; */
+        /* $$ = std::vector<int>(); */
+        /* $$.ajout($1,$2); */
     }
     |operation operation {
-        std::cout << "op op " << std::endl;
-        // $$->ajout($1,$2);
+        /* std::cout << "op op " << std::endl; */
+        /* $$.ajout($1,$2); */
     }
 
 /* attribut: */
