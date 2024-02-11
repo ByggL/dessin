@@ -14,6 +14,16 @@
     #include "expressionUnaire.hh"
     #include "constante.hh"
     #include "variable.hh"
+    #include "contexte_forme.hh"
+    #include "forme.hh"
+    #include "carre.hh"
+    #include "triangle.hh"
+    #include "cercle.hh"
+    #include "ellipse.hh"
+    #include "texte.hh"
+    #include "rectangle.hh"
+    #include "ligne.hh"
+    #include "chemin.hh"
 
     class Scanner;
     class Driver;
@@ -57,7 +67,7 @@
 %token                  OPACITE
 %token                  EPAISSEUR
 
-
+%type <coordChemin>     coordonnee_chemin
 %type <ExpressionPtr>   operation
 %type <formePtr>        forme
 %left '-' '+'
@@ -116,77 +126,81 @@ operation:
     }
 
 
-coordonnee_chemin:
-    operation operation ',' coordonnee_chemin {
-        $$->ajout(std::make_shared<point>($1,$2));
-    }
-    operation operation {
-        $$ = std::vector<point>();
-        $$->ajout(std::make_shared<point>($1,$2));
-    }
 
 forme:
-     RECTANGLE operation operation operation operation operation operation operation operation {
-        $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
+     RECTANGLE operation operation operation operation operation operation operation operation ';'{
+        // $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
     }
-    | CARRE operation operation operation {
-        $$ = std::make_shared<Carre>($2,$3,$4);
+    | CARRE operation operation operation ';'{
+        // $$ = std::make_shared<Carre>($2,$3,$4);
     }
-    | TRIANGLE operation operation operation operation {
-        $$ = std::make_shared<Triangle>($2,$3,$4,$5);
+    | TRIANGLE operation operation operation operation ';'{
+        // $$ = std::make_shared<Triangle>($2,$3,$4,$5);
     }
-    | CERCLE operation operation operation {
-        $$ = std::make_shared<Cercle>($2,$3,$4);
+    | CERCLE operation operation operation ';'{
+        // $$ = std::make_shared<Cercle>($2,$3,$4);
     }
-    | ELLIPSE operation operation operation operation {
-        $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
+    | ELLIPSE operation operation operation operation ';'{
+        // $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
     }
-    | LIGNE operation operation operation operation {
-        $$ = std::make_shared<Ligne>($2,$3,$4,$5);
+    | LIGNE operation operation operation operation ';'{
+        // $$ = std::make_shared<Ligne>($2,$3,$4,$5);
     }
-    | CHEMIN coordonnee_chemin {
-        $$ = std::make_shared<Chemin>($2);
+    | CHEMIN coordonnee_chemin ';'{
+        // $$ = std::make_shared<Chemin>($2);
+        std::cout << "chemin" << std::endl;
     }
-    | TEXTE operation operation CHAINE CHAINE {
-        $$ = std::make_shared<Texte>($2,$3,$4,$5);
+    | TEXTE operation operation CHAINE CHAINE ';'{
+        // $$ = std::make_shared<Texte>($2,$3,$4,$5);
     }
-    |forme FLECHE attribut {
+    /* |forme FLECHE attribut ';'{ */
+    /*  */
+    /* } */
+    /* |forme '{' attribut '}' { */
+    /*  */
+    /* } */
 
+coordonnee_chemin:
+    operation operation ',' coordonnee_chemin {
+        std::cout << "op op , cood_chemin" << std::endl;
+        // $$ = std::vector<double>();
+        // $$->ajout($1,$2);
     }
-    |forme '{' attribut '}' {
-
-    }
-
-attribut:
-    COULEUR ':' CHAINE {
-
-    }
-    |ROTATION ':' CHAINE {
-
-    }
-    |REMPLISSAGE ':' CHAINE {
-
-    }
-    |OPACITE ':' CHAINE {
-
-    }
-    |EPAISSEUR ':' CHAINE {
-
-    }
-    |attribut '&' attribut {
-
-    }
-    |attribut ';' attribut {
-
+    |operation operation {
+        std::cout << "op op " << std::endl;
+        // $$->ajout($1,$2);
     }
 
-dessin:
-     TAILLE operation operation {
+/* attribut: */
+/*     COULEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |ROTATION ':' CHAINE { */
+/*  */
+/*     } */
+/*     |REMPLISSAGE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |OPACITE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |EPAISSEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |attribut '&' attribut { */
+/*  */
+/*     } */
+/*     |attribut ';' attribut { */
+/*  */
+/*     } */
 
-     }
-     |figure {
-
-     }
+// dessin:
+//      TAILLE operation operation {
+//
+//      }
+//      |forme {
+//
+//      }
 
 
 
