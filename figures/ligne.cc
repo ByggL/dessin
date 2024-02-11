@@ -3,8 +3,8 @@
 #include <sstream>
 
 
-Ligne::Ligne(double x1, double y1, double x2, double y2)
-    : _x1(x1), _y1(y1), _x2(x2), _y2(y2) {}
+Ligne::Ligne(int x1, int y1, int x2, int y2)
+    : Forme::Forme(), _x1(x1), _y1(y1), _x2(x2), _y2(y2) {}
 
 
 std::string Ligne::toSVG() {

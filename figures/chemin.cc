@@ -3,7 +3,7 @@
 #include <sstream>
 
 Chemin::Chemin(std::vector<double> coords)
-    : _coords(coords) {}
+    : Forme::Forme(), _coords(coords) {}
 
 
 std::string Chemin::toSVG() {

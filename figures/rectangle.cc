@@ -7,7 +7,7 @@ Rectangle::Rectangle(const Rectangle & r)
     : Forme::Forme(), _x1(r._x1), _y1(r._y1), _hauteur(r._hauteur), _largeur(r._largeur) {}
 
 
-Rectangle::Rectangle(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
+Rectangle::Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
     : Forme::Forme(), _x1(x1), _y1(y1) {
         _hauteur = x2 - x1;
         _largeur = y4 - y1;

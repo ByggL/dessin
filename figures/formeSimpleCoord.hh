@@ -2,9 +2,9 @@
 
 
 class FormeSimpleCoord : public Forme {
-private:
-    double _posX;
-    double _posY;
+protected:
+    int _posX;
+    int _posY;
 public:
-    FormeSimpleCoord(double posX, double posY);
+    FormeSimpleCoord(int posX, int posY);
 };

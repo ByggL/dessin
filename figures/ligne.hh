@@ -2,12 +2,12 @@
 
 class Ligne : public Forme {
 private:
-    double _x1;
-    double _y1;
-    double _x2;
-    double _y2;
+    int _x1;
+    int _y1;
+    int _x2;
+    int _y2;
 
 public:
-    Ligne(double x1, double y1, double x2, double y2);
+    Ligne(int x1, int y1, int x2, int y2);
     std::string toSVG();
 };

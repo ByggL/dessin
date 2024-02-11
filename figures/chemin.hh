@@ -3,10 +3,10 @@
 
 class Chemin : public Forme {
 private:
-    std::vector<double> _coords;
+    std::vector<int> _coords;
 
 public:
-    Chemin(std::vector<double> coords);
+    Chemin(std::vector<int> coords);
 
     std::string toSVG();
 };

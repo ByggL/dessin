@@ -5,13 +5,13 @@
 
 class Rectangle : public Forme {
 private:
-    double _x1;
-    double _y1;
-    double _hauteur;
-    double _largeur;
+    int _x1;
+    int _y1;
+    int _hauteur;
+    int _largeur;
 public:
     Rectangle(const Rectangle & r);
-    Rectangle(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4);
+    Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
     ~Rectangle() = default;
 
     std::string toSVG();
