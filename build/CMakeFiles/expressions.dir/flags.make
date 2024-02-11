@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sleobon/Documents/TDL/dessin/parser -I/home/sleobon/Documents/TDL/dessin/expressions -I/home/sleobon/Documents/TDL/dessin/build
+CXX_INCLUDES = -I/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/parser -I/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/expressions -I/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/figures -I/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build
 
 CXX_FLAGS = -Wall -Wpedantic -std=c++14
 

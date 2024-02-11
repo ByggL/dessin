@@ -1,17 +1,23 @@
-#include "contexte_forme.hh"
+#pragma once
+#include <string>
+#include <map>
+#include <vector>
+#include <memory>
+#include <vector>
 #include "couleur.hh"
-
 
 class Forme {
 public:
-    Couleur couleur;
-    Couleur remplissage;
-    std::string rotation;
-    std::string opacite;
-    double epaisseur;
+    // Couleur couleur;
+    // Couleur remplissage;
+    // std::string rotation;
+    // std::string opacite;
+    // int epaisseur;
 
     Forme() =default;
-    Forme(Couleur cou, Couleur rem, std::string rot, std::string opa, std::string epa);
+    // Forme(const Couleur & cou, const Couleur & rem, const std::string & rot, const std::string & opa, int epa);
     virtual ~Forme() = default;
 
 };
+
+using formePtr = std::shared_ptr<Forme>;

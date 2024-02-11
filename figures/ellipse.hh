@@ -4,10 +4,10 @@
 
 class Ellipse : public Forme_simple_coord {
 private:
-    double hauteur;
-    double largeur;
+    int hauteur;
+    int largeur;
 public:
     Ellipse(const Ellipse & r);
-    Ellipse(double x, double y, double hauteur, double largeur);
+    Ellipse(int x, int y, int hauteur, int largeur);
     ~Ellipse() = default;
 };

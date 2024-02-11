@@ -4,9 +4,10 @@
 
 class Carre : public Forme_simple_coord {
 private:
-    double taille;
+    int taille;
 public:
     Carre(const Carre & r);
-    Carre(double x, double y, double taille);
+    Carre(int x, int y, int taille);
     ~Carre() = default;
+
 };

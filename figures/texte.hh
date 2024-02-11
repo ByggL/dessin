@@ -8,6 +8,7 @@ private:
     std::string police;
 public:
     Texte(const Texte & r);
-    Texte(double x, double y, std::string texte, std::string police);
+    Texte(int x, int y, const std::string & texte, const std::string & police);
     ~Texte() = default;
+
 };

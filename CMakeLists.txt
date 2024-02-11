@@ -12,8 +12,8 @@ find_package(BISON)
 find_package(FLEX)
 
 
-include_directories(parser expressions ${CMAKE_CURRENT_BINARY_DIR})
-file(GLOB EXPRESSION_HEADERS 
+include_directories(parser expressions figures ${CMAKE_CURRENT_BINARY_DIR})
+file(GLOB EXPRESSION_HEADERS
     expressions/contexte.hh
     expressions/expression.hh
     expressions/expressionBinaire.hh
@@ -23,13 +23,54 @@ file(GLOB EXPRESSION_HEADERS
     expressions/variable.hh
     )
 
-add_library(expressions 
+
+add_library(expressions
     expressions/contexte.cc
     expressions/expressionBinaire.cc
     expressions/expressionUnaire.cc
     expressions/expressionTernaire.cc
     expressions/constante.cc
     expressions/variable.cc
+    figures/contexte_forme.cc
+    figures/forme.cc
+    figures/rectangle.cc
+    figures/ligne.cc
+    figures/chemin.cc
+    figures/forme_simple_coord.cc
+    figures/carre.cc
+    figures/triangle.cc
+    figures/cercle.cc
+    figures/ellipse.cc
+    figures/texte.cc
+    ${EXPRESSION_HEADERS}
+    )
+
+file(GLOB FORMES_HEADERS
+    figures/forme.hh
+    figures/rectangle.hh
+    figures/ligne.hh
+    figures/chemin.hh
+    figures/forme_simple_coord.hh
+    figures/carre.hh
+    figures/triangle.hh
+    figures/cercle.hh
+    figures/ellipse.hh
+    figures/texte.hh
+    figures/contexte_forme.hh
+    )
+
+add_library(formes
+    figures/forme.cc
+    figures/rectangle.cc
+    figures/ligne.cc
+    figures/chemin.cc
+    figures/forme_simple_coord.cc
+    figures/carre.cc
+    figures/triangle.cc
+    figures/cercle.cc
+    figures/ellipse.cc
+    figures/texte.cc
+    figures/contexte_forme.cc
     ${EXPRESSION_HEADERS}
     )
 

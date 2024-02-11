@@ -1,4 +1,4 @@
-# Install script for directory: /home/sleobon/Documents/TDL/dessin
+# Install script for directory: /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sleobon/Documents/TDL/dessin/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

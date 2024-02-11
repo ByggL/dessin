@@ -1,5 +1,5 @@
 #include "forme.hh"
 
-Forme(Couleur cou, Couleur rem, std::string rot, std::string opa, std::string epa)
-    :couleur(cou), remplissage(rem), rotation(rot), opacite(opa), epaisseur(epa){}
+// Forme::Forme(const Couleur & cou, const Couleur & rem, const std::string & rot, const std::string & opa, int epa)
+//     :couleur(cou), remplissage(rem), rotation(rot), opacite(opa), epaisseur(epa){}
 

@@ -4,9 +4,10 @@
 
 class Cercle : public Forme_simple_coord {
 private:
-    double rayon;
+    int rayon;
 public:
     Cercle(const Cercle & r);
-    Cercle(double x, double y, double rayon);
+    Cercle(int x, int y, int rayon);
     ~Cercle() = default;
+
 };

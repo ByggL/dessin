@@ -32,7 +32,7 @@
 
 
 /**
- ** \file /home/sleobon/Documents/TDL/dessin/build/parser.hpp
+ ** \file /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.hpp
  ** Define the yy::parser class.
  */
 
@@ -42,8 +42,8 @@
 // especially those whose name start with YY_ or yy_.  They are
 // private implementation details that can be changed or removed.
 
-#ifndef YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_PARSER_HPP_INCLUDED
-# define YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_PARSER_HPP_INCLUDED
+#ifndef YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_PARSER_HPP_INCLUDED
+# define YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_PARSER_HPP_INCLUDED
 // "%code requires" blocks.
 #line 11 "parser/parser.yy"
 
@@ -52,11 +52,21 @@
     #include "expressionUnaire.hh"
     #include "constante.hh"
     #include "variable.hh"
+    #include "contexte_forme.hh"
+    #include "forme.hh"
+    #include "carre.hh"
+    #include "triangle.hh"
+    #include "cercle.hh"
+    #include "ellipse.hh"
+    #include "texte.hh"
+    #include "rectangle.hh"
+    #include "ligne.hh"
+    #include "chemin.hh"
 
     class Scanner;
     class Driver;
 
-#line 60 "/home/sleobon/Documents/TDL/dessin/build/parser.hpp"
+#line 70 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.hpp"
 
 # include <cassert>
 # include <cstdlib> // std::abort
@@ -196,7 +206,7 @@
 #endif
 
 namespace yy {
-#line 200 "/home/sleobon/Documents/TDL/dessin/build/parser.hpp"
+#line 210 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.hpp"
 
 
 
@@ -415,9 +425,20 @@ namespace yy {
     /// An auxiliary type to compute the largest semantic type.
     union union_type
     {
-      // NUMBER
       // operation
-      char dummy1[sizeof (int)];
+      char dummy1[sizeof (ExpressionPtr)];
+
+      // coordonnee_chemin
+      char dummy2[sizeof (coordChemin)];
+
+      // forme
+      char dummy3[sizeof (formePtr)];
+
+      // NUMBER
+      char dummy4[sizeof (int)];
+
+      // CHAINE
+      char dummy5[sizeof (std::string)];
     };
 
     /// The size of the largest semantic type.
@@ -473,7 +494,23 @@ namespace yy {
     NL = 258,                      // NL
     END = 259,                     // END
     NUMBER = 260,                  // NUMBER
-    NEG = 261                      // NEG
+    CHAINE = 261,                  // CHAINE
+    FLECHE = 262,                  // FLECHE
+    GUILLEMET = 263,               // GUILLEMET
+    RECTANGLE = 264,               // RECTANGLE
+    CARRE = 265,                   // CARRE
+    TRIANGLE = 266,                // TRIANGLE
+    CERCLE = 267,                  // CERCLE
+    ELLIPSE = 268,                 // ELLIPSE
+    LIGNE = 269,                   // LIGNE
+    CHEMIN = 270,                  // CHEMIN
+    TEXTE = 271,                   // TEXTE
+    TAILLE = 272,                  // TAILLE
+    COULEUR = 273,                 // COULEUR
+    ROTATION = 274,                // ROTATION
+    REMPLISSAGE = 275,             // REMPLISSAGE
+    OPACITE = 276,                 // OPACITE
+    EPAISSEUR = 277                // EPAISSEUR
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -490,7 +527,7 @@ namespace yy {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 14, ///< Number of tokens.
+        YYNTOKENS = 32, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // "end of file"
         S_YYerror = 1,                           // error
@@ -498,20 +535,40 @@ namespace yy {
         S_NL = 3,                                // NL
         S_END = 4,                               // END
         S_NUMBER = 5,                            // NUMBER
-        S_6_ = 6,                                // '-'
-        S_7_ = 7,                                // '+'
-        S_8_ = 8,                                // '*'
-        S_9_ = 9,                                // '/'
-        S_NEG = 10,                              // NEG
-        S_11_ = 11,                              // '='
-        S_12_ = 12,                              // '('
-        S_13_ = 13,                              // ')'
-        S_YYACCEPT = 14,                         // $accept
-        S_programme = 15,                        // programme
-        S_instruction = 16,                      // instruction
-        S_expression = 17,                       // expression
-        S_affectation = 18,                      // affectation
-        S_operation = 19                         // operation
+        S_CHAINE = 6,                            // CHAINE
+        S_FLECHE = 7,                            // FLECHE
+        S_GUILLEMET = 8,                         // GUILLEMET
+        S_RECTANGLE = 9,                         // RECTANGLE
+        S_CARRE = 10,                            // CARRE
+        S_TRIANGLE = 11,                         // TRIANGLE
+        S_CERCLE = 12,                           // CERCLE
+        S_ELLIPSE = 13,                          // ELLIPSE
+        S_LIGNE = 14,                            // LIGNE
+        S_CHEMIN = 15,                           // CHEMIN
+        S_TEXTE = 16,                            // TEXTE
+        S_TAILLE = 17,                           // TAILLE
+        S_COULEUR = 18,                          // COULEUR
+        S_ROTATION = 19,                         // ROTATION
+        S_REMPLISSAGE = 20,                      // REMPLISSAGE
+        S_OPACITE = 21,                          // OPACITE
+        S_EPAISSEUR = 22,                        // EPAISSEUR
+        S_23_ = 23,                              // '-'
+        S_24_ = 24,                              // '+'
+        S_25_ = 25,                              // '*'
+        S_26_ = 26,                              // '/'
+        S_27_ = 27,                              // '='
+        S_28_ = 28,                              // ';'
+        S_29_ = 29,                              // ','
+        S_30_ = 30,                              // '('
+        S_31_ = 31,                              // ')'
+        S_YYACCEPT = 32,                         // $accept
+        S_programme = 33,                        // programme
+        S_instruction = 34,                      // instruction
+        S_expression = 35,                       // expression
+        S_affectation = 36,                      // affectation
+        S_forme = 37,                            // forme
+        S_coordonnee_chemin = 38,                // coordonnee_chemin
+        S_operation = 39                         // operation
       };
     };
 
@@ -548,9 +605,24 @@ namespace yy {
       {
         switch (this->kind ())
     {
-      case symbol_kind::S_NUMBER: // NUMBER
       case symbol_kind::S_operation: // operation
+        value.move< ExpressionPtr > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_coordonnee_chemin: // coordonnee_chemin
+        value.move< coordChemin > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_forme: // forme
+        value.move< formePtr > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_NUMBER: // NUMBER
         value.move< int > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_CHAINE: // CHAINE
+        value.move< std::string > (std::move (that.value));
         break;
 
       default:
@@ -577,6 +649,48 @@ namespace yy {
 #endif
 
 #if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, ExpressionPtr&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const ExpressionPtr& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, coordChemin&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const coordChemin& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, formePtr&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const formePtr& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, int&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
@@ -584,6 +698,20 @@ namespace yy {
       {}
 #else
       basic_symbol (typename Base::kind_type t, const int& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::string&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::string& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
@@ -614,9 +742,24 @@ namespace yy {
         // Value type destructor.
 switch (yykind)
     {
-      case symbol_kind::S_NUMBER: // NUMBER
       case symbol_kind::S_operation: // operation
+        value.template destroy< ExpressionPtr > ();
+        break;
+
+      case symbol_kind::S_coordonnee_chemin: // coordonnee_chemin
+        value.template destroy< coordChemin > ();
+        break;
+
+      case symbol_kind::S_forme: // forme
+        value.template destroy< formePtr > ();
+        break;
+
+      case symbol_kind::S_NUMBER: // NUMBER
         value.template destroy< int > ();
+        break;
+
+      case symbol_kind::S_CHAINE: // CHAINE
+        value.template destroy< std::string > ();
         break;
 
       default:
@@ -721,12 +864,14 @@ switch (yykind)
 #if !defined _MSC_VER || defined __clang__
         YY_ASSERT (tok == token::YYEOF
                    || (token::YYerror <= tok && tok <= token::END)
+                   || (token::FLECHE <= tok && tok <= token::EPAISSEUR)
                    || tok == 45
                    || tok == 43
                    || tok == 42
                    || tok == 47
-                   || tok == token::NEG
                    || tok == 61
+                   || tok == 59
+                   || tok == 44
                    || (40 <= tok && tok <= 41));
 #endif
       }
@@ -740,6 +885,18 @@ switch (yykind)
       {
 #if !defined _MSC_VER || defined __clang__
         YY_ASSERT (tok == token::NUMBER);
+#endif
+      }
+#if 201103L <= YY_CPLUSPLUS
+      symbol_type (int tok, std::string v, location_type l)
+        : super_type (token_kind_type (tok), std::move (v), std::move (l))
+#else
+      symbol_type (int tok, const std::string& v, const location_type& l)
+        : super_type (token_kind_type (tok), v, l)
+#endif
+      {
+#if !defined _MSC_VER || defined __clang__
+        YY_ASSERT (tok == token::CHAINE);
 #endif
       }
     };
@@ -886,16 +1043,256 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_NEG (location_type l)
+      make_CHAINE (std::string v, location_type l)
       {
-        return symbol_type (token::NEG, std::move (l));
+        return symbol_type (token::CHAINE, std::move (v), std::move (l));
       }
 #else
       static
       symbol_type
-      make_NEG (const location_type& l)
+      make_CHAINE (const std::string& v, const location_type& l)
       {
-        return symbol_type (token::NEG, l);
+        return symbol_type (token::CHAINE, v, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_FLECHE (location_type l)
+      {
+        return symbol_type (token::FLECHE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_FLECHE (const location_type& l)
+      {
+        return symbol_type (token::FLECHE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_GUILLEMET (location_type l)
+      {
+        return symbol_type (token::GUILLEMET, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_GUILLEMET (const location_type& l)
+      {
+        return symbol_type (token::GUILLEMET, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_RECTANGLE (location_type l)
+      {
+        return symbol_type (token::RECTANGLE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_RECTANGLE (const location_type& l)
+      {
+        return symbol_type (token::RECTANGLE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_CARRE (location_type l)
+      {
+        return symbol_type (token::CARRE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_CARRE (const location_type& l)
+      {
+        return symbol_type (token::CARRE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_TRIANGLE (location_type l)
+      {
+        return symbol_type (token::TRIANGLE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_TRIANGLE (const location_type& l)
+      {
+        return symbol_type (token::TRIANGLE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_CERCLE (location_type l)
+      {
+        return symbol_type (token::CERCLE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_CERCLE (const location_type& l)
+      {
+        return symbol_type (token::CERCLE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_ELLIPSE (location_type l)
+      {
+        return symbol_type (token::ELLIPSE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_ELLIPSE (const location_type& l)
+      {
+        return symbol_type (token::ELLIPSE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_LIGNE (location_type l)
+      {
+        return symbol_type (token::LIGNE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_LIGNE (const location_type& l)
+      {
+        return symbol_type (token::LIGNE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_CHEMIN (location_type l)
+      {
+        return symbol_type (token::CHEMIN, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_CHEMIN (const location_type& l)
+      {
+        return symbol_type (token::CHEMIN, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_TEXTE (location_type l)
+      {
+        return symbol_type (token::TEXTE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_TEXTE (const location_type& l)
+      {
+        return symbol_type (token::TEXTE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_TAILLE (location_type l)
+      {
+        return symbol_type (token::TAILLE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_TAILLE (const location_type& l)
+      {
+        return symbol_type (token::TAILLE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_COULEUR (location_type l)
+      {
+        return symbol_type (token::COULEUR, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_COULEUR (const location_type& l)
+      {
+        return symbol_type (token::COULEUR, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_ROTATION (location_type l)
+      {
+        return symbol_type (token::ROTATION, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_ROTATION (const location_type& l)
+      {
+        return symbol_type (token::ROTATION, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_REMPLISSAGE (location_type l)
+      {
+        return symbol_type (token::REMPLISSAGE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_REMPLISSAGE (const location_type& l)
+      {
+        return symbol_type (token::REMPLISSAGE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_OPACITE (location_type l)
+      {
+        return symbol_type (token::OPACITE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_OPACITE (const location_type& l)
+      {
+        return symbol_type (token::OPACITE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_EPAISSEUR (location_type l)
+      {
+        return symbol_type (token::EPAISSEUR, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_EPAISSEUR (const location_type& l)
+      {
+        return symbol_type (token::EPAISSEUR, l);
       }
 #endif
 
@@ -975,7 +1372,7 @@ switch (yykind)
 
 #if YYDEBUG
     // YYRLINE[YYN] -- Source line where rule number YYN was defined.
-    static const signed char yyrline_[];
+    static const unsigned char yyrline_[];
     /// Report on the debug stream that the rule \a r is going to be reduced.
     virtual void yy_reduce_print_ (int r) const;
     /// Print the state stack on the debug stream.
@@ -1202,9 +1599,9 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 29,     ///< Last index in yytable_.
-      yynnts_ = 6,  ///< Number of nonterminal symbols.
-      yyfinal_ = 14 ///< Termination state number.
+      yylast_ = 126,     ///< Last index in yytable_.
+      yynnts_ = 8,  ///< Number of nonterminal symbols.
+      yyfinal_ = 30 ///< Termination state number.
     };
 
 
@@ -1216,9 +1613,9 @@ switch (yykind)
 
 
 } // yy
-#line 1220 "/home/sleobon/Documents/TDL/dessin/build/parser.hpp"
+#line 1617 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/parser.hpp"
 
 
 
 
-#endif // !YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_PARSER_HPP_INCLUDED
+#endif // !YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_PARSER_HPP_INCLUDED

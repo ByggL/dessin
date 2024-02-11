@@ -4,10 +4,11 @@
 
 class Triangle : public Forme_simple_coord {
 private:
-    double hauteur;
-    double largeur;
+    int hauteur;
+    int largeur;
 public:
     Triangle(const Triangle & r);
-    Triangle(double x, double y, double hauteur, double largeur);
+    Triangle(int x, int y, int hauteur, int largeur);
     ~Triangle() = default;
+
 };

@@ -3,9 +3,9 @@
 
 class Forme_simple_coord {
     public:
-        double positionX;
-        double positionY;
+        int positionX;
+        int positionY;
 
-        Forme_simple_coord(double x, double y);
+        Forme_simple_coord(int x, int y);
         virtual ~Forme_simple_coord() =0;
-}
+};

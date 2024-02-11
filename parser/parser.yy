@@ -105,26 +105,14 @@ affectation:
         std::cout << "Affectation à réaliser" << std::endl;
     }
 
-operation:
-    NUMBER {
-        $$ = std::make_shared<Constante>($1);
-    }
-    | '(' operation ')' {
-        $$ = $2;
-    }
-    | operation '+' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::plus);
-    }
-    | operation '-' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::moins);
-    }
-    | operation '*' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::multiplie);
-    }
-    | operation '/' operation {
-        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
-    }
 
+// dessin:
+//      TAILLE operation operation {
+//
+//      }
+//      |forme {
+//
+//      }
 
 
 forme:
@@ -194,15 +182,27 @@ coordonnee_chemin:
 /*  */
 /*     } */
 
-// dessin:
-//      TAILLE operation operation {
-//
-//      }
-//      |forme {
-//
-//      }
 
 
+operation:
+    NUMBER {
+        $$ = std::make_shared<Constante>($1);
+    }
+    | '(' operation ')' {
+        $$ = $2;
+    }
+    | operation '+' operation {
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::plus);
+    }
+    | operation '-' operation {
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::moins);
+    }
+    | operation '*' operation {
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::multiplie);
+    }
+    | operation '/' operation {
+        $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
+    }
 
 %%
 

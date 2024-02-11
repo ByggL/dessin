@@ -31,12 +31,12 @@
 // version 2.2 of Bison.
 
 /**
- ** \file /home/sleobon/Documents/TDL/dessin/build/location.hh
+ ** \file /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/location.hh
  ** Define the yy::location class.
  */
 
-#ifndef YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_LOCATION_HH_INCLUDED
-# define YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_LOCATION_HH_INCLUDED
+#ifndef YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_LOCATION_HH_INCLUDED
+# define YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_LOCATION_HH_INCLUDED
 
 # include <iostream>
 # include <string>
@@ -54,7 +54,7 @@
 # endif
 
 namespace yy {
-#line 58 "/home/sleobon/Documents/TDL/dessin/build/location.hh"
+#line 58 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/location.hh"
 
   /// A point in a source file.
   class position
@@ -299,6 +299,6 @@ namespace yy {
   }
 
 } // yy
-#line 303 "/home/sleobon/Documents/TDL/dessin/build/location.hh"
+#line 303 "/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/location.hh"
 
-#endif // !YY_YY_HOME_SLEOBON_DOCUMENTS_TDL_DESSIN_BUILD_LOCATION_HH_INCLUDED
+#endif // !YY_YY_HOME_RUBEN_DOCUMENTS_LICENCE_INFORMATIQUE_L3_INFO_COMPILATION_TP_DESSIN_BUILD_LOCATION_HH_INCLUDED

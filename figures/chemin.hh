@@ -4,11 +4,15 @@
 
 class Chemin : public Forme {
 public:
-    std::vector<double> chemin;
+    std::vector<int> chemin;
 
     Chemin() = default;
+    Chemin(const std::vector<int> & c);
     Chemin(const Chemin & r);
     ~Chemin() = default;
 
-    void add_chemin(double x, double y);
+    void ajout(int x, int y);
+
 };
+
+using coordChemin = std::vector<int>;
