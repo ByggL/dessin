@@ -38,7 +38,7 @@ public:
     std::shared_ptr<Forme> operator[](const std::string & nom);
     const std::shared_ptr<Forme> operator[](const std::string & nom) const;
 
-
+    std::string toSVG();
 
 };
 
