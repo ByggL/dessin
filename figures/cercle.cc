@@ -1,8 +1,19 @@
 #include "cercle.hh"
 
-Cercle::Cercle(const Cercle & r)
-    : Forme_simple_coord::Forme_simple_coord(r.positionX,r.positionY), rayon(r.rayon) {}
+#include <iostream>
+#include <sstream>
 
 
-Cercle::Cercle(int x, int y, int rayon)
-    : Forme_simple_coord::Forme_simple_coord(x,y), rayon(rayon) {}
+Cercle::Cercle(int posX, int posY, int rayon)
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _rayon(rayon) {}
+
+
+std::string Cercle::toSVG() {
+    std::ostringstream out;
+
+    out << "<circle cx=\"" << FormeSimpleCoord::_posX << "\" cy=\"" << FormeSimpleCoord::_posY << "\" r=\"" << _rayon << "\" />";
+
+    std::string s = out.str();
+
+    return s;
+} 

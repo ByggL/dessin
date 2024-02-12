@@ -1,13 +1,15 @@
 #pragma once
-#include "forme_simple_coord.hh"
+
+#include "formeSimpleCoord.hh"
 
 
-class Cercle : public Forme_simple_coord {
+class Cercle : public FormeSimpleCoord {
 private:
-    int rayon;
-public:
-    Cercle(const Cercle & r);
-    Cercle(int x, int y, int rayon);
-    ~Cercle() = default;
+    int _rayon;
 
+public:
+    Cercle(int posX, int posY, int rayon);
+    Cercle(const Cercle & r);
+    ~Cercle() = default;
+    std::string toSVG();
 };

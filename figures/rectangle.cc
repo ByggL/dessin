@@ -1,18 +1,24 @@
 #include "rectangle.hh"
+#include <iostream>
+#include <sstream>
+
+
+Rectangle::Rectangle(const Rectangle & r)
+    : Forme::Forme(), _x1(r._x1), _y1(r._y1), _hauteur(r._hauteur), _largeur(r._largeur) {}
 
 
 Rectangle::Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
-: Forme::Forme(),
-    positionX1(x1), positionY1(y1),
-    positionX2(x2), positionY2(y2),
-    positionX3(x3), positionY3(y3),
-    positionX4(x4), positionY4(y4) {}
-
-Rectangle::Rectangle(const Rectangle & r)
-: Forme::Forme(),
-    positionX1(r.positionX1), positionY1(r.positionY1),
-    positionX2(r.positionX2), positionY2(r.positionY2),
-    positionX3(r.positionX3), positionY3(r.positionY3),
-    positionX4(r.positionX4), positionY4(r.positionY4) {}
+    : Forme::Forme(), _x1(x1), _y1(y1) {
+        _hauteur = x2 - x1;
+        _largeur = y4 - y1;
+    }
 
 
+std::string Rectangle::toSVG() {
+    std::ostringstream out;
+
+    out << "<rect x=\"" << _x1 << "\" y=\"" << _y1 << "\" width=\"" << _largeur << "\" height=\"" << _hauteur << "\" " << Forme::toSVG() << " />"; 
+
+    std::string s = out.str();
+    return s;
+}

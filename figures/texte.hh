@@ -1,14 +1,15 @@
 #pragma once
-#include "forme_simple_coord.hh"
+#include "formeSimpleCoord.hh"
 
 
-class Texte : public Forme_simple_coord {
+class Texte : public FormeSimpleCoord {
 private:
-    std::string texte;
-    std::string police;
+    std::string _content;
+    std::string _font;
+    int _size;
 public:
+    Texte(int posX, int posY, std::string content, std::string font, int size);
     Texte(const Texte & r);
-    Texte(int x, int y, const std::string & texte, const std::string & police);
     ~Texte() = default;
-
+    std::string toSVG();
 };

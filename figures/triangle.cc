@@ -1,9 +1,23 @@
 #include "triangle.hh"
+#include <iostream>
+#include <sstream>
 
 
 Triangle::Triangle(const Triangle & r)
-    : Forme_simple_coord::Forme_simple_coord(r.positionX,r.positionY), hauteur(r.hauteur), largeur(r.largeur) {}
+    : FormeSimpleCoord::FormeSimpleCoord(r._posX, r._posY), _hauteur(r._hauteur), _largeur(r._largeur) {}
 
 
-Triangle::Triangle(int x, int y, int hauteur, int largeur)
-    : Forme_simple_coord::Forme_simple_coord(x,y), hauteur(hauteur), largeur(largeur) {}
+Triangle::Triangle(int posX, int posY, int hauteur, int largeur)
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _hauteur(hauteur), _largeur(largeur) {}
+
+
+std::string Triangle::toSVG() {
+    std::ostringstream out;
+
+    out << "<polygon points=\"" << _posX << "," << _posY << " " << (_posX+(_largeur/2)) << "," << (_posY+_hauteur) << " " << 
+        (_posX+_largeur) << "," << _posY << "\" />";
+
+    std::string s = out.str();
+
+    return s;
+}

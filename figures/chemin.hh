@@ -1,7 +1,6 @@
 #pragma once
 #include "forme.hh"
 
-
 class Chemin : public Forme {
 public:
     std::vector<int> chemin;
@@ -13,6 +12,5 @@ public:
 
     void ajout(int x, int y);
 
+    std::string toSVG();
 };
-
-using coordChemin = std::vector<int>;

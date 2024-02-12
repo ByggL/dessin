@@ -1,13 +1,16 @@
+
 #pragma once
-#include "forme_simple_coord.hh"
+#include "formeSimpleCoord.hh"
 
 
-class Ellipse : public Forme_simple_coord {
+class Ellipse : public FormeSimpleCoord {
 private:
-    int hauteur;
-    int largeur;
+    int _largeur;
+    int _hauteur;
+
 public:
+    Ellipse(int posX, int posY, int hauteur, int largeur);
     Ellipse(const Ellipse & r);
-    Ellipse(int x, int y, int hauteur, int largeur);
     ~Ellipse() = default;
+    std::string toSVG();
 };

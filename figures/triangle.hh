@@ -1,14 +1,15 @@
 #pragma once
-#include "forme_simple_coord.hh"
+#include "formeSimpleCoord.hh"
 
 
-class Triangle : public Forme_simple_coord {
+class Triangle : public FormeSimpleCoord {
 private:
-    int hauteur;
-    int largeur;
+    int _hauteur;
+    int _largeur;
 public:
     Triangle(const Triangle & r);
-    Triangle(int x, int y, int hauteur, int largeur);
+    Triangle(int posX, int posY, int hauteur, int largeur);
     ~Triangle() = default;
 
+    std::string toSVG();
 };
