@@ -1,10 +1,12 @@
 #include "carre.hh"
+#include <iostream>
+#include <sstream>
 
 Carre::Carre(int x, int y, int taille)
-    : Forme_simple_coord::Forme_simple_coord(x,y), taille(taille) {}
+    : FormeSimpleCoord::FormeSimpleCoord(x,y), _taille(taille) {}
 
 Carre::Carre(const Carre & r)
-    : Forme_simple_coord::Forme_simple_coord(r.positionX,r.positionY), taille(r.taille) {}
+    : FormeSimpleCoord::FormeSimpleCoord(r._posX,r._posY), _taille(r._taille) {}
 
 // Carre & Carre::operator=(const Carre & c) {
 //     if (this != &c) {
@@ -14,3 +16,12 @@ Carre::Carre(const Carre & r)
 //     return *this;
 // }
 //
+
+std::string Carre::toSVG() {
+    std::ostringstream out;
+
+    out << "<rect x=\"" << _posX << "\" y=\"" << _posY << "\" width=\"" << _taille << "\" height=\"" << _taille << "\" " << Forme::toSVG() << " />"; 
+
+    std::string s = out.str();
+    return s;
+}

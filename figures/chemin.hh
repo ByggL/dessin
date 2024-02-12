@@ -3,7 +3,7 @@
 
 class Chemin : public Forme {
 public:
-    std::vector<int> chemin;
+    std::vector<int> _coords;
 
     Chemin() = default;
     Chemin(const std::vector<int> & c);

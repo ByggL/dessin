@@ -4,15 +4,15 @@
 
 
 Chemin::Chemin(const Chemin & r)
-    :chemin(r.chemin){}
+    :_coords(r._coords){}
 
 void Chemin::ajout(int x, int y) {
-    chemin.push_back(x);
-    chemin.push_back(y);
+    _coords.push_back(x);
+    _coords.push_back(y);
 }
 
-Chemin::Chemin(std::vector<int> coords)
-    : Forme::Forme(), _coords(coords) {}
+Chemin::Chemin(const std::vector<int> & c)
+    : Forme::Forme(), _coords(c) {}
 
 
 std::string Chemin::toSVG() {

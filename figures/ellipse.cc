@@ -4,11 +4,11 @@
 
 
 Ellipse::Ellipse(const Ellipse & r)
-    : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), hauteur(r.hauteur), largeur(r.largeur) {}
+    : FormeSimpleCoord::FormeSimpleCoord(r._posX,r._posY), _hauteur(r._hauteur), _largeur(r._largeur) {}
 
 
 Ellipse::Ellipse(int x, int y, int hauteur, int largeur)
-    : FormeSimpleCoord::FormeSimpleCoord(x,y), hauteur(hauteur), largeur(largeur) {}
+    : FormeSimpleCoord::FormeSimpleCoord(x,y), _hauteur(hauteur), _largeur(largeur) {}
 
 
 

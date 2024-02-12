@@ -1,14 +1,14 @@
 #pragma once
-#include "forme_simple_coord.hh"
+#include "formeSimpleCoord.hh"
 
 
-class Carre : public Forme_simple_coord {
+class Carre : public FormeSimpleCoord {
 private:
-    int taille;
+    int _taille;
 public:
     Carre(int x, int y, int taille);
     Carre(const Carre & r);
     ~Carre() = default;
     // Carre & operator=(const Carre & c);
-
+    std::string toSVG();
 };
