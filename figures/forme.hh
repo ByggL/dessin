@@ -17,7 +17,7 @@ public:
     // std::string rotation;
     // std::string opacite;
     // int epaisseur;
-    // Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
+    Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
     Forme();
     virtual ~Forme() = default;
 
