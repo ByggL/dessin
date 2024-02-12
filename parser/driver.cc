@@ -18,3 +18,11 @@ void Driver::setVariable(const std::string & name, double value) {
     //TODO Affecte une valeur à une variable avec l'utilisation du contexte variables
     variables[name] = value;
 }
+
+const std::shared_ptr<Carre> Driver::getCarreInd(int ind) const {
+    return formes.carres.at(ind);
+}
+
+void Driver::ajoutCarre(std::shared_ptr<Carre> c) {
+    formes.carres.push_back(c);
+}

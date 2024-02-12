@@ -3,6 +3,15 @@
 #include <sstream>
 
 
+Ellipse::Ellipse(const Ellipse & r)
+    : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), hauteur(r.hauteur), largeur(r.largeur) {}
+
+
+Ellipse::Ellipse(int x, int y, int hauteur, int largeur)
+    : FormeSimpleCoord::FormeSimpleCoord(x,y), hauteur(hauteur), largeur(largeur) {}
+
+
+
 Ellipse::Ellipse(int posX, int posY, int hauteur, int largeur)
     : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _hauteur(hauteur), _largeur(largeur) {}
 

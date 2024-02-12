@@ -1,4 +1,5 @@
 #include "cercle.hh"
+
 #include <iostream>
 #include <sstream>
 

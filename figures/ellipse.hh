@@ -1,3 +1,5 @@
+
+#pragma once
 #include "formeSimpleCoord.hh"
 
 
@@ -8,5 +10,7 @@ private:
 
 public:
     Ellipse(int posX, int posY, int hauteur, int largeur);
+    Ellipse(const Ellipse & r);
+    ~Ellipse() = default;
     std::string toSVG();
 };

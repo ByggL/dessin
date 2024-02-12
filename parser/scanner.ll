@@ -37,6 +37,11 @@ fin return token::END;
 "&" return '&';
 "{" return '{';
 "}" return '}';
+";" return ';';
+
+"\"" {
+    return token::GUILLEMET;
+}
 
 "->"  {
     return token::FLECHE;

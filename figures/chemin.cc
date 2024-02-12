@@ -2,7 +2,16 @@
 #include <iostream>
 #include <sstream>
 
-Chemin::Chemin(std::vector<double> coords)
+
+Chemin::Chemin(const Chemin & r)
+    :chemin(r.chemin){}
+
+void Chemin::ajout(int x, int y) {
+    chemin.push_back(x);
+    chemin.push_back(y);
+}
+
+Chemin::Chemin(std::vector<int> coords)
     : Forme::Forme(), _coords(coords) {}
 
 

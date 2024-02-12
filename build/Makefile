@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sleobon/Documents/TDL/dessin
+CMAKE_SOURCE_DIR = /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sleobon/Documents/TDL/dessin/build
+CMAKE_BINARY_DIR = /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sleobon/Documents/TDL/dessin/build/CMakeFiles /home/sleobon/Documents/TDL/dessin/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sleobon/Documents/TDL/dessin/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,19 @@ expressions: cmake_check_build_system
 expressions/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/build
 .PHONY : expressions/fast
+
+#=============================================================================
+# Target rules for targets named figures
+
+# Build rule for target.
+figures: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 figures
+.PHONY : figures
+
+# fast build rule for target.
+figures/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/build
+.PHONY : figures/fast
 
 #=============================================================================
 # Target rules for targets named dessin
@@ -214,6 +227,30 @@ expressions/expressionBinaire.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/expressions/expressionBinaire.cc.s
 .PHONY : expressions/expressionBinaire.cc.s
 
+expressions/expressionTernaire.o: expressions/expressionTernaire.cc.o
+.PHONY : expressions/expressionTernaire.o
+
+# target to build an object file
+expressions/expressionTernaire.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/expressions/expressionTernaire.cc.o
+.PHONY : expressions/expressionTernaire.cc.o
+
+expressions/expressionTernaire.i: expressions/expressionTernaire.cc.i
+.PHONY : expressions/expressionTernaire.i
+
+# target to preprocess a source file
+expressions/expressionTernaire.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/expressions/expressionTernaire.cc.i
+.PHONY : expressions/expressionTernaire.cc.i
+
+expressions/expressionTernaire.s: expressions/expressionTernaire.cc.s
+.PHONY : expressions/expressionTernaire.s
+
+# target to generate assembly for a file
+expressions/expressionTernaire.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/expressions/expressionTernaire.cc.s
+.PHONY : expressions/expressionTernaire.cc.s
+
 expressions/expressionUnaire.o: expressions/expressionUnaire.cc.o
 .PHONY : expressions/expressionUnaire.o
 
@@ -261,6 +298,270 @@ expressions/variable.s: expressions/variable.cc.s
 expressions/variable.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/expressions.dir/build.make CMakeFiles/expressions.dir/expressions/variable.cc.s
 .PHONY : expressions/variable.cc.s
+
+figures/carre.o: figures/carre.cc.o
+.PHONY : figures/carre.o
+
+# target to build an object file
+figures/carre.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/carre.cc.o
+.PHONY : figures/carre.cc.o
+
+figures/carre.i: figures/carre.cc.i
+.PHONY : figures/carre.i
+
+# target to preprocess a source file
+figures/carre.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/carre.cc.i
+.PHONY : figures/carre.cc.i
+
+figures/carre.s: figures/carre.cc.s
+.PHONY : figures/carre.s
+
+# target to generate assembly for a file
+figures/carre.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/carre.cc.s
+.PHONY : figures/carre.cc.s
+
+figures/cercle.o: figures/cercle.cc.o
+.PHONY : figures/cercle.o
+
+# target to build an object file
+figures/cercle.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/cercle.cc.o
+.PHONY : figures/cercle.cc.o
+
+figures/cercle.i: figures/cercle.cc.i
+.PHONY : figures/cercle.i
+
+# target to preprocess a source file
+figures/cercle.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/cercle.cc.i
+.PHONY : figures/cercle.cc.i
+
+figures/cercle.s: figures/cercle.cc.s
+.PHONY : figures/cercle.s
+
+# target to generate assembly for a file
+figures/cercle.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/cercle.cc.s
+.PHONY : figures/cercle.cc.s
+
+figures/chemin.o: figures/chemin.cc.o
+.PHONY : figures/chemin.o
+
+# target to build an object file
+figures/chemin.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/chemin.cc.o
+.PHONY : figures/chemin.cc.o
+
+figures/chemin.i: figures/chemin.cc.i
+.PHONY : figures/chemin.i
+
+# target to preprocess a source file
+figures/chemin.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/chemin.cc.i
+.PHONY : figures/chemin.cc.i
+
+figures/chemin.s: figures/chemin.cc.s
+.PHONY : figures/chemin.s
+
+# target to generate assembly for a file
+figures/chemin.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/chemin.cc.s
+.PHONY : figures/chemin.cc.s
+
+figures/contexte_forme.o: figures/contexte_forme.cc.o
+.PHONY : figures/contexte_forme.o
+
+# target to build an object file
+figures/contexte_forme.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/contexte_forme.cc.o
+.PHONY : figures/contexte_forme.cc.o
+
+figures/contexte_forme.i: figures/contexte_forme.cc.i
+.PHONY : figures/contexte_forme.i
+
+# target to preprocess a source file
+figures/contexte_forme.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/contexte_forme.cc.i
+.PHONY : figures/contexte_forme.cc.i
+
+figures/contexte_forme.s: figures/contexte_forme.cc.s
+.PHONY : figures/contexte_forme.s
+
+# target to generate assembly for a file
+figures/contexte_forme.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/contexte_forme.cc.s
+.PHONY : figures/contexte_forme.cc.s
+
+figures/ellipse.o: figures/ellipse.cc.o
+.PHONY : figures/ellipse.o
+
+# target to build an object file
+figures/ellipse.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ellipse.cc.o
+.PHONY : figures/ellipse.cc.o
+
+figures/ellipse.i: figures/ellipse.cc.i
+.PHONY : figures/ellipse.i
+
+# target to preprocess a source file
+figures/ellipse.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ellipse.cc.i
+.PHONY : figures/ellipse.cc.i
+
+figures/ellipse.s: figures/ellipse.cc.s
+.PHONY : figures/ellipse.s
+
+# target to generate assembly for a file
+figures/ellipse.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ellipse.cc.s
+.PHONY : figures/ellipse.cc.s
+
+figures/forme.o: figures/forme.cc.o
+.PHONY : figures/forme.o
+
+# target to build an object file
+figures/forme.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme.cc.o
+.PHONY : figures/forme.cc.o
+
+figures/forme.i: figures/forme.cc.i
+.PHONY : figures/forme.i
+
+# target to preprocess a source file
+figures/forme.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme.cc.i
+.PHONY : figures/forme.cc.i
+
+figures/forme.s: figures/forme.cc.s
+.PHONY : figures/forme.s
+
+# target to generate assembly for a file
+figures/forme.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme.cc.s
+.PHONY : figures/forme.cc.s
+
+figures/forme_simple_coord.o: figures/forme_simple_coord.cc.o
+.PHONY : figures/forme_simple_coord.o
+
+# target to build an object file
+figures/forme_simple_coord.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme_simple_coord.cc.o
+.PHONY : figures/forme_simple_coord.cc.o
+
+figures/forme_simple_coord.i: figures/forme_simple_coord.cc.i
+.PHONY : figures/forme_simple_coord.i
+
+# target to preprocess a source file
+figures/forme_simple_coord.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme_simple_coord.cc.i
+.PHONY : figures/forme_simple_coord.cc.i
+
+figures/forme_simple_coord.s: figures/forme_simple_coord.cc.s
+.PHONY : figures/forme_simple_coord.s
+
+# target to generate assembly for a file
+figures/forme_simple_coord.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/forme_simple_coord.cc.s
+.PHONY : figures/forme_simple_coord.cc.s
+
+figures/ligne.o: figures/ligne.cc.o
+.PHONY : figures/ligne.o
+
+# target to build an object file
+figures/ligne.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ligne.cc.o
+.PHONY : figures/ligne.cc.o
+
+figures/ligne.i: figures/ligne.cc.i
+.PHONY : figures/ligne.i
+
+# target to preprocess a source file
+figures/ligne.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ligne.cc.i
+.PHONY : figures/ligne.cc.i
+
+figures/ligne.s: figures/ligne.cc.s
+.PHONY : figures/ligne.s
+
+# target to generate assembly for a file
+figures/ligne.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/ligne.cc.s
+.PHONY : figures/ligne.cc.s
+
+figures/rectangle.o: figures/rectangle.cc.o
+.PHONY : figures/rectangle.o
+
+# target to build an object file
+figures/rectangle.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/rectangle.cc.o
+.PHONY : figures/rectangle.cc.o
+
+figures/rectangle.i: figures/rectangle.cc.i
+.PHONY : figures/rectangle.i
+
+# target to preprocess a source file
+figures/rectangle.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/rectangle.cc.i
+.PHONY : figures/rectangle.cc.i
+
+figures/rectangle.s: figures/rectangle.cc.s
+.PHONY : figures/rectangle.s
+
+# target to generate assembly for a file
+figures/rectangle.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/rectangle.cc.s
+.PHONY : figures/rectangle.cc.s
+
+figures/texte.o: figures/texte.cc.o
+.PHONY : figures/texte.o
+
+# target to build an object file
+figures/texte.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/texte.cc.o
+.PHONY : figures/texte.cc.o
+
+figures/texte.i: figures/texte.cc.i
+.PHONY : figures/texte.i
+
+# target to preprocess a source file
+figures/texte.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/texte.cc.i
+.PHONY : figures/texte.cc.i
+
+figures/texte.s: figures/texte.cc.s
+.PHONY : figures/texte.s
+
+# target to generate assembly for a file
+figures/texte.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/texte.cc.s
+.PHONY : figures/texte.cc.s
+
+figures/triangle.o: figures/triangle.cc.o
+.PHONY : figures/triangle.o
+
+# target to build an object file
+figures/triangle.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/triangle.cc.o
+.PHONY : figures/triangle.cc.o
+
+figures/triangle.i: figures/triangle.cc.i
+.PHONY : figures/triangle.i
+
+# target to preprocess a source file
+figures/triangle.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/triangle.cc.i
+.PHONY : figures/triangle.cc.i
+
+figures/triangle.s: figures/triangle.cc.s
+.PHONY : figures/triangle.s
+
+# target to generate assembly for a file
+figures/triangle.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/figures.dir/build.make CMakeFiles/figures.dir/figures/triangle.cc.s
+.PHONY : figures/triangle.cc.s
 
 parser.o: parser.cpp.o
 .PHONY : parser.o
@@ -368,6 +669,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... dessin"
 	@echo "... expressions"
+	@echo "... figures"
 	@echo "... expressions/constante.o"
 	@echo "... expressions/constante.i"
 	@echo "... expressions/constante.s"
@@ -377,12 +679,48 @@ help:
 	@echo "... expressions/expressionBinaire.o"
 	@echo "... expressions/expressionBinaire.i"
 	@echo "... expressions/expressionBinaire.s"
+	@echo "... expressions/expressionTernaire.o"
+	@echo "... expressions/expressionTernaire.i"
+	@echo "... expressions/expressionTernaire.s"
 	@echo "... expressions/expressionUnaire.o"
 	@echo "... expressions/expressionUnaire.i"
 	@echo "... expressions/expressionUnaire.s"
 	@echo "... expressions/variable.o"
 	@echo "... expressions/variable.i"
 	@echo "... expressions/variable.s"
+	@echo "... figures/carre.o"
+	@echo "... figures/carre.i"
+	@echo "... figures/carre.s"
+	@echo "... figures/cercle.o"
+	@echo "... figures/cercle.i"
+	@echo "... figures/cercle.s"
+	@echo "... figures/chemin.o"
+	@echo "... figures/chemin.i"
+	@echo "... figures/chemin.s"
+	@echo "... figures/contexte_forme.o"
+	@echo "... figures/contexte_forme.i"
+	@echo "... figures/contexte_forme.s"
+	@echo "... figures/ellipse.o"
+	@echo "... figures/ellipse.i"
+	@echo "... figures/ellipse.s"
+	@echo "... figures/forme.o"
+	@echo "... figures/forme.i"
+	@echo "... figures/forme.s"
+	@echo "... figures/forme_simple_coord.o"
+	@echo "... figures/forme_simple_coord.i"
+	@echo "... figures/forme_simple_coord.s"
+	@echo "... figures/ligne.o"
+	@echo "... figures/ligne.i"
+	@echo "... figures/ligne.s"
+	@echo "... figures/rectangle.o"
+	@echo "... figures/rectangle.i"
+	@echo "... figures/rectangle.s"
+	@echo "... figures/texte.o"
+	@echo "... figures/texte.i"
+	@echo "... figures/texte.s"
+	@echo "... figures/triangle.o"
+	@echo "... figures/triangle.i"
+	@echo "... figures/triangle.s"
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"

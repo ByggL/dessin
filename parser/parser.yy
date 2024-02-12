@@ -15,7 +15,15 @@
     #include "constante.hh"
     #include "variable.hh"
     #include "forme.hh"
+    #include "carre.hh"
+    #include "triangle.hh"
+    #include "cercle.hh"
+    #include "ellipse.hh"
+    #include "texte.hh"
     #include "rectangle.hh"
+    #include "ligne.hh"
+    #include "chemin.hh"
+    #include "contexte_forme.hh"
 
     class Scanner;
     class Driver;
@@ -40,6 +48,7 @@
 %token <int>            NUMBER
 %token <std::string>    CHAINE
 %token                  FLECHE
+%token                  GUILLEMET
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -59,8 +68,8 @@
 %token                  EPAISSEUR
 
 %type <ExpressionPtr>   operation
-/* %type <figurePtr>       figure */
-/* %type <formePtr>        forme */
+%type <coordChemin>     coordonnee_chemin
+%type <formePtr>        forme
 %left '-' '+'
 %left '*' '/'
 
@@ -87,9 +96,6 @@ expression:
             std::cerr << "#-> " << err.what() << std::endl;
         }
     }
-    | figure {
-
-    }
     |forme {
 
     }
@@ -98,6 +104,90 @@ affectation:
     '=' {
         std::cout << "Affectation à réaliser" << std::endl;
     }
+
+
+/* dessin: */
+/*      TAILLE operation operation { */
+/*  */
+/*      } */
+/*      |forme { */
+/*  */
+/*      } */
+
+
+forme:
+     RECTANGLE operation operation operation operation operation operation operation operation ';'{
+        // $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
+    }
+    | CARRE operation operation operation ';'{
+
+        $$ =
+        /* std::shared_ptr<Carre> tmp = */
+        std::make_shared<Carre>(
+        $2->calculer(driver.getContexte()),
+        $3->calculer(driver.getContexte()),
+        $4->calculer(driver.getContexte())
+        );
+        /* driver.ajoutCarre(tmp); */
+        /* std::cout << driver.getCarreInd(0)->positionX << std::endl; */
+
+    }
+    | TRIANGLE operation operation operation operation ';'{
+    }
+    | CERCLE operation operation operation ';'{
+    }
+    | ELLIPSE operation operation operation operation ';'{
+    }
+    | LIGNE operation operation operation operation ';'{
+    }
+    | CHEMIN coordonnee_chemin ';'{
+        /* std::cout << "chemin" << std::endl; */
+        /* $$ = std::make_shared<Chemin>() */
+    }
+    | TEXTE operation operation CHAINE CHAINE ';'{
+    }
+    /* |forme FLECHE attribut ';'{ */
+    /*  */
+    /* } */
+    /* |forme '{' attribut '}' { */
+    /*  */
+    /* } */
+
+coordonnee_chemin:
+    operation operation ',' coordonnee_chemin {
+        /* std::cout << "op op , cood_chemin" << std::endl; */
+        /* $$ = std::vector<int>(); */
+        /* $$.ajout($1,$2); */
+    }
+    |operation operation {
+        /* std::cout << "op op " << std::endl; */
+        /* $$.ajout($1,$2); */
+    }
+
+/* attribut: */
+/*     COULEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |ROTATION ':' CHAINE { */
+/*  */
+/*     } */
+/*     |REMPLISSAGE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |OPACITE ':' CHAINE { */
+/*  */
+/*     } */
+/*     |EPAISSEUR ':' CHAINE { */
+/*  */
+/*     } */
+/*     |attribut '&' attribut { */
+/*  */
+/*     } */
+/*     |attribut ';' attribut { */
+/*  */
+/*     } */
+
+
 
 operation:
     NUMBER {
@@ -118,78 +208,6 @@ operation:
     | operation '/' operation {
         $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
     }
-
-
-coordonnee_chemin:
-    operation operation ',' coordonnee_chemin {
-        $$->ajout(std::make_shared<point>($1,$2));
-    }
-    operation operation {
-        $$ = std::vector<point>();
-        $$->ajout(std::make_shared<point>($1,$2));
-    }
-
-figure:
-     RECTANGLE operation operation operation operation {
-        $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
-    }
-    | CARRE operation operation operation {  // coordonnées du coin + taille
-        $$ = std::make_shared<Rectangle>($2,$3,$4,$4);  // en SVG un carré est un rectangle avec largeur=hauteur
-    }
-    | TRIANGLE operation operation operation operation {  // coordonnées du coin de gauche + taille
-        $$ = std::make_shared<Triangle>($2,$3,$4,$5);
-    }
-    | CERCLE operation operation operation {
-        $$ = std::make_shared<Cercle>($2,$3,$4);
-    }
-    | ELLIPSE operation operation operation operation {
-        $$ = std::make_shared<Ellipse>($2,$3,$4,$5);
-    }
-    | LIGNE operation operation operation operation {
-        $$ = std::make_shared<Ligne>($2,$3,$4,$5);
-    }
-    | CHEMIN coordonnee_chemin {
-        $$ = std::make_shared<Chemin>($2);
-    }
-    | TEXTE operation operation CHAINE CHAINE {
-        $$ = std::make_shared<Texte>($2,$3,$4,$5);
-    }
-
-attribut:
-    COULEUR ':' CHAINE {
-
-    }
-    |ROTATION ':' CHAINE {
-
-    }
-    |REMPLISSAGE ':' CHAINE {
-
-    }
-    |OPACITE ':' CHAINE {
-
-    }
-    |EPAISSEUR ':' CHAINE {
-
-    }
-    |attribut '&' attribut {
-
-    }
-    |attribut NL attribut {
-
-    }
-
-forme:
-     TAILLE operation operation {
-
-     }
-     |figure FLECHE attribut {
-
-     }
-     |figure '{' attribut '}' {
-
-     }
-
-
 
 %%
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "formeSimpleCoord.hh"
 
 
@@ -7,5 +9,7 @@ private:
 
 public:
     Cercle(int posX, int posY, int rayon);
+    Cercle(const Cercle & r);
+    ~Cercle() = default;
     std::string toSVG();
 };
