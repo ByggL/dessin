@@ -22,6 +22,7 @@ public:
     // C[0], C[1], etc...
     std::vector<std::shared_ptr<Rectangle>> rectangles;
     std::vector<std::shared_ptr<Carre>>     carres;
+    std::vector<std::shared_ptr<Triangle>>  triangles;
     std::vector<std::shared_ptr<Cercle>>    cercles;
     std::vector<std::shared_ptr<Ellipse>>   ellipses;
     std::vector<std::shared_ptr<Ligne>>     lignes;
