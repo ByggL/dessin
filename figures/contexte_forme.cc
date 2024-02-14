@@ -32,3 +32,15 @@ std::string Contexte_forme::toSVG() {
 
     return s;
 }
+
+void writeToSvgFile(std::string SVGtext) {
+    // Create the file
+    std::ofstream MyFile("output.svg");
+
+    // Write to the file
+    MyFile << SVGtext;
+
+    // Close the file
+    
+    MyFile.close();
+}

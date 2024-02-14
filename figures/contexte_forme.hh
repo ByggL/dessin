@@ -7,6 +7,8 @@
 #include "ligne.hh"
 #include "texte.hh"
 #include "chemin.hh"
+#include <iostream>
+#include <fstream> 
 
 
 class Contexte_forme {
@@ -40,6 +42,6 @@ public:
     const std::shared_ptr<Forme> operator[](const std::string & nom) const;
 
     std::string toSVG();
-
+    void writeToSvgFile(std::string SVGtext);
 };
 
