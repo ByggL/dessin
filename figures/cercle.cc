@@ -5,15 +5,15 @@
 
 
 Cercle::Cercle(int posX, int posY, int rayon)
-    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _rayon(rayon) {}
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), rayon(rayon) {}
 
 
 std::string Cercle::toSVG() {
     std::ostringstream out;
 
-    out << "<circle cx=\"" << FormeSimpleCoord::_posX << "\" cy=\"" << FormeSimpleCoord::_posY << "\" r=\"" << _rayon << "\" />";
+    out << "<circle cx=\"" << FormeSimpleCoord::positionX << "\" cy=\"" << FormeSimpleCoord::positionY << "\" r=\"" << rayon << "\" />";
 
     std::string s = out.str();
 
     return s;
-} 
+}

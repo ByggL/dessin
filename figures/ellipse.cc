@@ -4,22 +4,17 @@
 
 
 Ellipse::Ellipse(const Ellipse & r)
-    : FormeSimpleCoord::FormeSimpleCoord(r._posX,r._posY), _hauteur(r._hauteur), _largeur(r._largeur) {}
-
-
-Ellipse::Ellipse(int x, int y, int hauteur, int largeur)
-    : FormeSimpleCoord::FormeSimpleCoord(x,y), _hauteur(hauteur), _largeur(largeur) {}
-
+    : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), hauteur(r.hauteur), largeur(r.largeur) {}
 
 
 Ellipse::Ellipse(int posX, int posY, int hauteur, int largeur)
-    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _hauteur(hauteur), _largeur(largeur) {}
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), hauteur(hauteur), largeur(largeur) {}
 
 
 std::string Ellipse::toSVG() {
     std::ostringstream out;
 
-    out << "<ellipse cx=\"" << _posX << "\" cy=\"" << _posY << "\" rx=\"" << _largeur << "\" ry=\"" << _hauteur << "\" />";
+    out << "<ellipse cx=\"" << positionX << "\" cy=\"" << positionY << "\" rx=\"" << largeur << "\" ry=\"" << hauteur << "\" />";
 
     std::string s = out.str();
 

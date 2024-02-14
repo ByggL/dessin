@@ -1,4 +1,3 @@
-
 #pragma once
 #include <memory>
 #include "couleur.hh"
@@ -9,9 +8,9 @@
 
 
 class Forme {
-protected:
-    std::map<std::string, std::string> _attributs;
 public:
+    std::map<std::string, std::string> _attributs;
+
     // Couleur couleur;
     // Couleur remplissage;
     // std::string rotation;

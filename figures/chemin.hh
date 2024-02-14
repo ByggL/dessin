@@ -3,7 +3,7 @@
 
 class Chemin : public Forme {
 public:
-    std::vector<int> _coords;
+    std::vector<int> coords;
 
     Chemin() = default;
     Chemin(const std::vector<int> & c);
@@ -14,3 +14,5 @@ public:
 
     std::string toSVG();
 };
+
+using coordChemin = std::vector<int>;

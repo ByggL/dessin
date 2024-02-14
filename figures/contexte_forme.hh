@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <fstream>
 #include "carre.hh"
 #include "rectangle.hh"
 #include "triangle.hh"
@@ -7,8 +9,6 @@
 #include "ligne.hh"
 #include "texte.hh"
 #include "chemin.hh"
-#include <iostream>
-#include <fstream> 
 
 
 class Contexte_forme {

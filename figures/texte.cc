@@ -3,16 +3,16 @@
 #include <sstream>
 
 
-Texte::Texte(int posX, int posY, std::string content, std::string font, int size)
-    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), _content(content), _font(font), _size(size) {}
+Texte::Texte(int posX, int posY, std::string content, std::string font)
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), content(content), font(font){}
 
 
 std::string Texte::toSVG() {
     std::ostringstream out;
 
-    out << "<text x=\"" << _posX << "\" y=\"" << _posY 
-        << "\" font-family=\"" << _font 
-        << "\" font-size=\"" << _size <<"\">" << _content << "</text>";
+    out << "<text x=\"" << positionX << "\" y=\"" << positionY
+        << "\" font-family=\"" << font
+        << content << "</text>";
 
     std::string s = out.str();
 

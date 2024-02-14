@@ -1,10 +1,11 @@
+#pragma once
 #include "forme.hh"
 
 
 class FormeSimpleCoord : public Forme {
-protected:
-    int _posX;
-    int _posY;
 public:
+    int positionX;
+    int positionY;
+
     FormeSimpleCoord(int posX, int posY);
 };

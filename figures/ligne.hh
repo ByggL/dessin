@@ -2,13 +2,12 @@
 #include "forme.hh"
 
 class Ligne : public Forme {
-private:
-    int _x1;
-    int _y1;
-    int _x2;
-    int _y2;
-
 public:
+    int positionX1;
+    int positionY1;
+    int positionX2;
+    int positionY2;
+
     Ligne(int x1, int y1, int x2, int y2);
     Ligne(const Ligne & r);
     ~Ligne() = default;
