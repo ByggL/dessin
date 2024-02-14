@@ -12,6 +12,7 @@
     #include "contexte.hh"
     #include "expressionBinaire.hh"
     #include "expressionUnaire.hh"
+    #include "expressionTernaire.hh"
     #include "constante.hh"
     #include "variable.hh"
     #include "forme.hh"
@@ -49,6 +50,9 @@
 %token <std::string>    CHAINE
 %token                  FLECHE
 %token                  GUILLEMET
+%token                  IF
+%token                  THEN
+%token                  ELSE
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -85,6 +89,12 @@ instruction:
     expression  {
     }
     | affectation {
+    }
+    | IF '(' operation ')' THEN '{' instruction '}' {
+        $$ = std::make_shared<ExpressionTernaire>($3,$7,OperateurBinaire::ifthen)
+    }
+    | IF '(' operation ')' THEN '{' instruction '}' ELSE '{' instruction '}' {
+        $$ = std::make_shared<ExpressionTernaire>($3,$7,$11,OperateurBinaire::ifthen)
     }
 
 expression:

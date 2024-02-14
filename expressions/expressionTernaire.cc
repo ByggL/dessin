@@ -4,6 +4,10 @@ ExpressionTernaire::ExpressionTernaire(ExpressionPtr condition, ExpressionPtr ex
     _condition(condition), _exp1(exp1), _exp2(exp2),  _op(op) {
 }
 
+ExpressionTernaire::ExpressionTernaire(ExpressionPtr condition, ExpressionPtr exp1, OperateurTernaire op):
+    _condition(condition), _exp1(exp1), _op(op) {
+}
+
 double ExpressionTernaire::calculer(const Contexte& contexte) const {
     
     switch (_op) {
@@ -12,6 +16,13 @@ double ExpressionTernaire::calculer(const Contexte& contexte) const {
                 bool resultatCondition = _condition->calculer(contexte);
                 if (resultatCondition) return _exp1->calculer(contexte);
                 else return _exp2->calculer(contexte);
+                break;
+            }
+        case OperateurTernaire::ifthen:
+            {
+                bool resultatCondition = _condition->calculer(contexte);
+                if (resultatCondition) return _exp1->calculer(contexte);
+                else return 0;
                 break;
             }
         default: return 0;

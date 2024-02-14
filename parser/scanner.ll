@@ -47,6 +47,16 @@ fin return token::END;
     return token::FLECHE;
 }
 
+"si" {
+    return token::IF;
+}
+"alors" {
+    return token::THEN;
+}
+"sinon" {
+    return token::ELSE;
+}
+
 (?i:rectangle) { return token::RECTANGLE; }
 
 (?i:carre) { return token::CARRE; }
