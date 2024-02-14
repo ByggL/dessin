@@ -117,7 +117,16 @@ affectation:
 
 forme:
      RECTANGLE operation operation operation operation operation operation operation operation ';'{
-        // $$ = std::make_shared<Rectangle>($2,$3,$4,$5,$6,$7,$8,$9);
+        $$ = std::make_shared<Rectangle>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4->calculer(driver.getContexte()),
+            $5->calculer(driver.getContexte()),
+            $6->calculer(driver.getContexte()),
+            $7->calculer(driver.getContexte()),
+            $8->calculer(driver.getContexte()),
+            $9->calculer(driver.getContexte()),
+        );
     }
     | CARRE operation operation operation ';'{
 
@@ -133,18 +142,46 @@ forme:
 
     }
     | TRIANGLE operation operation operation operation ';'{
+        $$ = std::make_shared<Triangle>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4->calculer(driver.getContexte()),
+            $5->calculer(driver.getContexte())
+        );
     }
     | CERCLE operation operation operation ';'{
+        $$ = std::make_shared<Cercle>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4->calculer(driver.getContexte())
+        )
     }
     | ELLIPSE operation operation operation operation ';'{
+        $$ = std::make_shared<Ellipse>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4->calculer(driver.getContexte()),
+            $5->calculer(driver.getContexte())
+        );
     }
     | LIGNE operation operation operation operation ';'{
+        $$ = std::make_shared<Ligne>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4->calculer(driver.getContexte()),
+            $5->calculer(driver.getContexte())
+        );
     }
     | CHEMIN coordonnee_chemin ';'{
         /* std::cout << "chemin" << std::endl; */
         /* $$ = std::make_shared<Chemin>() */
     }
     | TEXTE operation operation CHAINE CHAINE ';'{
+        $$ = std::make_shared<Texte>(
+            $2->calculer(driver.getContexte()),
+            $3->calculer(driver.getContexte()),
+            $4, $5
+        );
     }
     /* |forme FLECHE attribut ';'{ */
     /*  */
