@@ -39,9 +39,6 @@ fin return token::END;
 "}" return '}';
 ";" return ';';
 
-"\"" {
-    return token::GUILLEMET;
-}
 
 "->"  {
     return token::FLECHE;
@@ -91,6 +88,11 @@ fin return token::END;
 [a-zA-Z]+      {
     yylval->build<std::string>(YYText());
     return token::CHAINE;
+}
+
+\"[a-zA-Z]+[ ]?\" {
+    yylval->build<std::string>(YYText());
+    return token::TEXTECHAINE;
 }
 
 

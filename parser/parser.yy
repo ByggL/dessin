@@ -50,8 +50,8 @@
 %token                  END
 %token <int>            NUMBER
 %token <std::string>    CHAINE
+%token <std::string>    TEXTECHAINE
 %token                  FLECHE
-%token                  GUILLEMET
 %token                  IF
 %token                  THEN
 %token                  ELSE
@@ -118,17 +118,14 @@ affectation:
     }
 
 
-/* dessin: */
-/*      TAILLE operation operation { */
-/*  */
-/*      } */
-/*      |forme { */
-/*  */
-/*      } */
 
 
 forme:
-     RECTANGLE operation operation operation operation operation operation operation operation ';'{
+     TAILLE operation operation ';'{
+        driver.setCanevasLong($2->calculer(driver.getContexte()));
+        driver.setCanevasHaut($3->calculer(driver.getContexte()));
+     }
+     | RECTANGLE operation operation operation operation operation operation operation operation ';'{
         $$ = std::make_shared<Rectangle>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
@@ -185,7 +182,7 @@ forme:
         /* std::cout << "chemin" << std::endl; */
         $$ = std::make_shared<Chemin>($2);
     }
-    | TEXTE operation operation CHAINE CHAINE ';'{
+    | TEXTE operation operation TEXTECHAINE TEXTECHAINE ';'{
         $$ = std::make_shared<Texte>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
