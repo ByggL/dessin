@@ -23,15 +23,14 @@ public:
     // Utilisation de l'indice dans l'ordre de création :
     // C[0], C[1], etc...
     std::vector<std::shared_ptr<Forme>>     figures;
-
-    std::vector<std::shared_ptr<Rectangle>> rectangles;
-    std::vector<std::shared_ptr<Carre>>     carres;
-    std::vector<std::shared_ptr<Triangle>>  triangles;
-    std::vector<std::shared_ptr<Cercle>>    cercles;
-    std::vector<std::shared_ptr<Ellipse>>   ellipses;
-    std::vector<std::shared_ptr<Ligne>>     lignes;
-    std::vector<std::shared_ptr<Texte>>     textes;
-    std::vector<std::shared_ptr<Chemin>>    chemins;
+    std::vector<std::shared_ptr<Forme>> rectangles;
+    std::vector<std::shared_ptr<Forme>>     carres;
+    std::vector<std::shared_ptr<Forme>>  triangles;
+    std::vector<std::shared_ptr<Forme>>    cercles;
+    std::vector<std::shared_ptr<Forme>>   ellipses;
+    std::vector<std::shared_ptr<Forme>>     lignes;
+    std::vector<std::shared_ptr<Forme>>     textes;
+    std::vector<std::shared_ptr<Forme>>    chemins;
 
 
     Contexte_forme() = default;

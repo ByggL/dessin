@@ -92,12 +92,12 @@ instruction:
     }
     | affectation {
     }
-    | IF '(' operation ')' THEN '{' instruction '}' {
-        $$ = std::make_shared<ExpressionTernaire>($3,$7,OperateurBinaire::ifthen)
-    }
-    | IF '(' operation ')' THEN '{' instruction '}' ELSE '{' instruction '}' {
-        $$ = std::make_shared<ExpressionTernaire>($3,$7,$11,OperateurBinaire::ifthen)
-    }
+    /* | IF '(' operation ')' THEN '{' instruction '}' { */
+    /*     $$ = std::make_shared<ExpressionTernaire>($3,$7,OperateurBinaire::ifthen) */
+    /* } */
+    /* | IF '(' operation ')' THEN '{' instruction '}' ELSE '{' instruction '}' { */
+    /*     $$ = std::make_shared<ExpressionTernaire>($3,$7,$11,OperateurBinaire::ifthen) */
+    /* } */
 
 expression:
     operation {
@@ -137,20 +137,17 @@ forme:
             $6->calculer(driver.getContexte()),
             $7->calculer(driver.getContexte()),
             $8->calculer(driver.getContexte()),
-            $9->calculer(driver.getContexte()),
+            $9->calculer(driver.getContexte())
         );
     }
     | CARRE operation operation operation ';'{
 
-        $$ =
-        /* std::shared_ptr<Carre> tmp = */
-        std::make_shared<Carre>(
+        $$ = std::make_shared<Carre>(
         $2->calculer(driver.getContexte()),
         $3->calculer(driver.getContexte()),
         $4->calculer(driver.getContexte())
         );
-        /* driver.ajoutCarre(tmp); */
-        /* std::cout << driver.getCarreInd(0)->positionX << std::endl; */
+        driver.ajoutCarre($$);
 
     }
     | TRIANGLE operation operation operation operation ';'{
@@ -166,7 +163,7 @@ forme:
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
             $4->calculer(driver.getContexte())
-        )
+        );
     }
     | ELLIPSE operation operation operation operation ';'{
         $$ = std::make_shared<Ellipse>(
@@ -186,7 +183,7 @@ forme:
     }
     | CHEMIN coordonnee_chemin ';'{
         /* std::cout << "chemin" << std::endl; */
-        /* $$ = std::make_shared<Chemin>() */
+        $$ = std::make_shared<Chemin>($2);
     }
     | TEXTE operation operation CHAINE CHAINE ';'{
         $$ = std::make_shared<Texte>(
@@ -205,38 +202,40 @@ forme:
 coordonnee_chemin:
     operation operation ',' coordonnee_chemin {
         /* std::cout << "op op , cood_chemin" << std::endl; */
-        /* $$ = std::vector<int>(); */
-        /* $$.ajout($1,$2); */
+        $$ = std::vector<int>();
+        $$.push_back($1->calculer(driver.getContexte()));
+        $$.push_back($2->calculer(driver.getContexte()));
     }
     |operation operation {
         /* std::cout << "op op " << std::endl; */
-        /* $$.ajout($1,$2); */
+        $$.push_back($1->calculer(driver.getContexte()));
+        $$.push_back($2->calculer(driver.getContexte()));
     }
 
-attribut:
-    COULEUR ':' CHAINE {
-        $$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur);
-    } 
-    |ROTATION ':' CHAINE { 
-        std::ostringstream o;
-        o << "rotate(" << $3 << ")"; // ajouter centre de la forme
-        $$.addAttribut("transform", $3) // pas correct, il faut que ça soit de la forme rotate(45,125,150)
-    } 
-    |REMPLISSAGE ':' CHAINE { 
-        $$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur);
-    } 
-    |OPACITE ':' CHAINE { 
-        $$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple)
-    } 
-    |EPAISSEUR ':' CHAINE { 
-        $$.addAttribut("stroke-width", $3);
-    } 
-    |attribut '&' attribut { 
- 
-    } 
-    |attribut ';' attribut { 
- 
-    } 
+/* attribut: */
+/*     COULEUR ':' CHAINE { */
+/*         $$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur); */
+/*     } */
+/*     |ROTATION ':' CHAINE { */
+/*         std::ostringstream o; */
+/*         o << "rotate(" << $3 << ")"; // ajouter centre de la forme */
+/*         $$.addAttribut("transform", $3) // pas correct, il faut que ça soit de la forme rotate(45,125,150) */
+/*     } */
+/*     |REMPLISSAGE ':' CHAINE { */
+/*         $$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur); */
+/*     } */
+/*     |OPACITE ':' CHAINE { */
+/*         $$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple) */
+/*     } */
+/*     |EPAISSEUR ':' CHAINE { */
+/*         $$.addAttribut("stroke-width", $3); */
+/*     } */
+/*     |attribut '&' attribut { */
+/*  */
+/*     } */
+/*     |attribut ';' attribut { */
+/*  */
+/*     } */
 
 
 

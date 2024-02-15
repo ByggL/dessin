@@ -19,10 +19,6 @@ void Driver::setVariable(const std::string & name, double value) {
     variables[name] = value;
 }
 
-const std::shared_ptr<Carre> Driver::getCarreInd(int ind) const {
-    return formes.carres.at(ind);
-}
-
-void Driver::ajoutCarre(std::shared_ptr<Carre> c) {
+void Driver::ajoutCarre(std::shared_ptr<Forme> c) {
     formes.carres.push_back(c);
 }
