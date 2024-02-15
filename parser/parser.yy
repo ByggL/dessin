@@ -25,6 +25,7 @@
     #include "ligne.hh"
     #include "chemin.hh"
     #include "contexte_forme.hh"
+    #include "couleur.hh"
 
     class Scanner;
     class Driver;
@@ -36,6 +37,7 @@
 %code{
     #include <iostream>
     #include <string>
+    #include <sstream>
 
     #include "scanner.hh"
     #include "driver.hh"
@@ -211,28 +213,30 @@ coordonnee_chemin:
         /* $$.ajout($1,$2); */
     }
 
-/* attribut: */
-/*     COULEUR ':' CHAINE { */
-/*  */
-/*     } */
-/*     |ROTATION ':' CHAINE { */
-/*  */
-/*     } */
-/*     |REMPLISSAGE ':' CHAINE { */
-/*  */
-/*     } */
-/*     |OPACITE ':' CHAINE { */
-/*  */
-/*     } */
-/*     |EPAISSEUR ':' CHAINE { */
-/*  */
-/*     } */
-/*     |attribut '&' attribut { */
-/*  */
-/*     } */
-/*     |attribut ';' attribut { */
-/*  */
-/*     } */
+attribut:
+    COULEUR ':' CHAINE {
+        $$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur);
+    } 
+    |ROTATION ':' CHAINE { 
+        std::ostringstream o;
+        o << "rotate(" << $3 << ")"; // ajouter centre de la forme
+        $$.addAttribut("transform", $3) // pas correct, il faut que ça soit de la forme rotate(45,125,150)
+    } 
+    |REMPLISSAGE ':' CHAINE { 
+        $$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur);
+    } 
+    |OPACITE ':' CHAINE { 
+        $$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple)
+    } 
+    |EPAISSEUR ':' CHAINE { 
+        $$.addAttribut("stroke-width", $3);
+    } 
+    |attribut '&' attribut { 
+ 
+    } 
+    |attribut ';' attribut { 
+ 
+    } 
 
 
 
