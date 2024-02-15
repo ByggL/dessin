@@ -22,6 +22,8 @@ public:
 
     // Utilisation de l'indice dans l'ordre de création :
     // C[0], C[1], etc...
+    std::vector<std::shared_ptr<Forme>>     figures;
+
     std::vector<std::shared_ptr<Rectangle>> rectangles;
     std::vector<std::shared_ptr<Carre>>     carres;
     std::vector<std::shared_ptr<Triangle>>  triangles;

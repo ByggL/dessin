@@ -24,7 +24,9 @@ std::string Contexte_forme::toSVG() {
     out << "<svg version=\"1.1\" width=\"" << longueur << "\" height=\"" << hauteur
         << "xmlns=\"http://www.w3.org/2000/svg\">";
 
-    // toSVG() de toutes formes
+    for(unsigned int i = 0; i < figures.size(); i++) {
+        out << figures[i]->toSVG();
+    }
 
     out << "\n</svg>";
 
