@@ -21,3 +21,6 @@ std::string Triangle::toSVG() {
 
     return s;
 }
+
+int Triangle::centreX() { return ((positionX + (positionX+(largeur/2)) + (positionX+largeur)) / 3); }
+int Triangle::centreY() { return ((positionY + (positionY+hauteur) + positionY) / 3); }

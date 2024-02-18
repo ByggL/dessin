@@ -12,4 +12,7 @@ public:
     ~Triangle() = default;
 
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };

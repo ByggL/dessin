@@ -18,3 +18,7 @@ std::string Texte::toSVG() {
 
     return s;
 }
+
+
+int Texte::centreX() { return positionX; }  // on s'embête pas à aller chercher le centre du texte
+int Texte::centreY() { return positionY; }

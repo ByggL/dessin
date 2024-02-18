@@ -11,4 +11,7 @@ public:
     Texte(const Texte & r);
     ~Texte() = default;
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };

@@ -17,3 +17,7 @@ std::string Cercle::toSVG() {
 
     return s;
 }
+
+
+int Cercle::centreX() { return positionX; }
+int Cercle::centreY() { return positionY; }

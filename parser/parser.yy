@@ -215,8 +215,8 @@ coordonnee_chemin:
 /*     } */
 /*     |ROTATION ':' CHAINE { */
 /*         std::ostringstream o; */
-/*         o << "rotate(" << $3 << ")"; // ajouter centre de la forme */
-/*         $$.addAttribut("transform", $3) // pas correct, il faut que ça soit de la forme rotate(45,125,150) */
+/*         o << "rotate(" << $3 << $$.centreX() << "," << $$.centreY() << ")"; // ajouter centre de la forme */
+/*         $$.addAttribut("transform", o.str()); */
 /*     } */
 /*     |REMPLISSAGE ':' CHAINE { */
 /*         $$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur); */

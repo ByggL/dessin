@@ -19,6 +19,8 @@ public:
     Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
     Forme();
     virtual ~Forme() = default;
+    virtual int centreX();
+    virtual int centreY();
 
     void addAttribut(std::string attribut, std::string valeur);
     std::string toSVG();

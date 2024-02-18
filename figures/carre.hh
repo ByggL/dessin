@@ -11,4 +11,7 @@ public:
     ~Carre() = default;
     // Carre & operator=(const Carre & c);
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };

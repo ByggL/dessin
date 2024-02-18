@@ -19,3 +19,7 @@ std::string Rectangle::toSVG() {
     std::string s = out.str();
     return s;
 }
+
+
+int Rectangle::centreX() { return positionX1 + ((positionX2 - positionX1)/2); }
+int Rectangle::centreY() { return positionY1 + ((positionY1 - positionY4)/2); }

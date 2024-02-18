@@ -20,3 +20,7 @@ std::string Ellipse::toSVG() {
 
     return s;
 }
+
+
+int Ellipse::centreX() { return positionX; }
+int Ellipse::centreY() { return positionY; }

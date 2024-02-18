@@ -10,4 +10,7 @@ public:
     Cercle(const Cercle & r);
     ~Cercle() = default;
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };

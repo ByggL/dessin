@@ -17,3 +17,7 @@ std::string Carre::toSVG() {
     std::string s = out.str();
     return s;
 }
+
+
+int Carre::centreX() { return positionX + (taille/2); }
+int Carre::centreY() { return positionY + (taille/2); }

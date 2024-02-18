@@ -11,4 +11,7 @@ public:
     Ellipse(const Ellipse & r);
     ~Ellipse() = default;
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };
