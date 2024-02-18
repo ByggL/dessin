@@ -1,6 +1,10 @@
 #include "couleur.hh"
-#include<iostream>
+#include <iostream>
 #include <sstream>
+#include <stdexcept>
+#include <regex>
+
+std::regex pat("#[A-F0-9]{6}");
 
 
 Couleur::Couleur(std::string couleur) {
@@ -21,6 +25,12 @@ Couleur::Couleur(std::string couleur) {
     }
     else if (couleur == "noir") {
         _couleur = "#000000";
+    }
+    else if (std::regex_match(couleur, pat)) {
+        _couleur = couleur;
+    }
+    else {
+        throw std::invalid_argument("Nom ou valeur hexadécimale de couleur invalide");
     }
 }
     
