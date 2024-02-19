@@ -39,7 +39,7 @@ file(GLOB FIGURE_HEADERS
     figures/rectangle.hh
     figures/ligne.hh
     figures/chemin.hh
-    figures/formeSimpleCoord.hh
+    figures/forme_simple_coord.hh
     figures/carre.hh
     figures/triangle.hh
     figures/cercle.hh
@@ -53,7 +53,7 @@ add_library(figures
     figures/rectangle.cc
     figures/ligne.cc
     figures/chemin.cc
-    figures/formeSimpleCoord.cc
+    figures/forme_simple_coord.cc
     figures/carre.cc
     figures/triangle.cc
     figures/cercle.cc
@@ -76,6 +76,8 @@ add_executable(${PROJECT_NAME}
     ${BISON_parser_OUTPUTS}
     ${FLEX_scanner_OUTPUTS}
 )
-target_link_libraries(${PROJECT_NAME} expressions figures)
+target_link_libraries(${PROJECT_NAME} expressions)
+target_link_libraries(${PROJECT_NAME} figures)
 
-target_link_libraries(expressions figures)
+target_link_libraries(expressions)
+target_link_libraries(figures)
