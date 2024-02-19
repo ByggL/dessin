@@ -9,18 +9,23 @@
 
 class Forme {
 public:
-    Struct Attribut {
-        Couleur couleur;
-        Couleur remplissage;
-        std::string rotation;
-        std::string opacite;
-        int epaisseur;
-    }
+    // Proposition Samuel
+    std::map<std::string, std::string> _attributs;
+    Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
 
-    Attribut attributs;
-
+    // Proposition Ruben
+    // Struct Attribut {
+    //     std::unique_ptr<Couleur> couleur;
+    //     std::unique_ptr<Couleur> remplissage;
+    //     int rotation;
+    //     int opacite;
+    //     int epaisseur;
+    // }
     Forme();
     virtual ~Forme() = default;
+
+    // Ne Compile pas
+    // TODO : Une fonction virtual doit etre définie.
     // virtual int centreX();
     // virtual int centreY();
 

@@ -4,8 +4,7 @@
 #include <sstream>
 
 
-
-Forme::Forme() : attributs() {}
+Forme::Forme() : _attributs({}) {}
 
 void Forme::addAttribut(std::string attribut, std::string valeur) {
     _attributs[attribut] = valeur;

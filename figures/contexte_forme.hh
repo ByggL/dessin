@@ -21,7 +21,7 @@ public:
     std::map<std::string, std::shared_ptr<Forme>> formes_nomer;
 
     // Utilisation de l'indice dans l'ordre de création :
-    // C[0], C[1], etc...
+    // carre[0], carre[1], etc...
     std::vector<std::shared_ptr<Forme>>     figures;
     std::vector<std::shared_ptr<Forme>> rectangles;
     std::vector<std::shared_ptr<Forme>>     carres;
