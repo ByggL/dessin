@@ -80,19 +80,46 @@ fin return token::END;
 
 (?i:epaisseur) { return token::EPAISSEUR; }
 
+"#"([0-9A-F]{2}){3}     {
+    return token::COULEUR_HEX;
+}
+
+"rgb"   {
+    return token::COULEUR_RGB;
+}
+
+(?i:rouge) { return token::COULEUR_NOM; }
+
+(?i:vert) { return token::COULEUR_NOM; }
+
+(?i:bleu) { return token::COULEUR_NOM; }
+
+(?i:jaune) { return token::COULEUR_NOM; }
+
+(?i:violet) { return token::COULEUR_NOM; }
+
+(?i:magenta) { return token::COULEUR_NOM; }
+
+(?i:cyan) { return token::COULEUR_NOM; }
+
+(?i:noir) { return token::COULEUR_NOM; }
+
+(?i:blanc) { return token::COULEUR_NOM; }
+
+
 [0-9]+      {
     yylval->build<int>(std::atoi(YYText()));
     return token::NUMBER;
 }
 
-[a-zA-Z]+      {
+[A-Z][a-z]*[0-9]+   {
     yylval->build<std::string>(YYText());
-    return token::CHAINE;
+    return token::IDENT;
 }
 
-\"[a-zA-Z]+[ ]?\" {
+\"[a-zA-Z ]+\" {
     yylval->build<std::string>(YYText());
-    return token::TEXTECHAINE;
+    return token::CHAINE;
 }
 
 
