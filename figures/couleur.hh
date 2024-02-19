@@ -11,5 +11,5 @@ public:
     Couleur(int r, int g, int b);  // au format RGB
     ~Couleur() = default;
 
-    std::string rgb2hex(int r, int g, int b);
+    std::string rgb2hex(unsigned int r, unsigned int g, unsigned int b);
 };
