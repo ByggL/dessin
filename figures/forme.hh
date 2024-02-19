@@ -9,18 +9,20 @@
 
 class Forme {
 public:
-    std::map<std::string, std::string> _attributs;
+    Struct Attribut {
+        Couleur couleur;
+        Couleur remplissage;
+        std::string rotation;
+        std::string opacite;
+        int epaisseur;
+    }
 
-    // Couleur couleur;
-    // Couleur remplissage;
-    // std::string rotation;
-    // std::string opacite;
-    // int epaisseur;
-    Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
+    Attribut attributs;
+
     Forme();
     virtual ~Forme() = default;
-    virtual int centreX();
-    virtual int centreY();
+    // virtual int centreX();
+    // virtual int centreY();
 
     void addAttribut(std::string attribut, std::string valeur);
     std::string toSVG();
