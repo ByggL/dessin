@@ -39,12 +39,19 @@ fin return token::END;
 "}" return '}';
 ";" return ';';
 
-"\"" {
-    return token::GUILLEMET;
-}
 
 "->"  {
     return token::FLECHE;
+}
+
+"si" {
+    return token::IF;
+}
+"alors" {
+    return token::THEN;
+}
+"sinon" {
+    return token::ELSE;
 }
 
 (?i:rectangle) { return token::RECTANGLE; }
@@ -81,6 +88,11 @@ fin return token::END;
 [a-zA-Z]+      {
     yylval->build<std::string>(YYText());
     return token::CHAINE;
+}
+
+\"[a-zA-Z]+[ ]?\" {
+    yylval->build<std::string>(YYText());
+    return token::TEXTECHAINE;
 }
 
 

@@ -19,10 +19,22 @@ void Driver::setVariable(const std::string & name, double value) {
     variables[name] = value;
 }
 
-const std::shared_ptr<Carre> Driver::getCarreInd(int ind) const {
-    return formes.carres.at(ind);
+int Driver::getCanevasLong() const {
+    return canevas.longueur;
 }
 
-void Driver::ajoutCarre(std::shared_ptr<Carre> c) {
-    formes.carres.push_back(c);
+int Driver::getCanevasHaut() const {
+    return canevas.hauteur;
+}
+
+void Driver::setCanevasLong(int l) {
+    canevas.longueur = l;
+}
+
+void Driver::setCanevasHaut(int h) {
+    canevas.hauteur = h;
+}
+
+void Driver::ajoutCarre(std::shared_ptr<Forme> c) {
+    canevas.carres.push_back(c);
 }

@@ -33,15 +33,15 @@ Couleur::Couleur(std::string couleur) {
         throw std::invalid_argument("Nom ou valeur hexadécimale de couleur invalide");
     }
 }
-
+    
 Couleur::Couleur(int r, int g, int b) {
     _couleur = rgb2hex(r,g,b);
 }
 
-std::string Couleur::rgb2hex(int r, int g, int b)
-{
-    std::stringstream ss;
-    ss << "#";
-    ss << std::hex << (r << 16 | g << 8 | b );
+std::string Couleur::rgb2hex(int r, int g, int b) 
+{ 
+    std::stringstream ss;  
+    ss << "#"; 
+    ss << std::hex << (r << 16 | g << 8 | b ); 
     return ss.str();
 }
