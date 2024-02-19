@@ -50,11 +50,12 @@
 %token                  END
 %token <int>            NUMBER
 %token <std::string>    CHAINE
-%token <std::string>    TEXTECHAINE
 %token                  FLECHE
+%token <std::string>    IDENT
 %token                  IF
 %token                  THEN
 %token                  ELSE
+
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -73,9 +74,15 @@
 %token                  OPACITE
 %token                  EPAISSEUR
 
+%token                  COULEUR_HEX
+%token                  COULEUR_RGB
+%token                  COULEUR_NOM
+
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme
+%type <mapStrStr>       attributs
+%type <std::pair<std::string,std::string>>      attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -91,6 +98,8 @@ instruction:
     expression  {
     }
     | affectation {
+    }
+    | dessin {
     }
     /* | IF '(' operation ')' THEN '{' instruction '}' { */
     /*     $$ = std::make_shared<ExpressionTernaire>($3,$7,OperateurBinaire::ifthen) */
@@ -108,24 +117,29 @@ expression:
             std::cerr << "#-> " << err.what() << std::endl;
         }
     }
-    |forme {
-
-    }
 
 affectation:
-    '=' {
+    IDENT '=' dessin {
         std::cout << "Affectation à réaliser" << std::endl;
     }
+
+dessin:
+    TAILLE operation operation {
+        driver.setCanevasLong($2->calculer(driver.getContexte()));
+        driver.setCanevasHaut($3->calculer(driver.getContexte()));
+    }
+    |forme {
+    }
+    | forme attributs {
+        $1->_attributs = $2;
+    }
+
 
 
 
 
 forme:
-     TAILLE operation operation ';'{
-        driver.setCanevasLong($2->calculer(driver.getContexte()));
-        driver.setCanevasHaut($3->calculer(driver.getContexte()));
-     }
-     | RECTANGLE operation operation operation operation operation operation operation operation ';'{
+    RECTANGLE operation operation operation operation operation operation operation operation {
         $$ = std::make_shared<Rectangle>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
@@ -137,7 +151,7 @@ forme:
             $9->calculer(driver.getContexte())
         );
     }
-    | CARRE operation operation operation ';'{
+    | CARRE operation operation operation {
 
         $$ = std::make_shared<Carre>(
         $2->calculer(driver.getContexte()),
@@ -147,7 +161,7 @@ forme:
         driver.ajoutCarre($$);
 
     }
-    | TRIANGLE operation operation operation operation ';'{
+    | TRIANGLE operation operation operation operation {
         $$ = std::make_shared<Triangle>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
@@ -155,14 +169,14 @@ forme:
             $5->calculer(driver.getContexte())
         );
     }
-    | CERCLE operation operation operation ';'{
+    | CERCLE operation operation operation {
         $$ = std::make_shared<Cercle>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
             $4->calculer(driver.getContexte())
         );
     }
-    | ELLIPSE operation operation operation operation ';'{
+    | ELLIPSE operation operation operation operation {
         $$ = std::make_shared<Ellipse>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
@@ -170,7 +184,7 @@ forme:
             $5->calculer(driver.getContexte())
         );
     }
-    | LIGNE operation operation operation operation ';'{
+    | LIGNE operation operation operation operation {
         $$ = std::make_shared<Ligne>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
@@ -178,23 +192,17 @@ forme:
             $5->calculer(driver.getContexte())
         );
     }
-    | CHEMIN coordonnee_chemin ';'{
+    | CHEMIN coordonnee_chemin {
         /* std::cout << "chemin" << std::endl; */
         $$ = std::make_shared<Chemin>($2);
     }
-    | TEXTE operation operation TEXTECHAINE TEXTECHAINE ';'{
+    | TEXTE operation operation CHAINE CHAINE {
         $$ = std::make_shared<Texte>(
             $2->calculer(driver.getContexte()),
             $3->calculer(driver.getContexte()),
             $4, $5
         );
     }
-    /* |forme FLECHE attribut ';'{ */
-    /*  */
-    /* } */
-    /* |forme '{' attribut '}' { */
-    /*  */
-    /* } */
 
 coordonnee_chemin:
     operation operation ',' coordonnee_chemin {
@@ -209,30 +217,30 @@ coordonnee_chemin:
         $$.push_back($2->calculer(driver.getContexte()));
     }
 
-/* attribut: */
-/*     COULEUR ':' CHAINE { */
-/*         $$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur); */
-/*     } */
-/*     |ROTATION ':' CHAINE { */
-/*         std::ostringstream o; */
-/*         o << "rotate(" << $3 << $$.centreX() << "," << $$.centreY() << ")"; // ajouter centre de la forme */
-/*         $$.addAttribut("transform", o.str()); */
-/*     } */
-/*     |REMPLISSAGE ':' CHAINE { */
-/*         $$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur); */
-/*     } */
-/*     |OPACITE ':' CHAINE { */
-/*         $$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple) */
-/*     } */
-/*     |EPAISSEUR ':' CHAINE { */
+attributs:
+    forme FLECHE attribut ';'{
+    }
+    |forme '{' attribut '}' {
+    }
+
+attribut:
+    COULEUR ':' CHAINE {
+        //$$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur);
+    }
+    |ROTATION ':' CHAINE {
+        //std::ostringstream o;
+        //o << "rotate(" << $3 << $$.centreX() << "," << $$.centreY() << ")"; // ajouter centre de la forme */
+        //$$.addAttribut("transform", o.str());
+    }
+    |REMPLISSAGE ':' CHAINE {
+        //$$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur);
+    }
+    |OPACITE ':' CHAINE {
+        //$$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple) */
+     }
+    |EPAISSEUR ':' CHAINE {
 /*         $$.addAttribut("stroke-width", $3); */
-/*     } */
-/*     |attribut '&' attribut { */
-/*  */
-/*     } */
-/*     |attribut ';' attribut { */
-/*  */
-/*     } */
+    }
 
 
 

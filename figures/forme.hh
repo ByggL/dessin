@@ -6,11 +6,12 @@
 #include <vector>
 #include <map>
 
+using mapStrStr = std::map<std::string, std::string>;
 
 class Forme {
 public:
     // Proposition Samuel
-    std::map<std::string, std::string> _attributs;
+    mapStrStr _attributs;
     Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
 
     // Proposition Ruben
