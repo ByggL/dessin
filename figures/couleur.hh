@@ -12,6 +12,11 @@ public:
     ~Couleur() = default;
 
     std::string rgb2hex(unsigned int r, unsigned int g, unsigned int b);
+    std::string stringColorToHex(std::string couleur);
+
+    Couleur & operator=(std::string const & col);
+    bool operator==(std::string const & col);
+    bool operator!=(std::string const & col);
 };
 
 using couleurPtr = std::shared_ptr<Couleur>;
