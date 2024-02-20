@@ -42,6 +42,7 @@ std::string Couleur::stringColorToHex(std::string couleur) {  // convertit une c
     }
 }
 
+
 Couleur::Couleur(std::string couleur) {
     _couleur = stringColorToHex(couleur);
 }
