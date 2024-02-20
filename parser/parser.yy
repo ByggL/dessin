@@ -74,15 +74,16 @@
 %token                  OPACITE
 %token                  EPAISSEUR
 
-%token                  COULEUR_HEX
+%token <std::string>    COULEUR_HEX
 %token                  COULEUR_RGB
-%token                  COULEUR_NOM
+%token <std::string>    COULEUR_NOM
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme
-/* %type <mapStrStr>       attributs */
-/* %type <std::pair<std::string,std::string>>      attribut */
+%type <couleurPtr>      couleur
+%type <>                attributs
+%type <>                attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -120,7 +121,7 @@ expression:
 
 affectation:
     IDENT '=' dessin {
-        std::cout << "Affectation à réaliser" << std::endl;
+
     }
 
 dessin:
@@ -149,15 +150,17 @@ forme:
             $8->calculer(driver.getContexte()),
             $9->calculer(driver.getContexte())
         );
+        driver.ajoutRectangle($$);
+        driver.ajoutForme($$);
     }
     | CARRE operation operation operation {
-
         $$ = std::make_shared<Carre>(
         $2->calculer(driver.getContexte()),
         $3->calculer(driver.getContexte()),
         $4->calculer(driver.getContexte())
         );
         driver.ajoutCarre($$);
+        driver.ajoutForme($$);
 
     }
     | TRIANGLE operation operation operation operation {
@@ -167,6 +170,8 @@ forme:
             $4->calculer(driver.getContexte()),
             $5->calculer(driver.getContexte())
         );
+        driver.ajoutTriangle($$);
+        driver.ajoutForme($$);
     }
     | CERCLE operation operation operation {
         $$ = std::make_shared<Cercle>(
@@ -174,6 +179,8 @@ forme:
             $3->calculer(driver.getContexte()),
             $4->calculer(driver.getContexte())
         );
+        driver.ajoutCercle($$);
+        driver.ajoutForme($$);
     }
     | ELLIPSE operation operation operation operation {
         $$ = std::make_shared<Ellipse>(
@@ -182,6 +189,8 @@ forme:
             $4->calculer(driver.getContexte()),
             $5->calculer(driver.getContexte())
         );
+        driver.ajoutEllipse($$);
+        driver.ajoutForme($$);
     }
     | LIGNE operation operation operation operation {
         $$ = std::make_shared<Ligne>(
@@ -190,10 +199,14 @@ forme:
             $4->calculer(driver.getContexte()),
             $5->calculer(driver.getContexte())
         );
+        driver.ajoutLigne($$);
+        driver.ajoutForme($$);
     }
     | CHEMIN coordonnee_chemin {
         /* std::cout << "chemin" << std::endl; */
         $$ = std::make_shared<Chemin>($2);
+        driver.ajoutChemin($$);
+        driver.ajoutForme($$);
     }
     | TEXTE operation operation CHAINE CHAINE {
         $$ = std::make_shared<Texte>(
@@ -201,6 +214,8 @@ forme:
             $3->calculer(driver.getContexte()),
             $4, $5
         );
+        driver.ajoutTexte($$);
+        driver.ajoutForme($$);
     }
 
 coordonnee_chemin:
@@ -223,24 +238,31 @@ attributs:
     }
 
 attribut:
-    COULEUR ':' CHAINE {
-        //$$.addAttribut("stroke", std::make_shared<Couleur>($3)->_couleur);
+    COULEUR ':' couleur {
     }
     |ROTATION ':' CHAINE {
-        //std::ostringstream o;
-        //o << "rotate(" << $3 << $$.centreX() << "," << $$.centreY() << ")"; // ajouter centre de la forme */
-        //$$.addAttribut("transform", o.str());
     }
     |REMPLISSAGE ':' CHAINE {
-        //$$.addAttribut("fill", std::make_shared<Couleur>($3)->_couleur);
     }
     |OPACITE ':' CHAINE {
-        //$$.addAttribut("opacity", stoi($3.substr(0,2))/100);  // on transforme "50%" en 0.5 (par exemple) */
      }
     |EPAISSEUR ':' CHAINE {
-/*         $$.addAttribut("stroke-width", $3); */
     }
 
+
+couleur:
+    COULEUR_HEX {
+        $$ = std::make_shared<Couleur>($1);
+    }
+    | COULEUR_RGB '(' operation ',' operation ',' operation ')' {
+        $$ = std::make_shared<Couleur>(
+        std::to_string($3->calculer(driver.getContexte())),
+        std::to_string($5->calculer(driver.getContexte())),
+        std::to_string($7->calculer(driver.getContexte())));
+    }
+    | COULEUR_NOM  {
+        $$ = std::make_shared<Couleur>($1);
+    }
 
 
 operation:

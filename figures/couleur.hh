@@ -14,4 +14,4 @@ public:
     std::string rgb2hex(unsigned int r, unsigned int g, unsigned int b);
 };
 
-using couleurPTR = std::shared_ptr<Couleur>;
+using couleurPtr = std::shared_ptr<Couleur>;
