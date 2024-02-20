@@ -81,8 +81,8 @@
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme
-%type <mapStrStr>       attributs
-%type <std::pair<std::string,std::string>>      attribut
+/* %type <mapStrStr>       attributs */
+/* %type <std::pair<std::string,std::string>>      attribut */
 %left '-' '+'
 %left '*' '/'
 
@@ -131,7 +131,6 @@ dessin:
     |forme {
     }
     | forme attributs {
-        $1->_attributs = $2;
     }
 
 
