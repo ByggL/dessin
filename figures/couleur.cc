@@ -6,32 +6,44 @@
 
 std::regex pat("#[A-F0-9]{6}");
 
-
-Couleur::Couleur(std::string couleur) {
+std::string Couleur::stringColorToHex(std::string couleur) {  // convertit une couleur nommée en sa valeur hex
     if(couleur == "rouge") {
-        _couleur = "#FF0000";
+        return "#FF0000";
     }
     else if (couleur == "bleu") {
-        _couleur = "#0000FF";
+        return "#0000FF";
     }
     else if (couleur == "vert") {
-        _couleur = "#008000";
+        return "#008000";
     }
     else if (couleur == "jaune") {
-        _couleur = "#FFFF00";
+        return "#FFFF00";
+    }
+    else if (couleur == "violet") {
+        return "#B200ED";
+    }
+    else if (couleur == "magenta") {
+        return "#8b008b";
+    }
+    else if (couleur == "cyan") {
+        return "#00FFFF";
     }
     else if (couleur == "blanc") {
-        _couleur = "#FFFFFF";
+        return "#FFFFFF";
     }
     else if (couleur == "noir") {
-        _couleur = "#000000";
+        return "#000000";
     }
     else if (std::regex_match(couleur, pat)) {
-        _couleur = couleur;
+        return couleur;
     }
     else {
         throw std::invalid_argument("Nom ou valeur hexadécimale de couleur invalide");
     }
+}
+
+Couleur::Couleur(std::string couleur) {
+    _couleur = stringColorToHex(couleur);
 }
     
 Couleur::Couleur(int r, int g, int b) {
@@ -47,4 +59,16 @@ std::string Couleur::rgb2hex(unsigned int r, unsigned int g, unsigned int b)
     ss << "#"; 
     ss << std::hex << (r << 16 | g << 8 | b ); 
     return ss.str();
+}
+
+Couleur & Couleur::operator=(std::string const & col) {
+    _couleur = stringColorToHex(col);
+}
+
+bool Couleur::operator==(std::string const & col) {
+    return _couleur == stringColorToHex(col);
+}
+
+bool Couleur::operator!=(std::string const & col) {
+    return _couleur != stringColorToHex(col);
 }
