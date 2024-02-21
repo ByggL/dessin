@@ -17,29 +17,35 @@ void Forme::addAttribut(std::shared_ptr<Attribut> attribut) {
 }
 
 std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeur1" attribut2="valeur2" »
-    std::ostringstream out;
+    std::string s = "";
+    bool isStroke, isFill;
+    isStroke = isFill = false;
 
     // TODO : checker de quel type d'attribut est chaque instance dans attributs
     for(unsigned int i = 0; i < attributs.size(); i++) {
-        if (/*attributs[i] == classe stroke*/) {
-            out << " stroke=\"" << std::dynamic_pointer_cast<Stroke>(attributs[i])->valeur._couleur << "\"";
+        if (attributs[i]->type() == "rotate") {
+            s += " tranform=\"rotate(" + attributs[i]->valeur() + "," + std::to_string(centreX()) + "," + std::to_string(centreY()) + "\"";
+        } else {
+            s +=  attributs[i]->type() + "=\"" + attributs[i]->valeur() + "\"";
         }
-        else if (/*attributs[i] == classe fill*/) {
-            out << " fill=\"" << std::dynamic_pointer_cast<Fill>(attributs[i])->valeur._couleur << "\"";
+
+        if (attributs[i]->type() == "fill") {
+            isFill = true;
         }
-        else if (/*attributs[i] == classe epaisseur*/) {
-            out << " stoke-width=\"" << std::dynamic_pointer_cast<Epaisseur>(attributs[i])->valeur << "\"";
-        }
-        else if (/*attributs[i] == classe opacite*/) {
-            out << " opacity=\"" << std::dynamic_pointer_cast<Opacite>(attributs[i])->valeur << "\"";
-        }
-        else if (/*attributs[i] == classe rotation*/) {
-            out << " tranform=\"rotate(" << std::dynamic_pointer_cast<Rotation>(attributs[i])->valeur << "," << centreX() << "," << centreY() << "\"";
+
+        if (attributs[i]->type() == "stroke") {
+            isStroke = true;
         }
     }
     // TODO : ajouter le cas où il n'y a PAS d'attribut fill
 
+    if (!isStroke) {
+        s += "stroke=\"black\"";
+    }
 
-    std::string s = out.str();
+    if (!isFill) {
+        s += "fill=\"none\"";
+    }
+
     return s;
 }
