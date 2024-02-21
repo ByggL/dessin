@@ -38,6 +38,7 @@ fin return token::END;
 "{" return '{';
 "}" return '}';
 ";" return ';';
+"%" return '%';
 
 
 "->"  {
@@ -70,6 +71,7 @@ fin return token::END;
 
 (?i:taille) { return token::TAILLE; }
 
+
 (?i:couleur) { return token::COULEUR; }
 
 (?i:rotation) { return token::ROTATION; }
@@ -79,6 +81,7 @@ fin return token::END;
 (?i:opacite) { return token::OPACITE; }
 
 (?i:epaisseur) { return token::EPAISSEUR; }
+
 
 "#"([0-9A-F]{2}){3}     {
     return token::COULEUR_HEX;

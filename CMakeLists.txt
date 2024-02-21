@@ -46,6 +46,7 @@ file(GLOB FIGURE_HEADERS
     figures/ellipse.hh
     figures/texte.hh
     figures/contexte_forme.hh
+    figures/couleur.hh
     )
 
 add_library(figures
@@ -60,6 +61,7 @@ add_library(figures
     figures/ellipse.cc
     figures/texte.cc
     figures/contexte_forme.cc
+    figures/couleur.cc
     ${EXPRESSION_HEADERS}
     )
 

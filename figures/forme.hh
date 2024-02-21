@@ -6,25 +6,19 @@
 #include <vector>
 #include <map>
 
-using mapStrStr = std::map<std::string, std::string>;
 
 class Forme {
 public:
-    // Proposition Samuel
-    // mapStrStr _attributs;
-    // Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
-
-    // Proposition Ruben
+    //TODO : Faire une class attribut -> attribut_couleur et attribut_int
     struct Attribut {
-        std::unique_ptr<Couleur> couleur;
-        std::unique_ptr<Couleur> remplissage;
+        std::shared_ptr<Couleur> couleur;
+        std::shared_ptr<Couleur> remplissage;
         int rotation;
-        float opacite;
+        int opacite;
         int epaisseur;
     };
 
-    Attribut attributs;
-
+    Attribut _attributs;
     Forme();
     virtual ~Forme() = default;
 
@@ -33,9 +27,10 @@ public:
     // virtual int centreX();
     // virtual int centreY();
 
-    void addAttribut(std::string attribut, std::string valeur);
-    void addAttribut(std::string attribut, int valeur);
     std::string toSVG();
 };
 
+using Attribut = Forme::Attribut;
 using formePtr = std::shared_ptr<Forme>;
+
+

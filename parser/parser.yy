@@ -57,14 +57,7 @@
 %token                  ELSE
 
 
-%token                  RECTANGLE
-%token                  CARRE
-%token                  TRIANGLE
-%token                  CERCLE
-%token                  ELLIPSE
-%token                  LIGNE
-%token                  CHEMIN
-%token                  TEXTE
+%token                  RECTANGLE CARRE TRIANGLE CERCLE ELLIPSE LIGNE CHEMIN TEXTE
 
 %token                  TAILLE
 
@@ -77,13 +70,16 @@
 %token <std::string>    COULEUR_HEX
 %token                  COULEUR_RGB
 %token <std::string>    COULEUR_NOM
+%type <couleurPtr>      couleur
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme
-%type <couleurPtr>      couleur
-%type <>                attributs
-%type <>                attribut
+%type <formePtr>        dessin
+%type <Attribut>        attributs
+%type <Attribut>        attributsFlc
+%type <Attribut>        attributsCSS
+%type <Attribut>        attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -98,16 +94,12 @@ programme:
 instruction:
     expression  {
     }
-    | affectation {
-    }
     | dessin {
     }
-    /* | IF '(' operation ')' THEN '{' instruction '}' { */
-    /*     $$ = std::make_shared<ExpressionTernaire>($3,$7,OperateurBinaire::ifthen) */
-    /* } */
-    /* | IF '(' operation ')' THEN '{' instruction '}' ELSE '{' instruction '}' { */
-    /*     $$ = std::make_shared<ExpressionTernaire>($3,$7,$11,OperateurBinaire::ifthen) */
-    /* } */
+    | affectation {
+    }
+    | test {
+    }
 
 expression:
     operation {
@@ -121,7 +113,7 @@ expression:
 
 affectation:
     IDENT '=' dessin {
-
+        driver.ajoutFormeNomer($1,$3);
     }
 
 dessin:
@@ -129,13 +121,13 @@ dessin:
         driver.setCanevasLong($2->calculer(driver.getContexte()));
         driver.setCanevasHaut($3->calculer(driver.getContexte()));
     }
-    |forme {
+    |forme ';' {
+        $$ = $1;
     }
     | forme attributs {
+        $1->_attributs = $2;
+        $$ = $1;
     }
-
-
-
 
 
 forme:
@@ -161,7 +153,6 @@ forme:
         );
         driver.ajoutCarre($$);
         driver.ajoutForme($$);
-
     }
     | TRIANGLE operation operation operation operation {
         $$ = std::make_shared<Triangle>(
@@ -232,21 +223,39 @@ coordonnee_chemin:
     }
 
 attributs:
-    forme FLECHE attribut ';'{
+    FLECHE attributsFlc {
     }
-    |forme '{' attribut '}' {
+    |'{' attributsCSS '}' {
     }
+
+attributsFlc:
+    attribut ';' {
+    }
+    | attribut '&' attributsFlc {
+    }
+
+attributsCSS:
+    attribut ';' {
+    }
+    | attribut ';' NL attributsCSS {
+    }
+
 
 attribut:
     COULEUR ':' couleur {
+        $$.couleur = $3;
     }
-    |ROTATION ':' CHAINE {
+    |ROTATION ':' NUMBER {
+        $$.rotation = $3;
     }
-    |REMPLISSAGE ':' CHAINE {
+    |REMPLISSAGE ':' couleur {
+        $$.remplissage = $3;
     }
-    |OPACITE ':' CHAINE {
-     }
-    |EPAISSEUR ':' CHAINE {
+    |OPACITE ':' NUMBER {
+        $$.opacite = $3;
+    }
+    |EPAISSEUR ':' NUMBER {
+        $$.epaisseur = $3;
     }
 
 
@@ -256,9 +265,9 @@ couleur:
     }
     | COULEUR_RGB '(' operation ',' operation ',' operation ')' {
         $$ = std::make_shared<Couleur>(
-        std::to_string($3->calculer(driver.getContexte())),
-        std::to_string($5->calculer(driver.getContexte())),
-        std::to_string($7->calculer(driver.getContexte())));
+        $3->calculer(driver.getContexte()),
+        $5->calculer(driver.getContexte()),
+        $7->calculer(driver.getContexte()));
     }
     | COULEUR_NOM  {
         $$ = std::make_shared<Couleur>($1);
@@ -283,6 +292,11 @@ operation:
     }
     | operation '/' operation {
         $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
+    }
+
+test:
+    CHAINE {
+        std::cout << "test : " << $1 << std::endl;
     }
 
 %%
