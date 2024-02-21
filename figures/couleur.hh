@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <memory>
 
 // par soucis de simplicité, toutes les couleurs seront converties en hex
 class Couleur {
@@ -9,6 +10,7 @@ public:
     Couleur() = default;
     Couleur(std::string couleur);  // au format texte, par exemple "rouge"
     Couleur(int r, int g, int b);  // au format RGB
+    Couleur(const Couleur & col);
     ~Couleur() = default;
 
     std::string rgb2hex(unsigned int r, unsigned int g, unsigned int b);
