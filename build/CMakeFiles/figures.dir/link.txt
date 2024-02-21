@@ -1,2 +1,0 @@
-/usr/bin/ar qc libfigures.a CMakeFiles/figures.dir/figures/forme.cc.o CMakeFiles/figures.dir/figures/rectangle.cc.o CMakeFiles/figures.dir/figures/ligne.cc.o CMakeFiles/figures.dir/figures/chemin.cc.o CMakeFiles/figures.dir/figures/forme_simple_coord.cc.o CMakeFiles/figures.dir/figures/carre.cc.o CMakeFiles/figures.dir/figures/triangle.cc.o CMakeFiles/figures.dir/figures/cercle.cc.o CMakeFiles/figures.dir/figures/ellipse.cc.o CMakeFiles/figures.dir/figures/texte.cc.o CMakeFiles/figures.dir/figures/contexte_forme.cc.o
-/usr/bin/ranlib libfigures.a
