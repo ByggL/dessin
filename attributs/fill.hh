@@ -1,3 +1,4 @@
+#pragma once
 #include "attributCouleur.hh"
 
 
@@ -6,5 +7,6 @@ public:
     Fill(const Couleur & col);
     Fill(std::string col);
 
-    std::string toSVG();
+    std::string type() const override;
+    std::string valeur() const override;
 };

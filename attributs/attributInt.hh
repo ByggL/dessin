@@ -1,9 +1,10 @@
+#pragma once
 #include "attribut.hh"
 
 
 class AttributInt : public Attribut {
 public:
-    int valeur;
+    int _valeur;
 
     AttributInt(int val);
 };

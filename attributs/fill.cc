@@ -5,10 +5,10 @@ Fill::Fill(const Couleur & col)
 Fill::Fill(std::string col)
     : AttributCouleur(col) {}
 
-std::string Fill::toSVG() {
-    std::ostringstream out;
+std::string Fill::type() const {
+    return "fill";
+}
 
-    out << " fill=\"" << valeur._couleur << "\"";
-
-    return out.str();
+std::string Fill::valeur() const {
+    return _valeur._couleur;
 }

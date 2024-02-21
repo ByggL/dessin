@@ -2,4 +2,4 @@
 
 
 AttributInt::AttributInt(int val)
-    : Attribut(), valeur(val) {}
+    : Attribut(), _valeur(val) {}
