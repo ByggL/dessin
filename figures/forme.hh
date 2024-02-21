@@ -2,6 +2,7 @@
 #include <memory>
 #include "couleur.hh"
 #include "contexte.hh"
+#include "attribut.hh"
 #include <string>
 #include <vector>
 #include <map>
@@ -10,20 +11,8 @@ using mapStrStr = std::map<std::string, std::string>;
 
 class Forme {
 public:
-    // Proposition Samuel
-    // mapStrStr _attributs;
-    // Forme(std::vector<std::string> attributs, std::vector<std::string> valeurs);
 
-    // Proposition Ruben
-    struct Attribut {
-        std::unique_ptr<Couleur> couleur;
-        std::unique_ptr<Couleur> remplissage;
-        int rotation;
-        float opacite;
-        int epaisseur;
-    };
-
-    Attribut attributs;
+    std::vector<std::shared_ptr<Attribut>> attributs;
 
     Forme();
     virtual ~Forme() = default;
@@ -31,8 +20,7 @@ public:
     virtual int centreX() = 0;
     virtual int centreY() = 0;
 
-    void addAttribut(std::string attribut, std::string valeur);
-    void addAttribut(std::string attribut, int valeur);
+    void addAttribut(std::shared_ptr<Attribut> attribut);
     std::string toSVG();
 };
 

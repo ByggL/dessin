@@ -2,59 +2,43 @@
 #include <stdexcept>
 #include <iostream>
 #include <sstream>
+#include "attribut.hh"
+#include "stroke.hh"
+#include "fill.hh"
+#include "opacite.hh"
+#include "epaisseur.hh"
+#include "rotation.hh"
 
 
-Forme::Forme() {
-    attributs.couleur = std::make_unique<Couleur>("noir");
-    attributs.remplissage = nullptr;
-    attributs.rotation = 0;
-    attributs.opacite = 1.0f;
-    attributs.epaisseur = 1;
-}
+Forme::Forme() {}
 
-void Forme::addAttribut(std::string attribut, std::string valeur) {
-    if(attribut == "couleur") {
-        attributs.couleur = std::make_unique<Couleur>(valeur);
-    }
-    else if(attribut == "remplissage") {
-        attributs.remplissage = std::make_unique<Couleur>(valeur);
-    }
-}
-
-void Forme::addAttribut(std::string attribut, int valeur) {
-    if(attribut == "rotation") {
-        attributs.rotation = valeur;
-    }
-    else if(attribut == "opacite") {
-        attributs.opacite = valeur/100;
-    }
-    else if(attribut == "epaisseur") {
-        attributs.epaisseur = valeur;
-    }
+void Forme::addAttribut(std::shared_ptr<Attribut> attribut) {
+    attributs.push_back(attribut);
 }
 
 std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeur1" attribut2="valeur2" »
     std::ostringstream out;
 
-    out << " stroke=\"" << attributs.couleur->_couleur << "\"";
-
-    out << " fill=\"";
-    if(attributs.remplissage == nullptr) out << "none";
-    else out << attributs.remplissage->_couleur;
-    out << "\"";
-
-    // pas la peine d'ajouter au SVG si les attributs ont leurs valeurs par défaut
-    if(attributs.rotation != 0) {
-        out << " tranform=\"rotate(" << attributs.rotation << "," << centreX() << "," << centreY() << ")\""; 
+    // TODO : checker de quel type d'attribut est chaque instance dans attributs
+    for(unsigned int i = 0; i < attributs.size(); i++) {
+        if (/*attributs[i] == classe stroke*/) {
+            out << " stroke=\"" << std::dynamic_pointer_cast<Stroke>(attributs[i])->valeur._couleur << "\"";
+        }
+        else if (/*attributs[i] == classe fill*/) {
+            out << " fill=\"" << std::dynamic_pointer_cast<Fill>(attributs[i])->valeur._couleur << "\"";
+        }
+        else if (/*attributs[i] == classe epaisseur*/) {
+            out << " stoke-width=\"" << std::dynamic_pointer_cast<Epaisseur>(attributs[i])->valeur << "\"";
+        }
+        else if (/*attributs[i] == classe opacite*/) {
+            out << " opacity=\"" << std::dynamic_pointer_cast<Opacite>(attributs[i])->valeur << "\"";
+        }
+        else if (/*attributs[i] == classe rotation*/) {
+            out << " tranform=\"rotate(" << std::dynamic_pointer_cast<Rotation>(attributs[i])->valeur << "," << centreX() << "," << centreY() << "\"";
+        }
     }
+    // TODO : ajouter le cas où il n'y a PAS d'attribut fill
 
-    if(attributs.opacite != 1.0f) {
-        out << " opacity=\"" << attributs.opacite << "\"";
-    }
-
-    if(attributs.epaisseur != 1) {
-        out << " stoke-width=\"" << attributs.epaisseur << "\" ";
-    }
 
     std::string s = out.str();
     return s;
