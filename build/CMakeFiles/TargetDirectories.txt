@@ -1,5 +1,0 @@
-/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/expressions.dir
-/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/figures.dir
-/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/dessin.dir
-/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/edit_cache.dir
-/home/ruben/Documents/Licence_Informatique/L3/Info/compilation/tp/dessin/build/CMakeFiles/rebuild_cache.dir

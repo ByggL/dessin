@@ -38,6 +38,9 @@ Couleur::Couleur(int r, int g, int b) {
     _couleur = rgb2hex(r,g,b);
 }
 
+Couleur::Couleur(const Couleur & col)
+    : _couleur(col._couleur) {}
+
 std::string Couleur::rgb2hex(int r, int g, int b)
 {
     if((r > 255) | (g > 255) | (b > 255)){

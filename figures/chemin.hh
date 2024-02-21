@@ -13,6 +13,9 @@ public:
     void ajout(int x, int y);
 
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };
 
 using coordChemin = std::vector<int>;

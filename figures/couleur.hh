@@ -10,6 +10,7 @@ public:
     Couleur() = default;
     Couleur(const std::string & couleur);  // au format texte, par exemple "rouge"
     Couleur(int r, int g, int b);  // au format RGB
+    Couleur(const Couleur & col);
     ~Couleur() = default;
 
     std::string rgb2hex(int r, int g, int b);

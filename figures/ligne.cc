@@ -15,3 +15,7 @@ std::string Ligne::toSVG() {
     std::string s = out.str();
     return s;
 }
+
+
+int Ligne::centreX() { return positionX1 + (positionX2/2); }
+int Ligne::centreY() { return positionY1 + (positionY2/2); }

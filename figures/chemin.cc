@@ -29,3 +29,7 @@ std::string Chemin::toSVG() {
     std::string s = out.str();
     return s;
 }
+
+// trop complexe de calculer le centre d'un polygone irrégulier. On se contentera du point d'origine
+int Chemin::centreX() { return coords[0]; }
+int Chemin::centreY() { return coords[1]; }
