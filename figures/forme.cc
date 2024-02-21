@@ -40,11 +40,11 @@ std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeu
     // TODO : ajouter le cas où il n'y a PAS d'attribut fill
 
     if (!isStroke) {
-        s += "stroke=\"black\"";
+        s = "stroke=\"black\"" + s;
     }
 
     if (!isFill) {
-        s += "fill=\"none\"";
+        s = "fill=\"none\"" + s;
     }
 
     return s;
