@@ -12,4 +12,7 @@ public:
     Ligne(const Ligne & r);
     ~Ligne() = default;
     std::string toSVG();
+
+    int centreX();
+    int centreY();
 };

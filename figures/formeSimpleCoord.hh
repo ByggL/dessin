@@ -8,4 +8,7 @@ public:
     int positionY;
 
     FormeSimpleCoord(int posX, int posY);
+
+    virtual int centreX() = 0;
+    virtual int centreY() = 0;
 };

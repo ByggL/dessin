@@ -28,10 +28,8 @@ public:
     Forme();
     virtual ~Forme() = default;
 
-    // Ne Compile pas
-    // TODO : Une fonction virtual doit etre définie.
-    // virtual int centreX();
-    // virtual int centreY();
+    virtual int centreX() = 0;
+    virtual int centreY() = 0;
 
     void addAttribut(std::string attribut, std::string valeur);
     void addAttribut(std::string attribut, int valeur);

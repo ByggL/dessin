@@ -45,7 +45,7 @@ std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeu
 
     // pas la peine d'ajouter au SVG si les attributs ont leurs valeurs par défaut
     if(attributs.rotation != 0) {
-        // trouver le moyen de choper le centre
+        out << " tranform=\"rotate(" << attributs.rotation << "," << centreX() << "," << centreY() << ")\""; 
     }
 
     if(attributs.opacite != 1.0f) {
