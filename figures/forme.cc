@@ -16,6 +16,7 @@ void Forme::addAttribut(std::shared_ptr<Attribut> attribut) {
     attributs.push_back(attribut);
 }
 
+
 std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeur1" attribut2="valeur2" »
     std::string s = "";
     bool isStroke, isFill;
@@ -46,6 +47,7 @@ std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeu
     if (!isFill) {
         s = "fill=\"none\"" + s;
     }
+
 
     return s;
 }

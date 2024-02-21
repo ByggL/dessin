@@ -7,7 +7,6 @@
 #include <vector>
 #include <map>
 
-using mapStrStr = std::map<std::string, std::string>;
 
 class Forme {
 public:
@@ -25,3 +24,4 @@ public:
 };
 
 using formePtr = std::shared_ptr<Forme>;
+

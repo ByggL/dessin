@@ -46,6 +46,7 @@ file(GLOB FIGURE_HEADERS
     figures/ellipse.hh
     figures/texte.hh
     figures/contexte_forme.hh
+    figures/couleur.hh
     )
 
 add_library(figures
@@ -84,6 +85,8 @@ add_library(attributs
     attributs/opacite.cc
     attributs/rotation.cc
     ${ATTRIBUT_HEADERS}
+    figures/couleur.cc
+    ${EXPRESSION_HEADERS}
     )
 
 BISON_TARGET(parser parser/parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp VERBOSE ${CMAKE_CURRENT_BINARY_DIR}/automate.txt)
