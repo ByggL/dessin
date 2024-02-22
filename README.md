@@ -1,17 +1,17 @@
 # Trucs à faire
 
--   Gestion de la rotation au format SVG (trouver centre forme)
+-   if then else dans le parser
+-   gestion boucles
+-   gestion fonctions
 
 # Notes importantes
 
-## Classe Forme :
-
-sert à stocker les attributs sous forme de `std::map`
+...
 
 # Barème et todo
 
 -   Gestion des figures simples : 5 points ✅
--   Gestion des attributs : 3 points
+-   Gestion des attributs : 3 points ✅
 -   Gestion des couleurs : 2 points ✅
 -   Gestion des variables : 2 points
 -   Gestion des conditionnelles : 2 points ✅
