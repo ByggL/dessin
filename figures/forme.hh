@@ -11,7 +11,7 @@
 class Forme {
 public:
 
-    std::vector<std::shared_ptr<Attribut>> attributs;
+    std::vector<attributPtr> _attributs;
 
     Forme();
     virtual ~Forme() = default;
@@ -19,8 +19,9 @@ public:
     virtual int centreX() = 0;
     virtual int centreY() = 0;
 
-    void addAttribut(std::shared_ptr<Attribut> attribut);
+    void addAttribut(attributPtr _attribut);
     std::string toSVG();
+
 };
 
 using formePtr = std::shared_ptr<Forme>;

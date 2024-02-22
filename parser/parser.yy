@@ -26,6 +26,12 @@
     #include "chemin.hh"
     #include "contexte_forme.hh"
     #include "couleur.hh"
+    #include "attribut.hh"
+    #include "stroke.hh"
+    #include "fill.hh"
+    #include "rotation.hh"
+    #include "epaisseur.hh"
+    #include "opacite.hh"
 
     class Scanner;
     class Driver;
@@ -74,12 +80,8 @@
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
-%type <formePtr>        forme
-%type <formePtr>        dessin
-%type <Attribut>        attributs
-%type <Attribut>        attributsFlc
-%type <Attribut>        attributsCSS
-%type <Attribut>        attribut
+%type <formePtr>        forme dessin
+%type <attributPtr>     attributs attributsFlc attributsCSS attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -125,7 +127,6 @@ dessin:
         $$ = $1;
     }
     | forme attributs {
-        $1->_attributs = $2;
         $$ = $1;
     }
 
@@ -243,19 +244,19 @@ attributsCSS:
 
 attribut:
     COULEUR ':' couleur {
-        $$.couleur = $3;
+        $$ = std::make_shared<Stroke>(*$3);
     }
     |ROTATION ':' NUMBER {
-        $$.rotation = $3;
+        $$ = std::make_shared<Rotation>($3);
     }
     |REMPLISSAGE ':' couleur {
-        $$.remplissage = $3;
+        $$ = std::make_shared<Fill>(*$3);
     }
     |OPACITE ':' NUMBER {
-        $$.opacite = $3;
+        $$ = std::make_shared<Opacite>($3);
     }
     |EPAISSEUR ':' NUMBER {
-        $$.epaisseur = $3;
+        $$ = std::make_shared<Epaisseur>($3);
     }
 
 

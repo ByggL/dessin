@@ -65,6 +65,7 @@ add_library(figures
     )
 
 file(GLOB ATTRIBUT_HEADERS
+    attributs/couleur.hh
     attributs/attribut.hh
     attributs/attributCouleur.hh
     attributs/attributInt.hh
@@ -77,6 +78,7 @@ file(GLOB ATTRIBUT_HEADERS
 
 
 add_library(attributs
+    attributs/couleur.cc
     attributs/attributCouleur.cc
     attributs/attributInt.cc
     attributs/stroke.cc
@@ -85,8 +87,6 @@ add_library(attributs
     attributs/opacite.cc
     attributs/rotation.cc
     ${ATTRIBUT_HEADERS}
-    figures/couleur.cc
-    ${EXPRESSION_HEADERS}
     )
 
 BISON_TARGET(parser parser/parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp VERBOSE ${CMAKE_CURRENT_BINARY_DIR}/automate.txt)
