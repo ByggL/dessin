@@ -18,7 +18,7 @@ const std::shared_ptr<Forme> Contexte_forme::operator[](const std::string & nom)
     return formes_nomer.at(nom);
 }
 
-std::string Contexte_forme::toSVG() {
+std::string Contexte_forme::toSVG() const {
     std::ostringstream out;
 
     out << "<svg version=\"1.1\" width=\"" << longueur << "\" height=\"" << hauteur
@@ -26,6 +26,13 @@ std::string Contexte_forme::toSVG() {
 
     for(unsigned int i = 0; i < formes.size(); i++) {
         out << formes[i]->toSVG();
+
+        auto texte = std::dynamic_pointer_cast<Texte>(formes[i]);
+        if (texte) { // texte
+            out << ">" << texte->content << "</text>\n";
+        } else {
+            out << "/>\n";
+        }
     }
 
     out << "\n</svg>";

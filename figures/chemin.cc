@@ -15,7 +15,7 @@ Chemin::Chemin(const std::vector<int> & c)
     : Forme::Forme(), coords(c) {}
 
 
-std::string Chemin::toSVG() {
+std::string Chemin::to_string() const {
     std::ostringstream out;
 
     out << "<path d=\"M " << coords[0] << " " << coords[1] << " ";
@@ -24,7 +24,7 @@ std::string Chemin::toSVG() {
         out << "L " << coords[i] << " " << coords[i+1] << " ";
     }
 
-    out << "\" " << Forme::toSVG() << " />";
+    out << "\"";
 
     std::string s = out.str();
     return s;

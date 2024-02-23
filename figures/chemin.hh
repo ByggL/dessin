@@ -12,7 +12,7 @@ public:
 
     void ajout(int x, int y);
 
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();

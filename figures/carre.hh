@@ -9,8 +9,7 @@ public:
     Carre(int x, int y, int taille);
     Carre(const Carre & r);
     ~Carre() = default;
-    // Carre & operator=(const Carre & c);
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();

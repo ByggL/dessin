@@ -9,10 +9,10 @@ Carre::Carre(const Carre & r)
     : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), taille(r.taille) {}
 
 
-std::string Carre::toSVG() {
+std::string Carre::to_string() const{
     std::ostringstream out;
 
-    out << "<rect x=\"" << positionX << "\" y=\"" << positionY << "\" width=\"" << taille << "\" height=\"" << taille << "\" " << Forme::toSVG() << " />";
+    out << "<rect x=\"" << positionX << "\" y=\"" << positionY << "\" width=\"" << taille << "\" height=\"" << taille << "\"";
 
     std::string s = out.str();
     return s;

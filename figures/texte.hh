@@ -10,7 +10,7 @@ public:
     Texte(int posX, int posY, std::string content, std::string font);
     Texte(const Texte & r);
     ~Texte() = default;
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();

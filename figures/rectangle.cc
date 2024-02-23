@@ -11,10 +11,10 @@ Rectangle::Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int
     : Forme::Forme(), positionX1(x1), positionY1(y1), positionX2(x2), positionY2(y2), positionX3(x3), positionY3(y3), positionX4(x4), positionY4(y4) {}
 
 
-std::string Rectangle::toSVG() {
+std::string Rectangle::to_string() const {
     std::ostringstream out;
 
-    out << "<rect x=\"" << positionX1 << "\" y=\"" << positionY1 << "\" width=\"" << positionX2 - positionX1 << "\" height=\"" << positionY1 - positionY4 << "\" " << Forme::toSVG() << " />";
+    out << "<rect x=\"" << positionX1 << "\" y=\"" << positionY1 << "\" width=\"" << positionX2 - positionX1 << "\" height=\"" << positionY1 - positionY4 << "\"";
 
     std::string s = out.str();
     return s;

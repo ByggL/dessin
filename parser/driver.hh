@@ -18,6 +18,8 @@ public:
     double  getVariable(const std::string& name) const;
     void    setVariable(const std::string& name, double value);
 
+    const Contexte_forme & getForme() const;
+
     int getCanevasLong() const;
     int getCanevasHaut() const;
     void setCanevasLong(int l);
@@ -34,6 +36,7 @@ public:
     void ajoutLigne(std::shared_ptr<Forme> f);
     void ajoutChemin(std::shared_ptr<Forme> f);
     void ajoutTexte(std::shared_ptr<Forme> f);
+
 
 };
 

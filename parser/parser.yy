@@ -81,7 +81,8 @@
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme dessin
-%type <attributPtr>     attributs attributsFlc attributsCSS attribut
+%type <vectAttributPtr> attributs
+%type <attributPtr>     attributsFlc attributsCSS attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -127,6 +128,7 @@ dessin:
         $$ = $1;
     }
     | forme attributs {
+        $1->_attributs = $2;
         $$ = $1;
     }
 
@@ -199,6 +201,7 @@ forme:
         $$ = std::make_shared<Chemin>($2);
         driver.ajoutChemin($$);
         driver.ajoutForme($$);
+        std::cout << driver.getForme().toSVG() << std::endl;
     }
     | TEXTE operation operation CHAINE CHAINE {
         $$ = std::make_shared<Texte>(
@@ -216,6 +219,7 @@ coordonnee_chemin:
         $$ = std::vector<int>();
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
+        $$.insert($$.end(), $4.begin(), $4.end());
     }
     | operation operation {
         /* std::cout << "op op " << std::endl; */

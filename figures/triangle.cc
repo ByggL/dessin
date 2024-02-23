@@ -11,11 +11,11 @@ Triangle::Triangle(int posX, int posY, int hauteur, int largeur)
     : FormeSimpleCoord::FormeSimpleCoord(posX, posY), hauteur(hauteur), largeur(largeur) {}
 
 
-std::string Triangle::toSVG() {
+std::string Triangle::to_string() const {
     std::ostringstream out;
 
     out << "<polygon points=\"" << positionX << "," << positionY << " " << (positionX+(largeur/2)) << "," << (positionY+hauteur) << " " <<
-        (positionX+largeur) << "," << positionY << "\" />";
+        (positionX+largeur) << "," << positionY << "\"";
 
     std::string s = out.str();
 

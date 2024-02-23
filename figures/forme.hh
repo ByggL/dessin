@@ -20,9 +20,11 @@ public:
     virtual int centreY() = 0;
 
     void addAttribut(attributPtr _attribut);
+    virtual std::string to_string() const =0;
     std::string toSVG();
 
 };
 
 using formePtr = std::shared_ptr<Forme>;
+using vectAttributPtr = std::vector<attributPtr>;
 

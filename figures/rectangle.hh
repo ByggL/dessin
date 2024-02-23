@@ -21,5 +21,5 @@ public:
     int centreX();
     int centreY();
 
-    std::string toSVG();
+    std::string to_string() const override;
 };

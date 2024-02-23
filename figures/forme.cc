@@ -18,7 +18,7 @@ void Forme::addAttribut(std::shared_ptr<Attribut> attribut) {
 
 
 std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeur1" attribut2="valeur2" »
-    std::string s = "";
+    std::string s = this->to_string();
     bool isStroke, isFill;
     isStroke = isFill = false;
 
@@ -41,11 +41,11 @@ std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeu
     // TODO : ajouter le cas où il n'y a PAS d'attribut fill
 
     if (!isStroke) {
-        s = "stroke=\"black\"" + s;
+        s += "stroke=\"black\"";
     }
 
     if (!isFill) {
-        s = "fill=\"none\"" + s;
+        s += "fill=\"none\"";
     }
 
 

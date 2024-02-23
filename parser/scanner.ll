@@ -122,7 +122,7 @@ fin return token::END;
     return token::IDENT;
 }
 
-\"[a-zA-Z ]+\" {
+\"[a-zA-Z0-9 ]+\" {
     yylval->build<std::string>(YYText());
     return token::CHAINE;
 }

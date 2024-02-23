@@ -11,7 +11,7 @@ public:
     Ligne(int x1, int y1, int x2, int y2);
     Ligne(const Ligne & r);
     ~Ligne() = default;
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();
