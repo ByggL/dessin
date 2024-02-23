@@ -1,8 +1,10 @@
 # Trucs à faire
 
+
 -   if then else dans le parser
 -   gestion boucles
 -   gestion fonctions
+
 
 # Notes importantes
 
