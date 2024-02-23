@@ -71,6 +71,8 @@ fin return token::END;
 
 (?i:taille) { return token::TAILLE; }
 
+(?i:texte) { return token::TEXTE; }
+
 
 (?i:couleur) { return token::COULEUR; }
 

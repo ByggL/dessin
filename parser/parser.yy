@@ -217,7 +217,7 @@ coordonnee_chemin:
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
     }
-    |operation operation {
+    | operation operation {
         /* std::cout << "op op " << std::endl; */
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
@@ -246,16 +246,16 @@ attribut:
     COULEUR ':' couleur {
         $$ = std::make_shared<Stroke>(*$3);
     }
-    |ROTATION ':' NUMBER {
+    | ROTATION ':' NUMBER {
         $$ = std::make_shared<Rotation>($3);
     }
-    |REMPLISSAGE ':' couleur {
+    | REMPLISSAGE ':' couleur {
         $$ = std::make_shared<Fill>(*$3);
     }
-    |OPACITE ':' NUMBER {
+    | OPACITE ':' NUMBER {
         $$ = std::make_shared<Opacite>($3);
     }
-    |EPAISSEUR ':' NUMBER {
+    | EPAISSEUR ':' NUMBER {
         $$ = std::make_shared<Epaisseur>($3);
     }
 
@@ -298,6 +298,9 @@ operation:
 test:
     CHAINE {
         std::cout << "test : " << $1 << std::endl;
+    }
+    |CHAINE CHAINE {
+        std::cout << "test : " << $1 << " " << $2<< std::endl;
     }
 
 %%
