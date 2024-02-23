@@ -5,7 +5,7 @@ Epaisseur::Epaisseur(int val)
     : AttributInt(val) {}
 
 std::string Epaisseur::type() const {
-    return "stoke-width";
+    return "stroke-width";
 }
 
 std::string Epaisseur::valeur() const {
