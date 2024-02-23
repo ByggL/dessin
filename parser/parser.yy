@@ -81,8 +81,8 @@
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme dessin
-%type <vectAttributPtr> attributs
-%type <attributPtr>     attributsFlc attributsCSS attribut
+%type <vectAttributPtr> attributs attributsFlc attributsCSS
+%type <attributPtr>     attribut
 %left '-' '+'
 %left '*' '/'
 
@@ -100,8 +100,6 @@ instruction:
     | dessin {
     }
     | affectation {
-    }
-    | test {
     }
 
 expression:
@@ -197,11 +195,9 @@ forme:
         driver.ajoutForme($$);
     }
     | CHEMIN coordonnee_chemin {
-        /* std::cout << "chemin" << std::endl; */
         $$ = std::make_shared<Chemin>($2);
         driver.ajoutChemin($$);
         driver.ajoutForme($$);
-        std::cout << driver.getForme().toSVG() << std::endl;
     }
     | TEXTE operation operation CHAINE CHAINE {
         $$ = std::make_shared<Texte>(
@@ -215,34 +211,40 @@ forme:
 
 coordonnee_chemin:
     operation operation ',' coordonnee_chemin {
-        /* std::cout << "op op , cood_chemin" << std::endl; */
         $$ = std::vector<int>();
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
         $$.insert($$.end(), $4.begin(), $4.end());
     }
     | operation operation {
-        /* std::cout << "op op " << std::endl; */
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
     }
 
 attributs:
     FLECHE attributsFlc {
+        $$ = $2;
     }
     |'{' attributsCSS '}' {
+        $$ = $2;
     }
 
 attributsFlc:
     attribut ';' {
+        $$.push_back($1);
     }
     | attribut '&' attributsFlc {
+        $$.push_back($1);
+        $$.insert($$.end(), $3.begin(), $3.end());
     }
 
 attributsCSS:
     attribut ';' {
+        $$.push_back($1);
     }
     | attribut ';' NL attributsCSS {
+        $$.push_back($1);
+        $$.insert($$.end(), $4.begin(), $4.end());
     }
 
 
@@ -297,14 +299,6 @@ operation:
     }
     | operation '/' operation {
         $$ = std::make_shared<ExpressionBinaire>($1, $3, OperateurBinaire::divise);
-    }
-
-test:
-    CHAINE {
-        std::cout << "test : " << $1 << std::endl;
-    }
-    |CHAINE CHAINE {
-        std::cout << "test : " << $1 << " " << $2<< std::endl;
     }
 
 %%

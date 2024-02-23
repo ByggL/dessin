@@ -20,6 +20,7 @@ public:
 
     const Contexte_forme & getForme() const;
 
+
     int getCanevasLong() const;
     int getCanevasHaut() const;
     void setCanevasLong(int l);
