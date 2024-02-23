@@ -1,6 +1,7 @@
 # Trucs à faire
 
--   Gestion de la rotation au format SVG (trouver centre forme)
+- Implémenter conditionelles dans le parser
+- Implémenter le reste mdr
 
 # Notes importantes
 

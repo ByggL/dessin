@@ -1,0 +1,10 @@
+taille 1000 1000;
+
+carré 250 250 100 -> couleur : rouge & opacité : 30%;
+
+rectangle 100 100 100 200 150 200 150 100 {
+rotation : 45°;
+épaisseur : 5;
+}
+
+cercle 400 400 50 -> couleur : vert & remplissage : bleu & épaisseur : 3;
