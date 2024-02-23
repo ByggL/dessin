@@ -11,7 +11,7 @@ public:
     Triangle(int posX, int posY, int hauteur, int largeur);
     ~Triangle() = default;
 
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();

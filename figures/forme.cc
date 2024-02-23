@@ -13,39 +13,39 @@
 Forme::Forme() {}
 
 void Forme::addAttribut(std::shared_ptr<Attribut> attribut) {
-    attributs.push_back(attribut);
+    _attributs.push_back(attribut);
 }
 
 
 std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeur1" attribut2="valeur2" »
-    std::string s = "";
+    std::string s = this->to_string();
     bool isStroke, isFill;
     isStroke = isFill = false;
 
     // TODO : checker de quel type d'attribut est chaque instance dans attributs
-    for(unsigned int i = 0; i < attributs.size(); i++) {
-        if (attributs[i]->type() == "rotate") {
-            s += " tranform=\"rotate(" + attributs[i]->valeur() + "," + std::to_string(centreX()) + "," + std::to_string(centreY()) + "\"";
+    for(unsigned int i = 0; i < _attributs.size(); i++) {
+        if (_attributs[i]->type() == "rotate") {
+            s += " tranform=\"rotate(" + _attributs[i]->valeur() + "," + std::to_string(centreX()) + "," + std::to_string(centreY()) + "\"";
         } else {
-            s +=  attributs[i]->type() + "=\"" + attributs[i]->valeur() + "\"";
+            s +=  _attributs[i]->type() + "=\"" + _attributs[i]->valeur() + "\"";
         }
 
-        if (attributs[i]->type() == "fill") {
+        if (_attributs[i]->type() == "fill") {
             isFill = true;
         }
 
-        if (attributs[i]->type() == "stroke") {
+        if (_attributs[i]->type() == "stroke") {
             isStroke = true;
         }
     }
     // TODO : ajouter le cas où il n'y a PAS d'attribut fill
 
     if (!isStroke) {
-        s = "stroke=\"black\"" + s;
+        s += "stroke=\"black\"";
     }
 
     if (!isFill) {
-        s = "fill=\"none\"" + s;
+        s += "fill=\"none\"";
     }
 
 

@@ -19,6 +19,10 @@ void Driver::setVariable(const std::string & name, double value) {
     variables[name] = value;
 }
 
+const Contexte_forme & Driver::getForme() const{
+    return canevas;
+}
+
 int Driver::getCanevasLong() const {
     return canevas.longueur;
 }

@@ -9,9 +9,11 @@
 
 class Attribut {
 public:
-    Attribut();
+    Attribut() =default;
     virtual ~Attribut() = default;
 
     virtual std::string type() const =0;
     virtual std::string valeur() const =0;
 };
+
+using attributPtr = std::shared_ptr<Attribut>;

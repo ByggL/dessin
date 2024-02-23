@@ -71,6 +71,8 @@ fin return token::END;
 
 (?i:taille) { return token::TAILLE; }
 
+(?i:texte) { return token::TEXTE; }
+
 
 (?i:couleur) { return token::COULEUR; }
 
@@ -120,7 +122,7 @@ fin return token::END;
     return token::IDENT;
 }
 
-\"[a-zA-Z ]+\" {
+\"[a-zA-Z0-9 ]+\" {
     yylval->build<std::string>(YYText());
     return token::CHAINE;
 }

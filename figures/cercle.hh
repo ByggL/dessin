@@ -9,7 +9,7 @@ public:
     Cercle(int positionX, int positionY, int rayon);
     Cercle(const Cercle & r);
     ~Cercle() = default;
-    std::string toSVG();
+    std::string to_string() const override;
 
     int centreX();
     int centreY();
