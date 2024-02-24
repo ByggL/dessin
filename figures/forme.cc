@@ -26,9 +26,9 @@ std::string Forme::toSVG() {  // retourne une string de type « attribut1="valeu
     // TODO : checker de quel type d'attribut est chaque instance dans attributs
     for(unsigned int i = 0; i < _attributs.size(); i++) {
         if (_attributs[i]->type() == "rotate") {
-            attributs += " tranform=\"rotate(" + _attributs[i]->valeur() + "," + std::to_string(centreX()) + "," + std::to_string(centreY()) + "\"";
+            attributs += " tranform=\"rotate(" + _attributs[i]->valeur() + "," + std::to_string(centreX()) + "," + std::to_string(centreY()) + ")\"";
         } else {
-            attributs +=  _attributs[i]->type() + "=\"" + _attributs[i]->valeur() + "\"";
+            attributs +=  " " + _attributs[i]->type() + "=\"" + _attributs[i]->valeur() + "\"";
         }
 
         if (_attributs[i]->type() == "fill") {

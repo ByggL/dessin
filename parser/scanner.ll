@@ -86,6 +86,7 @@ fin return token::END;
 
 
 "#"([0-9A-F]{2}){3}     {
+    yylval->build<std::string>(YYText());
     return token::COULEUR_HEX;
 }
 
@@ -93,23 +94,50 @@ fin return token::END;
     return token::COULEUR_RGB;
 }
 
-(?i:rouge) { return token::COULEUR_NOM; }
+(?i:rouge) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:vert) { return token::COULEUR_NOM; }
+(?i:vert) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:bleu) { return token::COULEUR_NOM; }
+(?i:bleu) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:jaune) { return token::COULEUR_NOM; }
+(?i:jaune) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:violet) { return token::COULEUR_NOM; }
+(?i:violet) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:magenta) { return token::COULEUR_NOM; }
+(?i:magenta) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:cyan) { return token::COULEUR_NOM; }
+(?i:cyan) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:noir) { return token::COULEUR_NOM; }
+(?i:noir) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
-(?i:blanc) { return token::COULEUR_NOM; }
+(?i:blanc) {
+    yylval->build<std::string>(YYText());
+    return token::COULEUR_NOM;
+}
 
 
 [0-9]+      {

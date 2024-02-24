@@ -1,4 +1,5 @@
 #include "opacite.hh"
+#include <iomanip>
 
 
 Opacite::Opacite(int val)
@@ -9,5 +10,8 @@ std::string Opacite::type() const {
 }
 
 std::string Opacite::valeur() const {
-    return std::to_string(_valeur);
+    std::ostringstream out;
+    out << std::setprecision(2);
+    out << _valeur / 100.0;
+    return out.str();
 }

@@ -74,14 +74,14 @@
 %token                  EPAISSEUR
 
 %token <std::string>    COULEUR_HEX
-%token                  COULEUR_RGB
+%token <std::string>    COULEUR_RGB
 %token <std::string>    COULEUR_NOM
 %type <couleurPtr>      couleur
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme dessin
-%type <vectAttributPtr> attributs attributsFlc attributsCSS
+%type <vectAttributPtr> attributsFlc attributsCSS
 %type <attributPtr>     attribut
 %left '-' '+'
 %left '*' '/'
@@ -118,15 +118,20 @@ affectation:
     }
 
 dessin:
-    TAILLE operation operation {
+    TAILLE operation operation ';'{
         driver.setCanevasLong($2->calculer(driver.getContexte()));
         driver.setCanevasHaut($3->calculer(driver.getContexte()));
     }
     |forme ';' {
         $$ = $1;
     }
-    | forme attributs {
-        $1->_attributs = $2;
+    | forme FLECHE attributsFlc ';' {
+        std::cout << "forme fleche attributs" << std::endl;
+        $1->_attributs = $3;
+        $$ = $1;
+    }
+    | forme '{' attributsCSS '}' {
+        $1->_attributs = $3;
         $$ = $1;
     }
 
@@ -154,6 +159,7 @@ forme:
         );
         driver.ajoutCarre($$);
         driver.ajoutForme($$);
+        std::cout << "forme" << std::endl;
     }
     | TRIANGLE operation operation operation operation {
         $$ = std::make_shared<Triangle>(
@@ -221,19 +227,14 @@ coordonnee_chemin:
         $$.push_back($2->calculer(driver.getContexte()));
     }
 
-attributs:
-    FLECHE attributsFlc {
-        $$ = $2;
-    }
-    |'{' attributsCSS '}' {
-        $$ = $2;
-    }
 
 attributsFlc:
-    attribut ';' {
+    attribut {
+        std::cout << "Attribut fleche fin" << std::endl;
         $$.push_back($1);
     }
     | attribut '&' attributsFlc {
+        std::cout << "Attribut fleche" << std::endl;
         $$.push_back($1);
         $$.insert($$.end(), $3.begin(), $3.end());
     }
@@ -250,19 +251,24 @@ attributsCSS:
 
 attribut:
     COULEUR ':' couleur {
+        std::cout << "couleur" << std::endl;
         $$ = std::make_shared<Stroke>(*$3);
     }
-    | ROTATION ':' NUMBER {
-        $$ = std::make_shared<Rotation>($3);
-    }
     | REMPLISSAGE ':' couleur {
+        std::cout << "remplissage" << std::endl;
         $$ = std::make_shared<Fill>(*$3);
     }
-    | OPACITE ':' NUMBER {
-        $$ = std::make_shared<Opacite>($3);
+    | ROTATION ':' operation {
+        std::cout << "rotation" << std::endl;
+        $$ = std::make_shared<Rotation>($3->calculer(driver.getContexte()));
     }
-    | EPAISSEUR ':' NUMBER {
-        $$ = std::make_shared<Epaisseur>($3);
+    | OPACITE ':' operation {
+        std::cout << "opacite" << std::endl;
+        $$ = std::make_shared<Opacite>($3->calculer(driver.getContexte()));
+    }
+    | EPAISSEUR ':' operation {
+        std::cout << "epaisseur" << std::endl;
+        $$ = std::make_shared<Epaisseur>($3->calculer(driver.getContexte()));
     }
 
 
