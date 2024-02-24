@@ -7,4 +7,5 @@ public:
     int _valeur;
 
     AttributInt(int val);
+    std::string valeur() const override;
 };

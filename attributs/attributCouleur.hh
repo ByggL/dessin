@@ -1,11 +1,12 @@
 #pragma once
 #include "attribut.hh"
-#include "couleur.hh"
+
 
 
 class AttributCouleur : public Attribut {
 public:
-    Couleur _valeur;
+    Couleur _couleur;
     AttributCouleur(const Couleur & c);
-    AttributCouleur(std::string col);
+
+    std::string valeur() const override;
 };

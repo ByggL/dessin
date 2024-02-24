@@ -3,7 +3,7 @@
 
 
 Opacite::Opacite(int val)
-    : AttributInt(val) {}
+    : AttributInt::AttributInt(val) {}
 
 std::string Opacite::type() const {
     return "opacity";

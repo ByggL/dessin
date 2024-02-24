@@ -91,6 +91,7 @@ fin return token::END;
 }
 
 "rgb"   {
+    yylval->build<std::string>(YYText());
     return token::COULEUR_RGB;
 }
 

@@ -26,6 +26,9 @@
     #include "chemin.hh"
     #include "contexte_forme.hh"
     #include "couleur.hh"
+    #include "couleur_hex.hh"
+    #include "couleur_nom.hh"
+    #include "couleur_rgb.hh"
     #include "attribut.hh"
     #include "stroke.hh"
     #include "fill.hh"
@@ -76,13 +79,13 @@
 %token <std::string>    COULEUR_HEX
 %token <std::string>    COULEUR_RGB
 %token <std::string>    COULEUR_NOM
-%type <couleurPtr>      couleur
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme dessin
 %type <vectAttributPtr> attributsFlc attributsCSS
 %type <attributPtr>     attribut
+%type <couleurPtr>      couleur
 %left '-' '+'
 %left '*' '/'
 
@@ -258,32 +261,30 @@ attribut:
         std::cout << "remplissage" << std::endl;
         $$ = std::make_shared<Fill>(*$3);
     }
-    | ROTATION ':' operation {
+    | ROTATION ':' NUMBER {
         std::cout << "rotation" << std::endl;
-        $$ = std::make_shared<Rotation>($3->calculer(driver.getContexte()));
+        $$ = std::make_shared<Rotation>($3);
     }
-    | OPACITE ':' operation {
+    | OPACITE ':' NUMBER {
         std::cout << "opacite" << std::endl;
-        $$ = std::make_shared<Opacite>($3->calculer(driver.getContexte()));
+        $$ = std::make_shared<Opacite>($3);
     }
-    | EPAISSEUR ':' operation {
+    | EPAISSEUR ':' NUMBER {
         std::cout << "epaisseur" << std::endl;
-        $$ = std::make_shared<Epaisseur>($3->calculer(driver.getContexte()));
+        $$ = std::make_shared<Epaisseur>($3);
     }
 
 
 couleur:
-    COULEUR_HEX {
-        $$ = std::make_shared<Couleur>($1);
-    }
-    | COULEUR_RGB '(' operation ',' operation ',' operation ')' {
-        $$ = std::make_shared<Couleur>(
-        $3->calculer(driver.getContexte()),
-        $5->calculer(driver.getContexte()),
-        $7->calculer(driver.getContexte()));
+    COULEUR_RGB '(' NUMBER ',' NUMBER ',' NUMBER ')' {
+        std::cout << $3 << " " << $5 << " " << $7 << std::endl;
+        $$ = std::make_shared<Couleur_rgb>($3, $5, $7);
     }
     | COULEUR_NOM  {
-        $$ = std::make_shared<Couleur>($1);
+        $$ = std::make_shared<Couleur_nom>($1);
+    }
+    | COULEUR_HEX {
+        $$ = std::make_shared<Couleur_hex>($1);
     }
 
 

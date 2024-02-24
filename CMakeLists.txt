@@ -12,7 +12,8 @@ find_package(BISON)
 find_package(FLEX)
 
 
-include_directories(parser expressions figures attributs ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(parser expressions figures attributs couleur ${CMAKE_CURRENT_BINARY_DIR})
+
 file(GLOB EXPRESSION_HEADERS
     expressions/contexte.hh
     expressions/expression.hh
@@ -65,7 +66,6 @@ add_library(figures
     )
 
 file(GLOB ATTRIBUT_HEADERS
-    attributs/couleur.hh
     attributs/attribut.hh
     attributs/attributCouleur.hh
     attributs/attributInt.hh
@@ -78,7 +78,6 @@ file(GLOB ATTRIBUT_HEADERS
 
 
 add_library(attributs
-    attributs/couleur.cc
     attributs/attributCouleur.cc
     attributs/attributInt.cc
     attributs/stroke.cc
@@ -87,6 +86,22 @@ add_library(attributs
     attributs/opacite.cc
     attributs/rotation.cc
     ${ATTRIBUT_HEADERS}
+    )
+
+file(GLOB COULEUR_HEADERS
+    couleur/couleur.hh
+    couleur/couleur_hex.hh
+    couleur/couleur_nom.hh
+    couleur/couleur_rgb.hh
+    )
+
+
+add_library(couleur
+    couleur/couleur.cc
+    couleur/couleur_hex.cc
+    couleur/couleur_nom.cc
+    couleur/couleur_rgb.cc
+    ${COULEUR_HEADERS}
     )
 
 BISON_TARGET(parser parser/parser.yy ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp VERBOSE ${CMAKE_CURRENT_BINARY_DIR}/automate.txt)
@@ -102,6 +117,6 @@ add_executable(${PROJECT_NAME}
     ${BISON_parser_OUTPUTS}
     ${FLEX_scanner_OUTPUTS}
 )
-target_link_libraries(${PROJECT_NAME} expressions figures attributs)
+target_link_libraries(${PROJECT_NAME} expressions figures attributs couleur)
 
-target_link_libraries(expressions figures attributs)
+target_link_libraries(expressions figures attributs couleur)
