@@ -26,6 +26,9 @@
     #include "chemin.hh"
     #include "contexte_forme.hh"
     #include "couleur.hh"
+    #include "couleur_hex.hh"
+    #include "couleur_nom.hh"
+    #include "couleur_rgb.hh"
     #include "attribut.hh"
     #include "stroke.hh"
     #include "fill.hh"
@@ -74,15 +77,15 @@
 %token                  EPAISSEUR
 
 %token <std::string>    COULEUR_HEX
-%token                  COULEUR_RGB
+%token <std::string>    COULEUR_RGB
 %token <std::string>    COULEUR_NOM
-%type <couleurPtr>      couleur
 
 %type <ExpressionPtr>   operation
 %type <coordChemin>     coordonnee_chemin
 %type <formePtr>        forme dessin
-%type <vectAttributPtr> attributs attributsFlc attributsCSS
+%type <vectAttributPtr> attributsFlc attributsCSS
 %type <attributPtr>     attribut
+%type <couleurPtr>      couleur
 %left '-' '+'
 %left '*' '/'
 
@@ -118,15 +121,20 @@ affectation:
     }
 
 dessin:
-    TAILLE operation operation {
+    TAILLE operation operation ';'{
         driver.setCanevasLong($2->calculer(driver.getContexte()));
         driver.setCanevasHaut($3->calculer(driver.getContexte()));
     }
     |forme ';' {
         $$ = $1;
     }
-    | forme attributs {
-        $1->_attributs = $2;
+    | forme FLECHE attributsFlc ';' {
+        std::cout << "forme fleche attributs" << std::endl;
+        $1->_attributs = $3;
+        $$ = $1;
+    }
+    | forme '{' attributsCSS '}' {
+        $1->_attributs = $3;
         $$ = $1;
     }
 
@@ -154,6 +162,7 @@ forme:
         );
         driver.ajoutCarre($$);
         driver.ajoutForme($$);
+        std::cout << "forme" << std::endl;
     }
     | TRIANGLE operation operation operation operation {
         $$ = std::make_shared<Triangle>(
@@ -221,19 +230,14 @@ coordonnee_chemin:
         $$.push_back($2->calculer(driver.getContexte()));
     }
 
-attributs:
-    FLECHE attributsFlc {
-        $$ = $2;
-    }
-    |'{' attributsCSS '}' {
-        $$ = $2;
-    }
 
 attributsFlc:
-    attribut ';' {
+    attribut {
+        std::cout << "Attribut fleche fin" << std::endl;
         $$.push_back($1);
     }
     | attribut '&' attributsFlc {
+        std::cout << "Attribut fleche" << std::endl;
         $$.push_back($1);
         $$.insert($$.end(), $3.begin(), $3.end());
     }
@@ -250,34 +254,37 @@ attributsCSS:
 
 attribut:
     COULEUR ':' couleur {
+        std::cout << "couleur" << std::endl;
         $$ = std::make_shared<Stroke>(*$3);
     }
-    | ROTATION ':' NUMBER {
-        $$ = std::make_shared<Rotation>($3);
-    }
     | REMPLISSAGE ':' couleur {
+        std::cout << "remplissage" << std::endl;
         $$ = std::make_shared<Fill>(*$3);
     }
+    | ROTATION ':' NUMBER {
+        std::cout << "rotation" << std::endl;
+        $$ = std::make_shared<Rotation>($3);
+    }
     | OPACITE ':' NUMBER {
+        std::cout << "opacite" << std::endl;
         $$ = std::make_shared<Opacite>($3);
     }
     | EPAISSEUR ':' NUMBER {
+        std::cout << "epaisseur" << std::endl;
         $$ = std::make_shared<Epaisseur>($3);
     }
 
 
 couleur:
-    COULEUR_HEX {
-        $$ = std::make_shared<Couleur>($1);
-    }
-    | COULEUR_RGB '(' operation ',' operation ',' operation ')' {
-        $$ = std::make_shared<Couleur>(
-        $3->calculer(driver.getContexte()),
-        $5->calculer(driver.getContexte()),
-        $7->calculer(driver.getContexte()));
+    COULEUR_RGB '(' NUMBER ',' NUMBER ',' NUMBER ')' {
+        std::cout << $3 << " " << $5 << " " << $7 << std::endl;
+        $$ = std::make_shared<Couleur_rgb>($3, $5, $7);
     }
     | COULEUR_NOM  {
-        $$ = std::make_shared<Couleur>($1);
+        $$ = std::make_shared<Couleur_nom>($1);
+    }
+    | COULEUR_HEX {
+        $$ = std::make_shared<Couleur_hex>($1);
     }
 
 

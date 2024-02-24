@@ -22,7 +22,7 @@ std::string Contexte_forme::toSVG() const {
     std::ostringstream out;
 
     out << "<svg version=\"1.1\" width=\"" << longueur << "\" height=\"" << hauteur
-        << "xmlns=\"http://www.w3.org/2000/svg\">";
+        << "\"xmlns=\"http://www.w3.org/2000/svg\">\n";
 
     for(unsigned int i = 0; i < formes.size(); i++) {
         out << formes[i]->toSVG();
@@ -44,12 +44,11 @@ std::string Contexte_forme::toSVG() const {
 
 void writeToSvgFile(std::string SVGtext) {
     // Create the file
-    std::ofstream MyFile("output.svg");
+    std::ofstream MyFile("../output.svg");
 
     // Write to the file
     MyFile << SVGtext;
 
     // Close the file
-
     MyFile.close();
 }

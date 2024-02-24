@@ -7,5 +7,4 @@ public:
     Rotation(int val);
 
     std::string type() const override;
-    std::string valeur() const override;
 };

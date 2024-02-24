@@ -1,7 +1,8 @@
 #include "attributCouleur.hh"
 
 AttributCouleur::AttributCouleur(const Couleur & c)
-    : Attribut(), _valeur(c._couleur) {}
+    : Attribut::Attribut(), _couleur(c) {}
 
-AttributCouleur::AttributCouleur(std::string col)
-    : Attribut(), _valeur(col) {}
+std::string AttributCouleur::valeur() const {
+    return _couleur._valeur;
+}

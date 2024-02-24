@@ -13,7 +13,11 @@ int main( int  argc, char* argv[]) {
     yy::Parser * parser = new yy::Parser(*scanner, *driver);
 
     parser->parse();
-    driver->getForme().toSVG();
+
+    std::string output = driver->getForme().toSVG();
+    std::cout << driver->getForme().toSVG() << std::endl;
+    
+    driver->getForme().writeToSvgFile(output);
 
     return 0;
 }
