@@ -3,7 +3,7 @@
 #include <sstream>
 
 
-Texte::Texte(int posX, int posY, std::string content, std::string font)
+Texte::Texte(double posX, double posY, std::string content, std::string font)
     : FormeSimpleCoord::FormeSimpleCoord(posX, posY), content(content), font(font){}
 
 
@@ -19,5 +19,5 @@ std::string Texte::to_string() const {
 }
 
 
-int Texte::centreX() { return positionX; }  // on s'embête pas à aller chercher le centre du texte
-int Texte::centreY() { return positionY; }
+double Texte::centreX() { return positionX; }  // on s'embête pas à aller chercher le centre du texte
+double Texte::centreY() { return positionY; }

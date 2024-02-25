@@ -58,6 +58,7 @@
 %token                  NL
 %token                  END
 %token <int>            NUMBER
+%token <double>         FLOATNUMBER
 %token <std::string>    CHAINE
 %token                  FLECHE
 %token <std::string>    IDENT
@@ -66,7 +67,10 @@
 %token                  THEN
 %token                  ELSE
 %token                  END_OF_FILE
-
+%token                  POSITIONX
+%token                  POSITIONY
+%token                  BOOLEAN ENTIER REEL
+%token <int>            BOOL
 
 %token                  RECTANGLE CARRE TRIANGLE CERCLE ELLIPSE LIGNE CHEMIN TEXTE
 
@@ -124,6 +128,12 @@ expression:
 affectation:
     IDENT '=' dessin {
         driver.ajoutFormeNomer($1,$3);
+    }
+    |BOOLEAN IDENT '=' BOOL ';' {
+
+    }
+    |ENTIER IDENT '=' NUMBER ';' {
+
     }
 
 dessin:
@@ -228,7 +238,7 @@ forme:
 
 coordonnee_chemin:
     operation operation ',' coordonnee_chemin {
-        $$ = std::vector<int>();
+        $$ = std::vector<double>();
         $$.push_back($1->calculer(driver.getContexte()));
         $$.push_back($2->calculer(driver.getContexte()));
         $$.insert($$.end(), $4.begin(), $4.end());
@@ -294,6 +304,7 @@ couleur:
         $$ = std::make_shared<Couleur_nom>($1);
     }
     | COULEUR_HEX {
+        std::cout << "Hex: " << $1 << std::endl;
         $$ = std::make_shared<Couleur_hex>($1);
     }
 

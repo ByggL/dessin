@@ -7,11 +7,11 @@ public:
     std::string content;
     std::string font;
 
-    Texte(int posX, int posY, std::string content, std::string font);
+    Texte(double posX, double posY, std::string content, std::string font);
     Texte(const Texte & r);
     ~Texte() = default;
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };

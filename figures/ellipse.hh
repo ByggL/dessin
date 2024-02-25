@@ -4,14 +4,14 @@
 
 class Ellipse : public FormeSimpleCoord {
 public:
-    int longueur;
-    int hauteur;
+    double longueur;
+    double hauteur;
 
-    Ellipse(int posX, int posY, int longueur, int hauteur);
+    Ellipse(double posX, double posY, double longueur, double hauteur);
     Ellipse(const Ellipse & r);
     ~Ellipse() = default;
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };

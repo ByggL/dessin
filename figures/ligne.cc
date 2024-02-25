@@ -3,7 +3,7 @@
 #include <sstream>
 
 
-Ligne::Ligne(int x1, int y1, int x2, int y2)
+Ligne::Ligne(double x1, double y1, double x2, double y2)
     : Forme::Forme(), positionX1(x1), positionY1(y1), positionX2(x2), positionY2(y2) {}
 
 
@@ -17,5 +17,5 @@ std::string Ligne::to_string() const {
 }
 
 
-int Ligne::centreX() { return positionX1 + (positionX2/2); }
-int Ligne::centreY() { return positionY1 + (positionY2/2); }
+double Ligne::centreX() { return positionX1 + (positionX2/2); }
+double Ligne::centreY() { return positionY1 + (positionY2/2); }

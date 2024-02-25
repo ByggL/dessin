@@ -7,7 +7,7 @@ Ellipse::Ellipse(const Ellipse & r)
     : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), longueur(r.longueur), hauteur(r.hauteur) {}
 
 
-Ellipse::Ellipse(int posX, int posY, int longueur, int hauteur)
+Ellipse::Ellipse(double posX, double posY, double longueur, double hauteur)
     : FormeSimpleCoord::FormeSimpleCoord(posX, posY), longueur(longueur), hauteur(hauteur) {}
 
 
@@ -22,5 +22,5 @@ std::string Ellipse::to_string() const {
 }
 
 
-int Ellipse::centreX() { return positionX; }
-int Ellipse::centreY() { return positionY; }
+double Ellipse::centreX() { return positionX; }
+double Ellipse::centreY() { return positionY; }

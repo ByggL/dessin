@@ -4,15 +4,15 @@
 
 class Triangle : public FormeSimpleCoord {
 public:
-    int longueur;
-    int hauteur;
+    double longueur;
+    double hauteur;
 
     Triangle(const Triangle & r);
-    Triangle(int posX, int posY, int longueur, int hauteur);
+    Triangle(double posX, double posY, double longueur, double hauteur);
     ~Triangle() = default;
 
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };

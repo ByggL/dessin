@@ -3,19 +3,19 @@
 
 class Chemin : public Forme {
 public:
-    std::vector<int> coords;
+    std::vector<double> coords;
 
     Chemin() = default;
-    Chemin(const std::vector<int> & c);
+    Chemin(const std::vector<double> & c);
     Chemin(const Chemin & r);
     ~Chemin() = default;
 
-    void ajout(int x, int y);
+    void ajout(double x, double y);
 
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };
 
-using coordChemin = std::vector<int>;
+using coordChemin = std::vector<double>;

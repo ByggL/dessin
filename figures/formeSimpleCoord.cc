@@ -1,5 +1,5 @@
 #include "formeSimpleCoord.hh"
 
-FormeSimpleCoord::FormeSimpleCoord(int posX, int posY)
+FormeSimpleCoord::FormeSimpleCoord(double posX, double posY)
     : Forme::Forme(), positionX(posX), positionY(posY) {}
 

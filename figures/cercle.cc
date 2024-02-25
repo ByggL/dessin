@@ -4,7 +4,7 @@
 #include <sstream>
 
 
-Cercle::Cercle(int posX, int posY, int rayon)
+Cercle::Cercle(double posX, double posY, double rayon)
     : FormeSimpleCoord::FormeSimpleCoord(posX, posY), rayon(rayon) {}
 
 
@@ -19,5 +19,5 @@ std::string Cercle::to_string() const{
 }
 
 
-int Cercle::centreX() { return positionX; }
-int Cercle::centreY() { return positionY; }
+double Cercle::centreX() { return positionX; }
+double Cercle::centreY() { return positionY; }

@@ -4,13 +4,13 @@
 
 class Carre : public FormeSimpleCoord {
 public:
-    int taille;
+    double taille;
 
-    Carre(int x, int y, int taille);
+    Carre(double x, double y, double taille);
     Carre(const Carre & r);
     ~Carre() = default;
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };

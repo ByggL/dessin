@@ -39,6 +39,9 @@ fin return token::END;
 "}" return '}';
 ";" return ';';
 "%" return '%';
+"." return '.';
+"[" return '[';
+"]" return ']';
 
 "°"  {
     return token::DEGREE;
@@ -48,15 +51,6 @@ fin return token::END;
     return token::FLECHE;
 }
 
-"si" {
-    return token::IF;
-}
-"alors" {
-    return token::THEN;
-}
-"sinon" {
-    return token::ELSE;
-}
 
 (?i:rectangle) { return token::RECTANGLE; }
 
@@ -88,7 +82,7 @@ fin return token::END;
 (?i:[e|é]paisseur) { return token::EPAISSEUR; }
 
 
-"#"([0-9a-fA-F]{2}){3}     {
+"#"[0-9a-fA-F]{6}     {
     yylval->build<std::string>(YYText());
     return token::COULEUR_HEX;
 }
@@ -143,16 +137,61 @@ fin return token::END;
     return token::COULEUR_NOM;
 }
 
-
-[0-9]+      {
-    yylval->build<int>(std::atoi(YYText()));
-    return token::NUMBER;
-}
-
-[a_zA-Z_][a-zA-Z_0-9]*   {
+[a_zA-Z_][a-zA-Z_0-9]*   { // Identifiant
     yylval->build<std::string>(YYText());
     return token::IDENT;
 }
+
+(?:positionX) {
+    return token::POSITIONX;
+}
+
+(?:positionY) {
+    return token::POSITIONY;
+}
+
+(?i:bool[é|e]n) {
+    return token::BOOLEAN;
+}
+
+(?i:entier) {
+    return token::ENTIER;
+}
+
+(?i:r[é|e]l) {
+    return token::REEL;
+}
+
+(?i:true) {
+    yylval->build<bool>(1);
+    return token::BOOL;
+}
+
+(?i:false) {
+    yylval->build<int>(0);
+    return token::BOOL;
+}
+
+"si" {
+    return token::IF;
+}
+"alors" {
+    return token::THEN;
+}
+"sinon" {
+    return token::ELSE;
+}
+
+[0-9]+     {
+    yylval->build<int>(std::stod(YYText()));
+    return token::NUMBER;
+}
+
+[0-9]+(\.[0-9]+)?     {
+    yylval->build<float>(std::stod(YYText()));
+    return token::FLOATNUMBER;
+}
+
 
 \"[^\"]+\" {
     yylval->build<std::string>(YYText());

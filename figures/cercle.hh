@@ -4,13 +4,13 @@
 
 class Cercle : public FormeSimpleCoord {
 public:
-    int rayon;
+    double rayon;
 
-    Cercle(int positionX, int positionY, int rayon);
+    Cercle(double positionX, double positionY, double rayon);
     Cercle(const Cercle & r);
     ~Cercle() = default;
     std::string to_string() const override;
 
-    int centreX();
-    int centreY();
+    double centreX();
+    double centreY();
 };

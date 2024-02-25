@@ -16,8 +16,8 @@ public:
     Forme();
     virtual ~Forme() = default;
 
-    virtual int centreX() = 0;
-    virtual int centreY() = 0;
+    virtual double centreX() = 0;
+    virtual double centreY() = 0;
 
     void addAttribut(attributPtr _attribut);
     virtual std::string to_string() const =0;

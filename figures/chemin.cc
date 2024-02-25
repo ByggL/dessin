@@ -6,12 +6,12 @@
 Chemin::Chemin(const Chemin & r)
     :coords(r.coords){}
 
-void Chemin::ajout(int x, int y) {
+void Chemin::ajout(double x, double y) {
     coords.push_back(x);
     coords.push_back(y);
 }
 
-Chemin::Chemin(const std::vector<int> & c)
+Chemin::Chemin(const std::vector<double> & c)
     : Forme::Forme(), coords(c) {}
 
 
@@ -30,6 +30,6 @@ std::string Chemin::to_string() const {
     return s;
 }
 
-// trop complexe de calculer le centre d'un polygone irrégulier. On se contentera du point d'origine
-int Chemin::centreX() { return coords[0]; }
-int Chemin::centreY() { return coords[1]; }
+// trop complexe de calculer le centre d'un polygone irrégulier. On se contentera du podouble d'origine
+double Chemin::centreX() { return coords[0]; }
+double Chemin::centreY() { return coords[1]; }

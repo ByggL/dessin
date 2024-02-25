@@ -4,11 +4,11 @@
 
 class FormeSimpleCoord : public Forme {
 public:
-    int positionX;
-    int positionY;
+    double positionX;
+    double positionY;
 
-    FormeSimpleCoord(int posX, int posY);
+    FormeSimpleCoord(double posX, double posY);
 
-    virtual int centreX() = 0;
-    virtual int centreY() = 0;
+    virtual double centreX() = 0;
+    virtual double centreY() = 0;
 };
