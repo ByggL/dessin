@@ -40,6 +40,9 @@ fin return token::END;
 ";" return ';';
 "%" return '%';
 
+"°"  {
+    return token::DEGREE;
+}
 
 "->"  {
     return token::FLECHE;
@@ -57,7 +60,7 @@ fin return token::END;
 
 (?i:rectangle) { return token::RECTANGLE; }
 
-(?i:carre) { return token::CARRE; }
+(?i:carr[e|é]) { return token::CARRE; }
 
 (?i:triangle) { return token::TRIANGLE; }
 
@@ -80,9 +83,9 @@ fin return token::END;
 
 (?i:remplissage) { return token::REMPLISSAGE; }
 
-(?i:opacite) { return token::OPACITE; }
+(?i:opacit[e|é]) { return token::OPACITE; }
 
-(?i:epaisseur) { return token::EPAISSEUR; }
+(?i:[e|é]paisseur) { return token::EPAISSEUR; }
 
 
 "#"([0-9A-F]{2}){3}     {

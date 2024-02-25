@@ -61,6 +61,7 @@
 %token <std::string>    CHAINE
 %token                  FLECHE
 %token <std::string>    IDENT
+%token                  DEGREE
 %token                  IF
 %token                  THEN
 %token                  ELSE
@@ -104,6 +105,8 @@ instruction:
     }
     | affectation {
     }
+    | NL {
+    }
 
 expression:
     operation {
@@ -133,8 +136,9 @@ dessin:
         $1->_attributs = $3;
         $$ = $1;
     }
-    | forme '{' attributsCSS '}' {
-        $1->_attributs = $3;
+    | forme '{' NL attributsCSS '}' {
+        std::cout << "forme CSS attributs" << std::endl;
+        $1->_attributs = $4;
         $$ = $1;
     }
 
@@ -153,6 +157,7 @@ forme:
         );
         driver.ajoutRectangle($$);
         driver.ajoutForme($$);
+        std::cout << "rectangle" << std::endl;
     }
     | CARRE operation operation operation {
         $$ = std::make_shared<Carre>(
@@ -162,7 +167,7 @@ forme:
         );
         driver.ajoutCarre($$);
         driver.ajoutForme($$);
-        std::cout << "forme" << std::endl;
+        std::cout << "carre" << std::endl;
     }
     | TRIANGLE operation operation operation operation {
         $$ = std::make_shared<Triangle>(
@@ -232,23 +237,25 @@ coordonnee_chemin:
 
 
 attributsFlc:
-    attribut {
-        std::cout << "Attribut fleche fin" << std::endl;
-        $$.push_back($1);
-    }
-    | attribut '&' attributsFlc {
+    attribut '&' attributsFlc {
         std::cout << "Attribut fleche" << std::endl;
         $$.push_back($1);
         $$.insert($$.end(), $3.begin(), $3.end());
     }
-
-attributsCSS:
-    attribut ';' {
+    | attribut {
+        std::cout << "Attribut fleche fin" << std::endl;
         $$.push_back($1);
     }
-    | attribut ';' NL attributsCSS {
+
+attributsCSS:
+    attribut ';' NL attributsCSS {
+        std::cout << "Attribut CSS" << std::endl;
         $$.push_back($1);
         $$.insert($$.end(), $4.begin(), $4.end());
+    }
+    | attribut ';' NL {
+        std::cout << "Attribut CSS fin" << std::endl;
+        $$.push_back($1);
     }
 
 
@@ -261,11 +268,11 @@ attribut:
         std::cout << "remplissage" << std::endl;
         $$ = std::make_shared<Fill>(*$3);
     }
-    | ROTATION ':' NUMBER {
+    | ROTATION ':' NUMBER DEGREE{
         std::cout << "rotation" << std::endl;
         $$ = std::make_shared<Rotation>($3);
     }
-    | OPACITE ':' NUMBER {
+    | OPACITE ':' NUMBER '%'{
         std::cout << "opacite" << std::endl;
         $$ = std::make_shared<Opacite>($3);
     }
