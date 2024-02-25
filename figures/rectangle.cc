@@ -14,12 +14,12 @@ Rectangle::Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int
 std::string Rectangle::to_string() const {
     std::ostringstream out;
 
-    out << "<rect x=\"" << positionX1 << "\" y=\"" << positionY1 << "\" width=\"" << positionX2 - positionX1 << "\" height=\"" << positionY1 - positionY4 << "\"";
+    out << "<rect x=\"" << positionX1 << "\" y=\"" << positionY1 << "\" width=\"" << positionX4 - positionX1 << "\" height=\"" << (positionY2 - positionY1) << "\"";
 
     std::string s = out.str();
     return s;
 }
 
 
-int Rectangle::centreX() { return positionX1 + ((positionX2 - positionX1)/2); }
-int Rectangle::centreY() { return positionY1 + ((positionY1 - positionY4)/2); }
+int Rectangle::centreX() { return positionX1 + ((positionX4 - positionX1)/2); }
+int Rectangle::centreY() { return positionY1 + ((positionY2 - positionY1)/2); }

@@ -4,17 +4,17 @@
 
 
 Ellipse::Ellipse(const Ellipse & r)
-    : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), hauteur(r.hauteur), largeur(r.largeur) {}
+    : FormeSimpleCoord::FormeSimpleCoord(r.positionX,r.positionY), longueur(r.longueur), hauteur(r.hauteur) {}
 
 
-Ellipse::Ellipse(int posX, int posY, int hauteur, int largeur)
-    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), hauteur(hauteur), largeur(largeur) {}
+Ellipse::Ellipse(int posX, int posY, int longueur, int hauteur)
+    : FormeSimpleCoord::FormeSimpleCoord(posX, posY), longueur(longueur), hauteur(hauteur) {}
 
 
 std::string Ellipse::to_string() const {
     std::ostringstream out;
 
-    out << "<ellipse cx=\"" << positionX << "\" cy=\"" << positionY << "\" rx=\"" << largeur << "\" ry=\"" << hauteur << "\"";
+    out << "<ellipse cx=\"" << positionX << "\" cy=\"" << positionY << "\" rx=\"" << longueur << "\" ry=\"" << hauteur << "\"";
 
     std::string s = out.str();
 
