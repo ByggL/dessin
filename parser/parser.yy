@@ -65,6 +65,7 @@
 %token                  IF
 %token                  THEN
 %token                  ELSE
+%token                  END_OF_FILE
 
 
 %token                  RECTANGLE CARRE TRIANGLE CERCLE ELLIPSE LIGNE CHEMIN TEXTE
@@ -97,6 +98,9 @@ programme:
     | END NL {
         YYACCEPT;
     }
+    | END_OF_FILE {
+        YYACCEPT;
+    }
 
 instruction:
     expression  {
@@ -105,8 +109,7 @@ instruction:
     }
     | affectation {
     }
-    | NL {
-    }
+
 
 expression:
     operation {

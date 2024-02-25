@@ -88,7 +88,7 @@ fin return token::END;
 (?i:[e|é]paisseur) { return token::EPAISSEUR; }
 
 
-"#"([0-9A-F]{2}){3}     {
+"#"([0-9a-fA-F]{2}){3}     {
     yylval->build<std::string>(YYText());
     return token::COULEUR_HEX;
 }
@@ -149,12 +149,12 @@ fin return token::END;
     return token::NUMBER;
 }
 
-[A-Z][a-z]*[0-9]+   {
+[a_zA-Z_][a-zA-Z_0-9]*   {
     yylval->build<std::string>(YYText());
     return token::IDENT;
 }
 
-\"[a-zA-Z0-9 ]+\" {
+\"[^\"]+\" {
     yylval->build<std::string>(YYText());
     return token::CHAINE;
 }
@@ -163,9 +163,17 @@ fin return token::END;
 [ \t] {
 }
 
+^[ \t\n]+  { /* Ignore les lignes vides */
+}
+
 "\n"          {
     loc->lines();
     return token::NL;
 }
+
+<<EOF>> { /* token prédéfini pour la fin d'un fichier */
+    return token::END_OF_FILE;
+}
+
 
 %%
